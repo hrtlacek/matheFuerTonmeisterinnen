@@ -1,6 +1,10 @@
 %!TEX root = main.tex
 \chapter{Grundlagen}
 
+\section{Motivation}
+
+
+
 \section{Aussagen}
 
 \begin{table}[h!]
@@ -28,9 +32,63 @@
     \caption{Tabelle über mathematische Aussagen und Operationen}
 \end{table}
 
-\todo{Boolsche logik}
+
+
+\subsection{Boolsche Logik}
+\label{sec:bool}
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        $A$ & $B$ & $A \land B$ & $A \lor B$ \\
+        \hline
+        0 & 0 & 0 & 0 \\
+        0 & 1 & 0 & 1 \\
+        1 & 0 & 0 & 1 \\
+        1 & 1 & 1 & 1 \\
+        \hline
+    \end{tabular}
+    \caption{Boolesche Algebra: UND und ODER Operationen}
+\end{table}
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|c|c|}
+        \hline
+        $A$ & $\neg A$ \\
+        \hline
+        0 & 1 \\
+        1 & 0 \\
+        \hline
+    \end{tabular}
+    \caption{Boolesche Algebra: NICHT Operation}
+\end{table}
+
+\praxis{Boolsche Logik: Programmieren}
 
 \section{Mengen}
+
+\important{"Eine Menge ist eine Zusammenfassung unterscheidbarer Objekte zu einer Gesamtheit. Die Objekte werden 'Elemente' genannt"}
+
+% \equation{ 
+Beispiele für \emph{explizite} Mengen:
+$$ A = \{ \text{bla}, \text{franz}, \text{hubert} \} $$ 
+$$ B = \{ 1, 3, 5, 8 \} $$ 
+
+Beispiel für Mengen durch \emph{beschreibung}:
+
+$$ C = \{x \, | \, x \, \text{ist eine Geige} \} $$
+
+\subsection{Operationen}
+Vergl. \ref{sec:bool}
+
+% \begin{figure}[h!]
+%     \centering
+%     \includesvg[width=0.5\textwidth]{img/test1} % Dateiname ohne .svg-Endung
+%     \caption{Eine SVG-Grafik}
+% \end{figure}
+
 
 \section{Zahlen}
 
@@ -38,4 +96,4 @@
 
 
 
-
+\section{Aufgaben und Beispiele}
