@@ -1,0 +1,42 @@
+# Log files
+*.log
+
+# Auxiliary files
+*.aux
+*.lof
+*.lol
+*.lot
+*.fls
+*.out
+*.toc
+*.fmt
+*.fot
+*.cb
+*.cb2
+*.blg
+*.bbl
+*.brf
+*.run.xml
+*.fdb_latexmk
+*.synctex.gz
+*.bcf
+
+# Temporary files
+*.dvi
+*.ps
+*.pdf
+*.nav
+*.snm
+
+# Backup files
+*~
+*.bak
+*.sav
+*.backup
+
+# Editor-specific files
+.vscode/
+.idea/
+*.swp
+*.swo
+

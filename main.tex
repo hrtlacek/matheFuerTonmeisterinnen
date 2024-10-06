@@ -1,0 +1,342 @@
+%Dokumentklasse
+\documentclass[a4paper,11pt]{scrreprt}
+% scrbook
+% \documentclass[a4paper,11pt]{scrbook}
+
+\usepackage[left= 2.5cm,right = 2.5cm, bottom = 2.5 cm, top = 2.5 cm]{geometry}
+\usepackage[onehalfspacing]{setspace}
+% ============= Packages =============
+
+% \usepackage{silence}
+% \WarningFilter[pdftoc]{hyperref}{Token not allowed in a PDF string}
+
+% Standard Packages
+\usepackage[utf8]{inputenc}
+% \usepackage[german]{babel} % deutsch.
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{graphicx, subfigure}
+\graphicspath{{img/}} %setze pfad fuer Bilder
+% \usepackage{fancyhdr}
+\usepackage{lmodern}
+\usepackage{color}
+\usepackage{transparent}
+% Citation style
+% \usepackage[comma,authoryear]{natbib}
+
+\usepackage[
+backend=biber,
+style=apa,
+]{biblatex}
+\addbibresource{references.bib}
+
+% \usepackage{chapterbib}
+% zusätzliche Schriftzeichen der American Mathematical Society
+\usepackage{amsfonts}
+\usepackage{mathtools}
+% BlockDiagram Drawing Package
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usepackage{pgfplots}
+% \usetikzlibrary[pgfplots.groupplots]
+\usepgfplotslibrary{groupplots}
+\pgfplotsset{compat=1.10}
+\usepackage{textcomp}
+%Package for using the [H] option on graphics to force them into place
+\usepackage{float}
+%iPython packages:
+\usepackage{adjustbox} % Used to constrain images to a maximum size
+\usepackage{enumerate} % Needed for markdown enumerations to work
+% \usepackage{geometry} % Used to adjust the document margins
+\usepackage{amsmath} % Equations
+\usepackage{amssymb} % Equations
+% \usepackage{mathrsfs}
+% \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+% \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+\usepackage{fancyvrb} % verbatim replacement that allows latex
+\usepackage{grffile} % extends the file name processing of package graphics
+                         % to support a larger range
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+% \usepackage{hyperref}
+\usepackage{longtable} % longtable support required by pandoc >1.10
+\usepackage{scrhack}
+\usepackage{framed}
+
+\usepackage{atbegshi}% http://ctan.org/pkg/atbegshi
+
+\usepackage{listings}
+\usepackage{todonotes}
+\usepackage{courier}
+\usepackage{todonotes}
+
+
+
+
+% Dokumentinformationen
+\usepackage[
+	pdftitle={dsp course},
+	pdfsubject={},
+	pdfauthor={Patrik Lechner},
+	pdfkeywords={}
+	pdftex=true,
+	colorlinks=true,
+ 	breaklinks=true,
+	citecolor=black,
+	linkcolor=blue,
+	menucolor=black,
+	urlcolor=blue
+]{hyperref}
+
+\hypersetup{
+    % bookmarks=true,         % show bookmarks bar?
+    unicode=false,          % non-Latin characters in Acrobat’s bookmarks
+    pdftoolbar=true,        % show Acrobat’s toolbar?
+    pdfmenubar=true,        % show Acrobat’s menu?
+    pdffitwindow=false,     % window fit to page when opened
+    pdfstartview={FitH},    % fits the width of the page to the window
+    pdftitle={EPRO/IAS Scriptum},    % title
+    pdfauthor={Patrik Lechner},     % author
+    pdfsubject={EPRO/IAS},   % subject of the document
+    pdfcreator={Patrik Lechner},   % creator of the document
+    pdfproducer={Patrik Lechner}, % producer of the document
+    pdfkeywords={dsp} {pure data} {audio}, % list of keywords
+    pdfnewwindow=true,      % links in new window
+    colorlinks=true,       % false: boxed links; true: colored links
+    linkcolor=gray,          % color of internal links (change box color with linkbordercolor)
+    citecolor=black,        % color of links to bibliography
+    filecolor=black,      % color of file links
+    urlcolor=blue           % color of external links
+}
+
+
+
+
+
+% embedding of audio/video files etc.
+% \usepackage{attachfile}
+% \usepackage{movie15}
+% \usepackage{media9}
+% \usepackage{menukeys}
+
+
+% =============== BlockDiagram Drawing Config
+\usetikzlibrary{shapes,arrows}
+  \usetikzlibrary{mindmap,trees, backgrounds}
+
+% Definition of blocks:
+\tikzset{%
+  block/.style    = {draw, thick, rectangle, minimum height = 3em,
+    minimum width = 3em},
+  sum/.style      = {draw, circle, node distance = 2cm}, % Adder
+  input/.style    = {coordinate}, % Input
+  output/.style   = {coordinate}, % Output
+  mult/.style	  = {draw, isosceles triangle, minimum height=1cm, minimum width =1cm}
+}
+% mult/.style	  = {isosceles triangle, sharp corners, anchor=center, xshift=-4mm, minimum height=1.5cm, minimum width =0.05cm}
+%isosceles triangle, fill=gray!25, minimum width=1.5cm
+
+% Defining string as labels of certain blocks.
+\newcommand{\suma}{\Large$+$}
+\newcommand{\inte}{$\displaystyle \int$}
+\newcommand{\derv}{\huge$\frac{d}{dt}$}
+\newcommand{\conv}{\huge$\ast$}
+
+
+
+% FH-grünBlau
+\definecolor{FH}{rgb}{0.10, 0.57, 0.68}
+
+
+
+% nicht einrücken nach Absatz
+\setlength{\parindent}{0pt}
+
+
+
+\AtBeginDocument{\AtBeginShipoutNext{\AtBeginShipoutDiscard}}
+
+%======================================
+
+
+\usepackage[framemethod=tikz]{mdframed}
+\newtheorem{question}{Question}
+\mdfdefinestyle{que}{
+  linecolor=cyan,
+  backgroundcolor=cyan!20,
+}
+\surroundwithmdframed[style=que]{question}
+
+\newtheorem{answer}{Answer}
+\mdfdefinestyle{ans}{
+  linecolor=cyan,
+  backgroundcolor=yellow!20
+  % , rotatebox
+}
+\surroundwithmdframed[style=ans]{answer}
+
+\usepackage{environ}
+\NewEnviron{Answer}
+{%
+\noindent
+\rotatebox[origin=c]{180}{%
+\noindent
+\begin{minipage}[t]{\linewidth}
+\begin{answer}
+\BODY
+\end{answer}%
+\end{minipage}%
+}%
+}%
+
+
+
+% ============= Package Einstellungen & Sonstiges =============
+
+%COMMENT
+\newcommand{\comm}[1]{\Large{\color{red}{#1}}\normalsize{}}
+
+
+%Besondere Trennungen
+\hyphenation{De-zi-mal-tren-nung St-rei-fen-licht-scan-nern}
+
+%römische Aufzählungen mit \RM{Zahl}
+\newcommand{\RM}[1]{\MakeUppercase{\romannumeral #1}}
+
+\newcommand{\pd}[1]{\texttt{[{#1}]}}
+\newcommand{\link}[2]{\href{#1}{#2}\footnote{#1}}
+\usepackage{mdframed}
+
+\newcommand{\bgInfo}[1]{\begin{mdframed}[backgroundcolor=black!10,rightline=false,leftline=false] #1 \end{mdframed}}
+
+\newcommand{\video}[1]{
+\begin{framed}
+\textbf{Video Analogies}\\
+ #1 \end{framed}}
+
+
+\newcommand{\important}[1]{\begin{framed} #1 \end{framed}}
+
+
+
+
+% ipython notebook reference
+\newcommand{\colab}[1]{%
+  \begingroup\normalfont
+  \href{#1}{\includegraphics[height=\fontcharht\font`\B]{img/colabBadge.png}\footnote{#1}}%
+  \endgroup
+}
+
+% Shader toy reference
+\newcommand{\shader}[1]{%
+  \begingroup\normalfont
+  \href{#1}{\includegraphics[height=\fontcharht\font`\B, trim=0cm 0.3cm 0cm 0cm]{shadertoy}\footnote{#1}}%
+  \endgroup
+}
+
+
+
+\definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
+
+
+
+% ============= Dokumentbeginn =============
+
+\begin{document}
+
+
+% ==========Matlab code formatting================
+\lstset{language=Matlab,%
+    %basicstyle=\color{red},
+    basicstyle=\footnotesize\ttfamily,
+    breaklines=true,%
+    morekeywords={matlab2tikz},
+    keywordstyle=\color{blue},%
+    morekeywords=[2]{1}, keywordstyle=[2]{\color{black}},
+    identifierstyle=\color{black},%
+    stringstyle=\color{mylilas},
+    commentstyle=\color{mygreen},%
+    showstringspaces=false,%without this there will be a symbol in the places where there is a space
+    % numbers=left,%
+    % numberstyle={\tiny \color{black}},% size of the numbers
+    % numbersep=9pt, % this defines how far the numbers are from the text
+    emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
+    %emph=[2]{word1,word2}, emphstyle=[2]{style},
+}
+% ================================================
+
+
+
+
+\include{01_titel}
+
+% \part im Inhaltsverzeichnis nicht nummerieren
+\makeatletter
+% \let\partbackup\l@part
+% \renewcommand*\l@part[2]{\partbackup{#1}{}}
+
+% Chapter number reset at new part.
+% \@addtoreset{chapter}{part}
+
+%Seitennummerierung neu beginnen, Zahlen [arabic], röm.Zahlen [roman,Roman], Buchstaben [alph,Alph]
+% \pagenumbering{Roman}
+
+% \newpage
+%
+% \include{02_Erklaerung}
+% \newpage
+% \include{03_zusammenfassung}
+
+\newpage
+\include{titel}
+\include{titel}
+\newpage
+% \pagestyle{fancy}
+%Inhaltsverzeichnis
+\tableofcontents
+
+\newpage
+%Seitennummerierung neu beginnen, Zahlen [arabic], röm.Zahlen [roman,Roman], Buchstaben [alph,Alph]
+% \pagenumbering{arabic}
+
+\newpage
+\include{00_vorbemerkungen}
+\include{lesson1}
+% \include{modulation}
+% \include{05_filters}
+% \include{Karplus}
+% \include{FFT}
+% \cite{smith_mathematics_2007}
+% \cite{farnell_designing_2010}
+% \newpage
+% \include{debuga}
+% \newpage
+% \include{polyPhony}
+
+
+%Verzeichnis aller Bilder
+\newpage
+\listoffigures
+
+\newpage
+\lstlistoflistings
+
+%Literaturverzeichnis
+\newpage
+
+%===== NATBIB BASED BIBLIOGRAPHY
+% \bibliographystyle{apalike}
+% % \bibliographystyle{plainnat}
+% \bibliography{eproLibTest}
+% ===============================
+
+% ===BIBLATEX BASED
+% \printbibliography
+\printbibliography[
+heading=bibintoc,
+title={Literaturverzeichnis}
+]
+% ====================
+\end{document}
