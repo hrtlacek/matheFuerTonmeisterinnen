@@ -3,6 +3,9 @@
 % scrbook
 % \documentclass[a4paper,11pt]{scrbook}
 
+% \usepackage{showframe}
+
+
 \usepackage[left= 2.5cm,right = 2.5cm, bottom = 2.5 cm, top = 2.5 cm]{geometry}
 \usepackage[onehalfspacing]{setspace}
 % ============= Packages =============
@@ -23,13 +26,14 @@
 \usepackage{color}
 \usepackage{transparent}
 % Citation style
-% \usepackage[comma,authoryear]{natbib}
 
-\usepackage[
-backend=biber,
-style=apa,
-]{biblatex}
-\addbibresource{references.bib}
+\usepackage[comma,authoryear]{natbib}
+% \bibliography{references}
+% \usepackage[
+% backend=biber,
+% style=apa,
+% ]{biblatex}
+% \addbibresource{references.bib}
 
 % \usepackage{chapterbib}
 % zusätzliche Schriftzeichen der American Mathematical Society
@@ -41,8 +45,9 @@ style=apa,
 \usepackage{pgfplots}
 % \usetikzlibrary[pgfplots.groupplots]
 \usepgfplotslibrary{groupplots}
-\pgfplotsset{compat=1.10}
+\pgfplotsset{compat=1.18}
 \usepackage{textcomp}
+\usepackage{pdflscape} %for landscape format pages.
 %Package for using the [H] option on graphics to force them into place
 \usepackage{float}
 %iPython packages:
@@ -162,14 +167,14 @@ style=apa,
 
 
 \usepackage[framemethod=tikz]{mdframed}
-\newtheorem{question}{Question}
+\newtheorem{question}{Problem}
 \mdfdefinestyle{que}{
   linecolor=cyan,
   backgroundcolor=cyan!20,
 }
 \surroundwithmdframed[style=que]{question}
 
-\newtheorem{answer}{Answer}
+\newtheorem{answer}{Lösung}
 \mdfdefinestyle{ans}{
   linecolor=cyan,
   backgroundcolor=yellow!20
@@ -238,6 +243,32 @@ style=apa,
   \endgroup
 }
 
+
+% % Define the faust command
+% \newcommand{\faust}[2]{%
+%     \textbf{#1} % Display the text
+%     \hspace{0.5em} % Add some space
+%     \href{#2}{\tikz[baseline=1.55ex]{
+% \draw[thick,rounded corners=2pt, fill=black] (0,0.25) -- (0,0.45) -- (0.25,0.45) -- (0.5,0.7) -- (0.5,0) -- (0.25,0.25) -- cycle;
+%    \draw[line width=2pt,line cap=round] (0.6,0.25) arc (-30:30:2mm);
+%    \draw[line width=2pt,line cap=round] (0.7,0.15) arc (-30:30:4mm);
+%    \draw[line width=2pt,line cap=round] (0.8,0.05) arc (-30:30:6mm);
+%     }}%
+% }
+
+% Define the faust command
+\newcommand{\faust}[2]{%
+    \href{#2}{%
+        \textbf{#1} % Display the text
+        \hspace{0.5em} % Add some space
+        \tikz[baseline=1.55ex]{%
+            \draw[thick,rounded corners=2pt, fill=black] (0,0.25) -- (0,0.45) -- (0.25,0.45) -- (0.5,0.7) -- (0.5,0) -- (0.25,0.25) -- cycle;
+            \draw[line width=2pt,line cap=round] (0.6,0.25) arc (-30:30:2mm);
+            \draw[line width=2pt,line cap=round] (0.7,0.15) arc (-30:30:4mm);
+            \draw[line width=2pt,line cap=round] (0.8,0.05) arc (-30:30:6mm);
+        }%
+    }%
+}
 
 
 \definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
@@ -318,6 +349,7 @@ style=apa,
 % \newpage
 % \include{polyPhony}
 
+\include{solutions}
 
 %Verzeichnis aller Bilder
 \newpage
@@ -329,17 +361,20 @@ style=apa,
 %Literaturverzeichnis
 \newpage
 
+\bibliographystyle{plainnat}
+\bibliography{references}
+
 %===== NATBIB BASED BIBLIOGRAPHY
 % \bibliographystyle{apalike}
 % % \bibliographystyle{plainnat}
-% \bibliography{eproLibTest}
+% \bibliography{references}
 % ===============================
 
 % ===BIBLATEX BASED
 % \printbibliography
-\printbibliography[
-heading=bibintoc,
-title={Literaturverzeichnis}
-]
+% \printbibliography[
+% heading=bibintoc,
+% title={Literaturverzeichnis}
+% ]
 % ====================
 \end{document}

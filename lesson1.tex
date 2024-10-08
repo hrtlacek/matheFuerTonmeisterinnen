@@ -7,6 +7,9 @@
 
 \section{Aussagen}
 
+
+\todo[]{Quantoren?}
+
 \begin{table}[h!]
     \centering
     \renewcommand{\arraystretch}{1.5} % Vergrößert den Zeilenabstand
@@ -76,24 +79,387 @@ Beispiele für \emph{explizite} Mengen:
 $$ A = \{ \text{bla}, \text{franz}, \text{hubert} \} $$ 
 $$ B = \{ 1, 3, 5, 8 \} $$ 
 
-Beispiel für Mengen durch \emph{beschreibung}:
+Beispiel für Mengen durch \emph{Beschreibung}:
 
 $$ C = \{x \, | \, x \, \text{ist eine Geige} \} $$
 
-\subsection{Operationen}
-Vergl. \ref{sec:bool}
+Die Menge \emph{aller} Geigen.
 
-% \begin{figure}[h!]
-%     \centering
-%     \includesvg[width=0.5\textwidth]{img/test1} % Dateiname ohne .svg-Endung
-%     \caption{Eine SVG-Grafik}
-% \end{figure}
+\subsection{Operationen}
+
+Vergl. mit Abschnitt \ref{sec:bool}!
+
+\begin{itemize}
+    \item \textbf{Durchschnitt} $ A \cap B = \{x \, | \, x \in A \land x \in B\}$
+    \item \textbf{Vereinigung} $ A \cup B = \{x \, | \, x \in A \lor x \in B\}$
+    \item \textbf{Differenz} $ A \setminus B = \{x \, | \, x \in A \land x \notin B\}$
+\end{itemize}
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{img/mengenVenn.png}
+    \caption{Venn Diagramme der Operationen auf Mengen $A$ und $B$.}
+    \label{fig:vennMengen}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.1\textwidth]{img/mengen_symDiff.png}
+    \caption{"Symmetrische Differenz" der Mengen $A$ und $B$.}
+    \label{fig:venn_symDiff}
+\end{figure}
+
+\begin{question}
+    Konstruiere die Situation in Abbildung \ref{fig:venn_symDiff}.
+\end{question}
+
+\begin{answer}
+      $(A \cup B) \setminus (A \cap B)$. Siehe Abbildung \ref{fig:symDifSteps}.
+
+
+\end{answer}
+
+      \begin{figure}[h]
+          \centering
+          \includegraphics[width=0.2\textwidth]{img/symDifSteps.png}
+          \caption{\emph{"Symmetrische Differenz"} in einzelnen Schritten veranschaulicht.}
+          \label{fig:symDifSteps}
+      \end{figure}
+
+
+\subsection{Beschreibung von Teilmengen}
+\begin{itemize}
+    \item $A\subseteq B$. $A$ ist eine \textbf{Teilmenge} von $B$. Das heißt: $x \in A \implies x \in B$.
+    \item $A\subset B$. $A$ ist eine \textbf{Echte Teilmenge} von $B$. Das heißt: $A\subseteq B \land A \neq B $.
+\end{itemize}
+
+
+\section{Funktionen, Abbildungen}
+\label{sec:funktionen}
+
+\todo[]{alles.}
+
+\important{
+    $$ f : A \to B$$
+
+}
+
+\subsection{Linearität}
+Aus Tontechnischer/Signalverarbeitungssicht ist hier eine wichtige Unterscheidung zu machen. Einige der schon vorgestellten Rechenoperationen sind \emph{linear} andere nicht. 
+Linearität ist die Eigenschaft eines Systems \emph{proportional} zu reagieren.
+Wenn also der Input an einem linearen System steigt, steigt der Output proportional dazu. Das einfache System idealer 'Verstärker' soll uns als Beispiel dienen:
+$$f(x) = x \cdot a$$ wobei $a$ hier der Verstärkungsfaktor wäre. Nennen wir den Output $y$, also sei $y \coloneqq f(x)$ dann können wir sagen $$y \propto x.$$ 
+$y$ verhält sich proportional zu $x$. 
+
+\todo[]{Linearität, zoezler definition.}
+
+\todo[]{Gerade vs ungerade -> Verzerrung}
+
+
 
 
 \section{Zahlen}
 
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.6\textwidth]{img/zahlen.png}
+    \caption{Zahlen als u Euler Diagramm. }
+    \label{fig:zahlen}
+\end{figure}
+
+
+
+Die arten Mengen in Beziehung zu setzen verwendet werden um die unterschiedlichen Zahlen Korpora in Beziehung zu setzen:
+
+$$
+\mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q} \subset \mathbb{R} \subset \mathbb{C}
+ $$
+
+Siehe auch Abbildung \ref{fig:zahlen}. Im Folgenden ein paar Worte zu den unterschiedlichen Mengen.
+
+
+
+\subsection{Natürliche Zahlen $\mathbb{N}$}
+Ganzzahlen beginnend bei $1$. Also $\{1,2,3,4,...\}$. Manchmal wir hier die Zahl $0$ inkludiert wenn es in dem Zusammenhang praktisch ist. Dies wird typischerweise so markiert: $\mathbb{N}_0$.  
+\subsection{Ganze Zahlen $\mathbb{Z}$}
+Alle Ganzzahlen inkl. $0$ und negativen Zahlen.
+\subsection{Rationale Zahlen $\mathbb{Q}$}
+Zahlen die als Brüche von Ganzzahlen ausgedrückt werden können. zB. $5$ $\frac{1}{2}$ oder $\frac{1}{3}$.
+
+\subsection{Reelle Zahlen $\mathbb{R}$}
+Reelle zahlen füllen die 'Lücken' zwischen den Rationalen Zahlen. Enthalten sind auch irrationale Zahlen wie $\pi$ oder $\sqrt{2}$.
+
+
+
+\begin{figure}[h!]
+    \centering
+    
+
+\begin{tikzpicture}
+    % Draw the number line from -4 to 4
+    \draw[->] (-4.5,0) -- (4.5,0) node[below] {$\mathbb{R}$}; % The real number line
+    
+    % Draw ticks at whole number intervals
+    \foreach \x in {-4,-3,-2,-1,0,1,2,3,4}
+      \draw (\x,0) -- (\x,0.2);
+      
+    % Label the whole numbers below the number line
+    \foreach \x in {-4,-3,-2,-1,0,1,2,3,4}
+      \node at (\x,-0.3) {\x};
+
+    % Mark and label pi above
+    \draw (3.14,0) -- (3.14,0.2) node[above] {$\pi$};
+    
+    % Mark and label -sqrt(2) above
+    \draw (-1.414,0) -- (-1.414,0.2) node[above] {$-\sqrt{2}$};
+    
+    % Add dashed lines for pi and -sqrt(2)
+    \draw[dashed] (3.14,0) -- (3.14,-0.5);
+    \draw[dashed] (-1.414,0) -- (-1.414,-0.5);
+
+\end{tikzpicture}
+    \caption{Zahlengerade.}
+    \label{fig:zahlengerade}
+\end{figure}
+
+
+\subsection{Komplexe Zahlen $\mathbb{C}$}
+Besonders wichtig für die Tontechnik, hierzu später mehr. Erweiterung der Zahlengeraden (siehe Abb. \ref{fig:zahlengerade}) auf die 'Komplexe Ebene'. Sei dienen uns zur Darstellung von Schwingungen, kommen vor in der Fouriertransformation (bei jeder Berechnung eines klassischen Audio Spektrums!) etc. \
+Es gibt noch weitere Zahlen Mengen, zum Beispiel die \emph{Quaternionen}, eine Erweiterung der Komplexen Zahlen. Diese finden zum Beispiel Anwendung in der Grafik Verarbeitung (in mehr oder weniger jeder 3D Animation zB.). 
+
+
+\todo[inline]{Intervalle?}
+
 \section{Rechenoperationen}
+
+Einfache Rechenoperationen wie $+, -, \cdot, / $, haben in der Tontechnik/Signalverarbeitung direkt fassbare Bedeutungen.
+
+
+\begin{figure}[h!]
+    \centering
+        \input{python/signale_rechenop.pgf}
+    \caption{Zwei Signale}
+    \label{fig:signale}
+\end{figure}
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|c|p{3cm}|c|}
+    \hline
+    \textbf{} & \textbf{Audio Konzept} & \textbf{Plot} \\
+    \hline
+    $A + B$ & "$A$ und $B$ zusammen mischen" & \input{python/signale_rechenop_AplusB.pgf} \\
+    \hline
+    $A - B$ & "Mischen mit Invertierter Phase des $B$ Signals"& \input{python/signale_rechenop_AminusB.pgf} \\
+    \hline
+    $A \cdot B$ & Verstärken, Modulation & \input{python/signale_rechenop_AtimesB.pgf} \\
+    \hline
+    $B / A$ & & \input{python/signale_rechenop_BdivA.pgf} \\
+    \hline
+\end{tabular}
+\caption{Tabelle mit Ergebnissen unterschiedlicher Rechenoperationen zwischen 2 Signalen.}
+\end{center}
+\end{table}
+
+\important{Im Bereich der Signalverarbeitung allgemein ist $A*B$ \emph{nicht} Multiplikation! $A*B$ bedeutet in unserem Fach 'Faltung', 'Convolution', siehe Faltungshall etc. Multiplikation kann $A\times B$ geschrieben werden wobei das eher bei Vektoren üblich ist. In Programmiersprachen (auch in der Signalverarbeitung, wie \texttt{C}, \texttt{Matlab}, \texttt{Python} etc) wird \texttt{*} durchaus als Multiplikation verwendet aber nicht in der Mathematischen Notation.}
+
+
+
+
+\subsection{Betrag}
+
+Betrag macht alles positiv. Der \emph{Betrag} einer Zahl $a \in \mathbb{R}$, dargestellt als $|a|$ kann folgendermaßen definiert werden:
+$$ 
+|a| \coloneqq
+\begin{cases} 
+-a & \text{wenn } a < 0 \\ 
+a & \text{wenn } a \geq 0 
+\end{cases}
+$$ 
+
+Der Betrag kann als \emph{Funktion} aufgefasst werden (später mehr zu Funktionen). Es Kann ein Graph gezeichnet werden auf dessen x-Achse ('Abszisse') der Input zu sehen ist und auf der y-Achse ('Ordinate'). 
+\bgInfo{Merkhilfe: Alphabetisch, x vor y, Abszisse vor Ordinate.}
+
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.4\textwidth]{betrag.png}
+    \caption{Betrag als Input/Output Plot.}
+    \label{fig:betrag}
+\end{figure}
+
+\praxis{
+Der Betrag (oder auch Absolutwert) hat in der Audio Technik eine Wichtige Rolle, speziell der Betrag von Komplexen Zahlen, den Ergebnissen der Fourier Transformation. In der Elektrotechnik kann er als 'Gleichrichter' wieder gefunden werden um Wechselströme zu Gleichströmen zu wandeln. Er ist die simpelste Verzerrung mit geraden harmonischen.
+}
+
+Soundbeispiel hier: \faust{Betrag Einer 150Hz Sinus Schwingung}{https://faustide.grame.fr/?autorun=1\&voices=0\&name=abs_test\&inline=aW1wb3J0KCJzdGRmYXVzdC5saWIiKTsKcHJvY2VzcyA9IG9zLm9zYygxNTApOmFiczs\%3D}
+
+\begin{figure}[H]
+    \centering
+    \input{python/signale_absolutwert.pgf}
+    % \includegraphics[width=0.4\textwidth]{betrag.png}
+    \caption{Betrag verglichen mit 'clipping'. Sinus Schwingung als Input.}
+    \label{fig:sinBetrag}
+\end{figure}
+
+
+\subsection{Potenzen, Wurzeln, Logarithmen}
+\todo[]{Potenzen, Wurzeln, Logarithmen}
+
+\subsubsection{Potenzgesetze}
+
+\important{ 
+
+\emph{\textbf{Potenzgesetze}}
+
+$$ a^n \cdot a^m = a^{n+m}$$ 
+
+$$ \frac{a^n}{a^m} = a^{n-m}$$
+
+$$ (a^n)^m = a^{n\cdot m}$$
+
+$$ a^n \cdot b^n = (a \cdot b)^n$$
+
+$$ \frac{a^n} {b^n} = \left(\frac{a} {b} \right)^n. \: b \neq 0.$$
+}
+
+\subsubsection{Wissenschaftliche Notation}
+
+\important{
+
+$$ x = d\cdot 10^e$$
+
+\begin{itemize}
+    \item $d$: Mantisse
+    \item $e$: Exponent
+\end{itemize}
+}
+
+
+\subsubsection{Logarithmen}
+Konzeptuell verwandt mit der Wurzel, beantwortet er die frage nach dem Exponenten bei gegebener Basis.
+
+$$ 5 ^2 =25 $$
+
+$$\sqrt[2]{25} = 5$$
+
+$$ log_5 (25) = 2$$
+
+
+Der dekadische Logarithmus ($log_{10}$) ist u.a. praktisch, da er quasi die Frage nach den Stellen einer Zahl im dezimal System beantwortet. Ein Negatives Ergebnis gibt hier an, dass es sich um eine zahl $<1$ handelt und sein wert gibt Aufschluss auf die zahl der 'Nullen' vor dem Komma an:
+
+\begin{itemize}
+    
+
+\item  $ log_{10}(100) = 2$
+\item  $ log_{10}(1000) = 3$
+\item  $ log_{10}(1) = 0$
+\item  $ log_{10}(0.01) = -2$
+\end{itemize}
+
+Diese 'Eigenschaft' kann benutzt werden um Visualisierungen klarer zu machen, in denen werte mit sehr Unterschiedlichen Größenordnungen Verglichen werden sollen. Siehe Abbildung \ref{fig:time_lin} im Vergleich zu \ref{fig:time_log}. Das \emph{Dezibel} fällt mehr oder weniger in diese Kategorie. 
+
+\subsubsection{Logarithmen 'Konvertieren'}
+
+Gegeben $log_a(x)$ wie kann man $log_b(x)$ errechnen, also zu anderer Basis 'konvertieren'?
+
+Man dividiert durch den $log_a(b)$:
+
+$$ log_b(x) = \frac{log_a(x)}{log_a(b)}$$
+
+
+Beispiel:
+
+Gegeben den natürlichen Logarithmus einer Messung $x$ benötigt man den 2er Logarithmus.
+$$log_2(x) = \frac{ln(x)}{ln(2)} \approx 2.32$$
+
+
+\subsubsection {Dezibel \& $dB_{FS}$}
+Speziell wichtig in der (Audio-) Signalverarbeitung: $dB$ (Dezibel, ein Zehntel \emph{Bel}). 
+\important{
+Das $Bel$ \emph{vergleicht} 2 \emph{Leistungsgrößen}, $P_1$ und $P_2$ und erleichtert uns das Leben indem davon der Logarithmus genommen wird:
+$$ L_{Bel} = log_{10} \left(\frac{P_1}{P_2}\right)$$
+}
+
+Dadurch dass wir nicht immer mit Leistungsgrößen zu tun haben, sonder manchmal zu diesen konvertieren müssen, findet sich oft der Faktor $2$ in der Formel. Konvertierung vom $Bel$ zum $Dezibel$ macht eine Multiplikation mit 10 erforderlich:
+
+$$L = 20 \cdot log_{10}\left(\frac{x}{x_{ref}}\right)$$
+
+Wobei im im digitalen Fall $dB_{FS}$ ("Fullscale") sich $x_{ref}$  auf den Vollausschlag $1$ bezieht und damit vereinfacht werden kann zu: 
+$$L = 20 \cdot log_{10}(x)$$
+
+\faust{Lineare Lautstärken Steuerung verglichen mit klassisch Logarithmischer.}{https://faustide.grame.fr/?autorun=1&voices=0&name=example&inline=aW1wb3J0KCJzdGRmYXVzdC5saWIiKTsKYW1wID0gaHNsaWRlcigiTGluZWFyIEFtcGxpdHVkZSIsIDAuLCAwLCAxLCAwLjAwMSk6c2kuc21vbzsKCmFtcExvZyA9IGhzbGlkZXIoIkxvZyBBbXBsaXR1ZGUiLCAtNzAuLCAtNzAsIDAsIDAuMDEpOnNpLnNtb286YmEuZGIybGluZWFyOwoKcHJvY2VzcyA9IG5vLnBpbmtfbm9pc2UgKiBhbXAgKyBuby5waW5rX25vaXNlICogYW1wTG9nPDpfLF87}
+
+\todo[]{lin vs log spektrum plot}
+
+\begin{figure}[h!]
+    \centering
+    \input{img/log_db.pgf}
+    % \includegraphics[width=0.4\textwidth]{betrag.png}
+    \caption{Der Verlauf der $db_{FS}$ Kurve.}
+    \label{fig:dbfs}
+\end{figure}
+
+
+
+\begin{figure}[h!]
+    \centering
+    \input{img/time_lin.pgf}
+    % \includegraphics[width=0.4\textwidth]{betrag.png}
+    \caption{Geschichte auf Linearer Zeitachse.}
+    \label{fig:time_lin}
+\end{figure}
+
+
+\newpage
+% \begin{landscape}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[height=\textwidth, angle=90]{img/time_log.png}
+    \caption{Geschichte auf Logarithmischer Zeitachse.}
+    \label{fig:time_log}
+\end{figure}
+% \end{landscape}
+
+
 
 
 
 \section{Aufgaben und Beispiele}
+
+\begin{enumerate}
+    \item Gegeben sind die Mengen in Abb. \ref{fig:dreiMengen}. Zeichne ein Diagramm für:
+    \begin{enumerate} % Use alphabetical labels for subitems
+        \item $A \setminus (B \cup C)$
+        \item $(A \cup B) \setminus C$
+        \item $(B \cap C) \cup A$
+    \end{enumerate}
+    \item Zeichne einen Input/Output Plot für die Funktionen 
+    \begin{enumerate} % Use alphabetical labels for subitems
+        \item $f(x) = min(x, 0)$
+        \item $f(x) = |x+1|-1$. Welche Bedeutung haben die beiden zahlen ($1$, $-1$ )? Wenn man sie verändern würde, was passiert mit dem Plot?
+    \end{enumerate}
+    \item Was sagt gibt es zu Abb. \ref{fig:distortion_online} zu sagen?
+    \item Konstruiere (mache eine formel, formale beschreibung) von einem 'hard clipper'. Dies ist eine Verzerrung. Die Verzerrung soll keine Werte 'durchlassen' die größer als 0.9 und kleiner als -0.9 sind. Zeichne den Graphen. Für Werte zwischen -0.9 und 0.9 soll sich der Verzerrer linear verhalten. Werden hier gerade oder ungerade Harmonische Erzeugt?
+
+
+\end{enumerate}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.3\textwidth]{img/dreiMeingen.png}
+    \caption{Drei Mengen. }
+    \label{fig:dreiMengen}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[ width= 0.8\textwidth]{img/reddit_distortion.png}
+    \caption{Online Diskussionen über Verzerrung.}
+    \label{fig:distortion_online}
+\end{figure}
+
+
+
+
