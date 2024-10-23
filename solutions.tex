@@ -3,6 +3,7 @@
 
 \section{Kapitel 1}
 \begin{enumerate}
+	\item Die Bedeutung ist: Für alle $x$ in der Menge der reellen zahlen existiert ein $y$ sodass die Gleichung stimmt. Die Aussage ist wahr, $y = -x$.
     \item Siehe Abb. \ref{fig:dreiMengenLoes}
     \item 
     \begin{enumerate}
@@ -18,6 +19,41 @@ x & \text{für }  -0.9 < x < 0.9
 \end{cases}$$
 
 Wesentlich eleganter ist aber: $f(x) = min(0.9, max(-0.9, x))$.
+
+\item Zunächst suchen wir einen vernünftigen Wert für $\rho$. Im Internet findet man zb. $7850 kg/m^3$ für Stahl. \\
+Die Fläche $A$ muss aus dem Durchmesser der Saite berechnet werden, $A = r^2 \pi$ also $A = \pi (d/2)^2$.  
+Schließlich muss die Formel nach $T$ aufgelöst werden:
+
+$$ f_0 = \lambda \sqrt{\frac{T}{\rho A}} \qquad  \Bigm\lvert \cdot \frac{1}{\lambda}$$ 
+$$ f_0 \lambda =  \sqrt{\frac{T}{\rho A}} \qquad \Bigm\lvert  \cdot ^2$$
+$$ (f_0 \lambda)^2 =  \frac{T}{\rho A} \qquad \Bigm\lvert \cdot \rho A$$
+$$ \rho A (f_0 \lambda)^2 =  T $$ 
+
+$\lambda$ ist definiert als $2L$ da die halbe welle auf der Saite mit der Länge L schwingen kann. $\rho A$ kann vereinfacht werden zu $\mu$, dem Gewicht einer Saite mit Länge $1m$, Durchmesser $d$ dichte $\rho$.
+
+Als Überprüfung der Umformungen/Überlegungen kann man eine Dimensionsanalyse vornehmen: \\
+
+Das gesuchte Ergebnis ist eine Kraft mit Einheit \emph{Newton}. Newton in Basiseinheiten ist wiederum $\frac{kgm}{s^2}$ (siehe $F=ma$). Setzt man die Einheiten für $f$, $\rho$ etc. ein sollte also $\frac{kgm}{s^2}$ herauskommen.\\
+
+$$ \rho [kg/m^3] \cdot A[m^2] (f_0[s^{-1}] \lambda [m])^2 = T \left[\frac{kgm}{s^2}\right]$$
+
+Der Einfachheit halber nur die Einheiten, schrittweise vereinfacht:
+$$ kg/m^3  \cdot m^2 (s^{-1} m)^2 = \frac{kgm}{s^2}$$
+$$ \frac{kg}{m^3}  \cdot m^2  \frac{m^2}{s^2} = \frac{kgm}{s^2}$$
+$$ \frac{kg m^4}{m^3 s^2} = \frac{kgm}{s^2}$$
+$$ \frac{kg m}{s^2} = \frac{kgm}{s^2}$$
+
+Die Dimensionsanalyse bestätigt also unsere Gleichung. Mit eingesetzten Werten:
+$$A = \pi \left(\frac{0.001}{2}\right)^2 \approx 7.85 \cdot 10^{-7} m^2$$
+$$ \mu = A\rho = 7.85 \cdot 10^{-7} m^2 \cdot 7850 kg/m^3 \approx 6.2 \cdot10^{-3} kg/m$$
+$$ 6.2\cdot10^{-3}kg/m \cdot(440s^{-1} 1m)^2 \approx \doubleunderline{1200 N}$$
+
+Wenn man nun wissen will welches Gewicht dieser Kraft entspräche kann man durch $g\approx9.8 m/s^2$
+ dividieren und bekommt ca $122 kg$.
+
+\item Mittels Gleichung \ref{eq:linearity1} ist es am Einfachsten. Man setzt $A$ negativ, zb $-1$. und bekommt:
+$Af(x) = f(Ax) \implies A|x| = |Ax| \to -1\cdot |x| = |-1x|$
+Was eine falsche Aussage für alle $x \in \mathbb{R}$ ist!
 
 \end{enumerate}
 
@@ -48,4 +84,28 @@ Wesentlich eleganter ist aber: $f(x) = min(0.9, max(-0.9, x))$.
     \caption{Lösung, Variation der Parameter.}
     \label{fig:Loes_abs_var}
 \end{figure}
+
+
+
+\section{Kapitel 2}
+\begin{enumerate}
+\item Siehe folgendes code listing.
+\begin{python}{Der Python Code um $f(x)$ in Abbildung \ref{fig:functManipul} zu erzeugen.}
+def f(x):
+    ϵ = 0.03
+    u = (x<=ϵ)*(x>=-ϵ)
+    u = u*0.3
+    u += cos(x*5)
+    u += x*0.6
+    return u
+
+\end{python}
+\item test.
+
+\end{enumerate}
+
+\section{Kapitel 3}
+\begin{enumerate}
+\item
+\end{enumerate}
 

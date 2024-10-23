@@ -1,0 +1,326 @@
+%!TEX root = main.tex
+\chapter{Wichtige Funktionen, Polynome, Python}
+
+% \section{Wiederholung}
+
+% \todo{Uebung: Ausdruck entwerfen der 2er Potenzen beschreibt.}
+
+% \todo[]{Funktionsmanipulation im allgemeinen. }
+
+\section{Funktionen Manipulieren}
+Es ist wichtig ein Gefühl zu entwickeln wie sich einfache Rechenoperationen auf Funktionen auswirken und welche 'Audiointerpretation' hier naheliegt. Siehe Abbildung \ref{fig:functManipul}.
+Hier eine Auflistung von Interpretationen unter der Annahme dass die horizontale Achse die Zeit $t$ darstellt:
+\begin{itemize}
+	\item $f(x) + a$: Gleichspannungsversatz hinzufügen/abziehen, Energie bei $0 Hz$, Verschieben der Welle nach 'oben und unten'
+	\item $f(x+a)$: für $a<0$: \emph{Delay}, da Verschiebung auf der Zeitachse nach rechts. Besonders wichtig in der digital Technik, Filter etc. 
+	\item $f(x) \cdot a$: Amplitudenänderung
+	\item $f(x \cdot a)$: Zeitliche Streckung / Stauchung. Schnelleres oder langsameres abspielen, Änderung der Frequenz.
+
+\end{itemize}
+
+\begin{figure}[H]
+	\centering
+	\input{img/funcManipul.pgf}
+	\caption{Generelle Manipulation von Funktionen.}
+	\label{fig:functManipul}
+\end{figure}
+
+
+% \section{Motivation}
+
+% \section{Wichtige Funktionen im Audio Bereich}
+
+\section{Impuls, $\delta(t)$}
+Impuls, delta funktion, dirak delta funktion, kronecker delta, (Engl. 'unit impulse'). Alle diese Worte bezeichnen ähnliche Ideen. Je nachdem ob im 'analogen' oder 'digitalen' wird der Impuls unterschiedlich definiert, hat aber im wesentlichen die gleiche Funktion. Die analoge Idee ist ein wenig abstrakt: Ein unendlich kurzes unendlich hohes Signal mit der Fläche 1 ('Dirak Delta Funktion'):
+
+\begin{equation}
+ \delta (x)={\begin{cases}0,&x\neq 0\\{\infty },&x=0\end{cases}}
+\end{equation}
+
+und 
+\begin{equation}
+\int _{-\infty }^{\infty }\delta (x)=1.
+\end{equation}
+
+
+Im digitalen ist die Idee recht simpel, ein Signal dass an der stelle $n=0$ den Wert $1$ hat und sonst null ist:
+\begin{equation}
+	\delta(n) =
+	\begin{cases} 
+		1, & n = 0 \\ 
+		0, &  n \neq 0 
+\end{cases}
+	%  \case 
+\end{equation}
+
+% \begin{figure}[htbp]
+% 	\centering
+% 	\input{img/delta.pgf}
+% 	\caption{Impuls.}
+% 	\label{fig:delta}
+% \end{figure}
+
+
+\begin{figure}[H]
+    \centering
+    \subfigure[Impuls]{
+        \input{img/delta.pgf}
+        \label{fig:delta}
+    }
+    % \hfill
+    \subfigure[Alternative Darstellung.]{
+        \input{img/delta_alt.pgf}
+        \label{fig:varImp}
+    }
+    \caption{Impuls funktion.}
+    \label{fig:deltaVersions}
+\end{figure}
+\todo{Possibly change x achsis in figure \ref{fig:deltaVersions} to $n$.}
+
+
+
+\section{Heaviside-Funktion, $u(t)$}
+
+Engl. 'unit step' auch oft Heaviside-Funktion genannt. Typischerweise $u(t)$ aber in manchen Kontexten (vor allem Elektrotechnik, Steuerungstechnik) wird $u(t)$ oft schon benutzt um den Input in ein System zu benennen (statt $x(t)$). $u(t)$ ist das Integral des Impulses und damit eine Funktion die $0$ ist, bei $t=0$ bzw. $n=0$ auf $1$ springt und auf diesem Wert verweilt. Siehe Abb \ref{fig:heavyside}. Wird oft Verwendet um Kausale Abläufe zu beschreiben bzw. schlicht eine gegebene Funktion erst bei 0 starten zu lassen, zb eine Exponentialfunktion, siehe Abb \ref{fig:unitstepUsed} .
+% \todo{plot}
+
+
+
+\begin{figure}[H]
+    \centering
+    \subfigure[Einheitsschrittfunktion]{
+        \input{img/unitStep.pgf}
+        \label{fig:heavyside}
+    }
+    \hfill
+    \subfigure[Verwendung der Einheitsschrittfunktion zur Konstruktion eines Signals das bei $0$ beginnt und abklingt.]{
+        \input{img/unitStepUsed.pgf}
+        \label{fig:unitstepUsed}
+    }
+    \caption{Heavyside Funktion und eine beispielhafte Anwendung.}
+    \label{fig:unitStepComparison}
+\end{figure}
+
+\section{Sinus und Kosinus}
+
+\begin{figure}[H]
+	\centering
+	\input{img/sinCos.pgf}
+	\caption{Sinus und Kosinus Funktionsverlauf.}
+	\label{fig:sincos}
+\end{figure}
+
+
+
+\begin{figure}[H]
+	\centering
+	\input{img/sinParams.pgf}
+	\caption{Eine Sinus Funktion und ihre 'Parameter'.}
+	\label{fig:sinParams}
+\end{figure}
+
+
+\begin{equation}
+-sin(x) = sin(-x)
+\end{equation}
+\begin{equation}
+cos(x) = cos(-x)
+\end{equation}
+
+\section{$e^x$}
+\todo{TODO}
+\section{Sinc}
+\todo{TODO}
+\section{Rauschen}
+\todo{TODO}
+\section{Polynome}
+
+\important{
+	Ein Ausdruck der Form
+	\begin{equation}
+		P_n(x) = a_n x^n + a_{n-1}x^{n-1}+...+a_1x + a_0 \label{eq:defPolynomial}
+	\end{equation}
+mit reellen Koeffizienten $a_k, k = 0,1...n$ und $a_n \neq 0$ wird Polynom n-ten Grades genannt.
+}
+
+Für die Tontechnik und Signalverarbeitung gibt es hier viele Anwendungen, seien es Filter, Verzerrungen etc. Oft müssen wir \emph{Nullstellen} (Engl. 'roots') oder \emph{Polstellen} einer Funktion finden. 
+
+\subsection{Nullstellen von quadratischen Gleichungen}
+
+Eine Gleichung der Form $x^2 + p \cdot x + q = 0$ kann mit der \emph{p-q-Formel}, Gl. \ref{eq:pq-formel}, gelöst werden.
+
+% \label{eq:pq-formel}
+
+\begin{equation}
+x_{1,2} = -\frac{p}{2} \sqrt{\left( \frac{p}{2} \right)^2 - q } \label{eq:pq-formel}
+\end{equation}
+
+\subsection{Der allgemeine Fall: Nullstellen von Polynomen beliebigen Grades}
+Es gibt keine allgemeingültigen Lösungsformeln für Polynome beliebigen Grades, aber es gibt einiges über diese SItuation zu sagen.
+
+\important{ Fundamentalsatz der Algebra: \\
+Werden die Nullstellen mit der richtigen Vielfachheit (wiederholte Nullstellen) gezählt so gilt: \emph{\textbf{Ein Polynom vom Grad $n$ hat $n$ komplexe Nullstellen.}} }
+\todo{Proof?}
+
+
+Zunächst sei ganz pragmatisch darauf verwiesen dass diverse Computersysteme sehr gut in dieser Situation funktionieren, siehe zB. Abschnitt \ref{sec:python}. \\
+Bei hochgradingen Polynomen ist es sicherlich ein guter Schritt sich den Funktionsverlauf zu plotten und den Verlauf anzusehen. Durchaus lassen sich hier NUllstellen 'raten', die dann als Linearfaktor abgespalten werden können Abschnitt \ref{sec:linearfaktoren}. \emph{Numerische Verfahren} wie \emph{Newton-Raphson} sind hier auch äußerst wichtig, speziell in der Audio Technik. Ein Beispiel für die Numerische Suche nach Nullstellen im Kontext der Klangprozessierung wäre die Simulation von nicht-linearen Schaltkreisen ('Diode clipper'), siehe zB. \cite{holmes2015improving}. \\
+
+Da man in der Gestaltung von Filtern, Hall Algorithmen etc oft die Notwendigkeit hat Funktionen zu Gestalten, deren Nullstellen an bestimmte Orte zu verschieben ist es notwendig, nicht nur ein Polynom einem Computer zuzuführen um die Nullstellen 'ausgespuckt' zu bekommen. Es ist oft Notwendig Systeme umzuformulieren um 'Zugriff' auf die Orte der Nullstellen zu haben, zb. durch Zerlegung in Linearfaktoren. 
+\todo[inline]{Rational root theorem? https://en.wikipedia.org/wiki/Rational\_root\_theorem}
+
+
+\subsection{Rationale Funktionen}
+
+Wenn wir ein wenig über die Hintergründe von digitalen Filter recherchieren stoßen wir schnell auf 
+\cite{FILTERSWEB07}\footnote{\href{http://ccrma.stanford.edu/\~jos/filters/BiQuad\_Section.html}{http://ccrma.stanford.edu/\~jos/filters/BiQuad\_Section.html}}. Eines der Standardwerke wenn es um digitale Signalverarbeitung im musikalischen Kontext geht. Hier finden wir einen Filter der sich 'Biquad'\footnote{Der Name 'Biquad' deutet darauf hin dass hier 2 ('Bi') quadratische Gleichungen vorliegen.} nennt und durch Gleichung \ref{eq:biquad} beschrieben wird.
+
+% 
+	% H(z) \eqsp g\frac{1 + b_1 z^{-1}+ b_2 z^{-2}}{1 + a_1 z^{-1}+ a_2 z^{-2}}. \label{eq:biquad}
+
+\begin{equation}
+H(z) = g\frac{1 + b_1 z^{-1}+ b_2 z^{-2}}{1 + a_1 z^{-1}+ a_2 z^{-2}}. \label{eq:biquad}
+\end{equation}
+
+Wenngleich die Bedeutung, Herkunft, Anwendung etc dieser Funktion für den Moment rätselhaft bleiben soll ist 
+\begin{itemize}
+\item erstens festzuhalten dass diese Gleichung, und damit dieser Filter einer der verbreitetsten Filter überhaupt ist und 
+\item zweitens es sich hier um eine Gleichung handelt die zwei Polynome in Beziehung setzt, sie dividiert. \\
+\end{itemize}
+
+\faust{Einfacher Tiefpass Filter, 'one pole'. Im Beispiel kann der Ort der Pol-Stelle und damit die Grenzfrequenz des Filters Manipuliert werden.}{https://faustide.grame.fr/?autorun=1&voices=0&name=filterEx&inline=aW1wb3J0KCJzdGRmYXVzdC5saWIiKTsKcCA9IGhzbGlkZXIoInBvbGUiLCAwLjksIDAuNywgMC45OTksIDAuMDAwMSk6c2kuc21vbzsKcHJvY2VzcyA9IG5vLm5vaXNlOmZpLnBvbGUocCk6XyowLjAyPDpfLF87}
+
+
+\important{
+Allgemein wird der Quotient zweier Polynome als \textbf{gebrochen Rationaler Ausdruck} bezeichnet, siehe Gleichung \ref{eq:rationaleFunktion}.
+
+
+\begin{equation}
+R(x) = \frac{Q_m(x)}{P_n(x)} = \frac{b_mx^m + b_{m-1}x^{m-1} + ... +b_1x + b_0}{a_nx^n + a_{n-1}x^{n-1} + ... +a_1x + a_0} \label{eq:rationaleFunktion}
+\end{equation}
+
+
+Es gilt hier für alles weitere eine wichtige Unterscheidung zu machen: Ein solcher Ausdruck heißt \textbf{echt gebrochen} \emph{nur wenn} der Grad des Nenner-Polynoms größer ist als die des Zähler-Polynoms: $n>m$. Ansonsten gilt dieser als \textbf{unecht gebrochen}.
+}
+
+
+Betrachten wir nun die vielleicht einfachste Gleichung solcher Art\footnote{Ja, genau genommen ist $f(x) = x$ oder sogar $f(x) = 0$ eine Gleichung 'solcher Art' im Sinne der Definition in Gleichung \ref{eq:rationaleFunktion}. So gesehen, betrachten wir nun also den vielleicht einfachsten 'echt gebrochenrationalen' Ausdruck.}:
+\begin{equation}
+	f(x) = x^{-1} = \frac{1}{x} \label{eq:simpleNegExp}
+\end{equation}
+
+Der Funktionsverlauf des Ausdrucks in Gleichung \ref{eq:simpleNegExp} kann in Abbildung \ref{fig:ratio1} betrachtet werden. Wie beim Betrachten der Gleichung und der Abbildung vermutet werden kann gibt es ein 'Problem' an der Stelle $x=0$. Man sagt es liegt eine sogenannte \textbf{Polstelle} oder ein \textbf{Pol} bei $x=0$. Hier ist die Funktion undefiniert. 
+
+Zurückgreifend auf die Definition aus Gleichung \ref{eq:rationaleFunktion} lässt sich allgemeiner sagen dass der Definitionsbereich $D$ von $R$ durch die Menge an Zahlen beschnitten wird an denen das Nenner-Polynom $P_n$ den Wert 0 annimmt: $D(f) = \mathbb{R} \setminus \{x | P_n(x)=0\}$. 
+
+\important{Speziell in der Analyse von Filtern interessieren wir uns für Nullstellen und Polstellen. Nullstellen sind hier schlicht die Nullstellen des Zähler-Polynoms. Polstellen sind die Nullstellen des Nenner-Polynoms.}
+
+\begin{figure}[H]
+	\centering
+	\input{img/ratio1.pgf}
+	\caption{Potenzfunktionen mit Negativen Exponenten.}
+	\label{fig:ratio1}
+\end{figure}
+
+% \begin{equation}
+% \displaystyle x
+
+% \end{equation}
+
+\subsection{Polynomdivision}
+Polynomdivision (Engl. 'long division of polynomials' und oft kurz 'long division') ist die Division von 2 Polynomen. Siehe das folgende Beispiel:
+
+\polylongdiv[style=C]{x^{3} + 5 x^{2} - 2 x - 24}{x-2}
+
+
+Hier wurde manuell das Polynom $P(x) = x^{3} + 5 x^{2} - 2 x - 24$ durch den Faktor $(x-2)$ geteilt. In diesem Fall gab es keinen Rest. Wir haben erreicht dass das ursprüngliche Polynom $P$ vom Grad $3$ auf ein Produkt zweier Polynome reduziert wurde wobei eines vom Grad $1$ und eines vom Grad $2$ ist. 
+
+$$P(x) = x^{3} + 5 x^{2} - 2 x - 24 = (x-2) \cdot (x^2 + 7x + 12)$$
+
+
+Was hier interessant ist, ist dass $(x-2)$ ein \emph{linearer Faktor} ist, also keine Potenzen größer 1 enthält. Es ist offensichtlich dass der Faktor $(x-2)$ $0$ wird an der Stelle $2$. Da $P(x)$ ein Produkt ua. dieses Faktors ist haben wir eine Nullstelle von $P$.
+
+
+\subsection{Zerlegung in Linearfaktoren}\label{sec:linearfaktoren}
+
+
+\polylongdiv[style=C]{x^{3} + 5 x^{2} - 2 x - 24}{x-2}
+
+
+
+\subsection{Partialbruchzerlegung}
+
+Zum Beispiel in \cite{liski2019converting} kann klar gesehen welche zentrale Rolle Partialbruchzerlegung und Polynomdivision im Bereich der Signalverarbeitung spielen.
+
+\cite{freeman2011} 
+
+
+\section{Rekursive Funktionen}
+\begin{equation}
+	 \displaystyle \mathrm{fib}(x) = \left\{ \begin{array}{ll} 0, & \mathrm{if} \ x = 0 \\ 1, & \mathrm{if} \ x = 1 \\ \mathrm{fib} \mathopen{}\left( x - 1 \mathclose{}\right) + \mathrm{fib} \mathopen{}\left( x - 2 \mathclose{}\right), & \mathrm{otherwise} \end{array} \right. \label{eq:fib}
+\end{equation}
+
+\section{Python}\label{sec:python}
+
+
+\begin{python}{Rekursive Python Implementierung von Gleichung \ref{eq:fib}}
+def fib(x):
+	if x == 0:
+		return 0
+	elif x == 1:
+		return 1
+	else:
+		return fib(x-1) + fib(x-2)
+\end{python}
+
+
+\begin{python}{import von Paketen und Definition eines symbolischen Polynoms.}
+import sympy as sp
+sp.init_session()
+%matplotlib inline # Nur sinnvoll in Notebook environments
+
+p= x**5 +2*x**4 -x**3 -2*x**2
+\end{python}
+
+\begin{python}{Nullstellen des Polynoms berechnen.}
+sp.roots(p)
+\end{python}
+
+\begin{figure}[tb]
+	\centering
+	\input{img/polynom1.pgf}
+	\caption{Polynom}
+	\label{fig:poly1}
+\end{figure}
+
+
+
+% \begin{python}
+% 	In [1]: 64**(2/3)
+% Out[1]: 15.999999999999998
+
+% In [2]: 32**(1/5)
+% Out[2]: 2.0
+
+% In [3]:
+
+% \end{python}
+\begin{python}{Paketimport.}
+%pylab
+from sympy import *
+init_session()
+%matplotlib inline
+\end{python}
+
+
+\begin{python}{Achsen Hervorhebung und 'Grid' aktivieren (Erfordert Installation des \texttt{seaborn} Pakets).}
+import seaborn as sns
+sns.set()
+sns.set_style("whitegrid", {'grid.linestyle': '--'})
+\end{python}
+
+\section{Aufgaben}
+
+\begin{enumerate}
+\item Versuchen Sie Python Code zu entwerfen der die Funktion in Abbildung \ref{fig:functManipul} erzeugt.
+\end{enumerate}

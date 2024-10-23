@@ -8,7 +8,9 @@
 \section{Aussagen}
 
 
-\todo[]{Quantoren?}
+% \begin{tcolorbox}[sidebarmark={Lecture 1}]
+
+
 
 \begin{table}[h!]
     \centering
@@ -36,6 +38,17 @@
 \end{table}
 
 
+\subsection{Quantoren}
+
+\begin{itemize}
+    \item $\forall$, 'Allquantor'
+    \item $\exists$, 'Existenzquantor'
+\end{itemize}
+
+\example{\textbf{Beispiel} \\
+$\forall x \in X, \: A(x)$ : Für alle $x$ in $X$ ist die Aussage $A(x)$ wahr.
+
+}
 
 \subsection{Boolsche Logik}
 \label{sec:bool}
@@ -72,7 +85,7 @@
 
 \section{Mengen}
 
-\important{"Eine Menge ist eine Zusammenfassung unterscheidbarer Objekte zu einer Gesamtheit. Die Objekte werden 'Elemente' genannt"}
+\important{Eine Menge ist eine Zusammenfassung unterscheidbarer Objekte zu einer Gesamtheit. Die Objekte werden 'Elemente' genannt}
 
 % \equation{ 
 Beispiele für \emph{explizite} Mengen:
@@ -103,10 +116,12 @@ Vergl. mit Abschnitt \ref{sec:bool}!
     \label{fig:vennMengen}
 \end{figure}
 
+
+
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.1\textwidth]{img/mengen_symDiff.png}
-    \caption{"Symmetrische Differenz" der Mengen $A$ und $B$.}
+    \caption{Symmetrische Differenz der Mengen $A$ und $B$.}
     \label{fig:venn_symDiff}
 \end{figure}
 
@@ -116,14 +131,12 @@ Vergl. mit Abschnitt \ref{sec:bool}!
 
 \begin{answer}
       $(A \cup B) \setminus (A \cap B)$. Siehe Abbildung \ref{fig:symDifSteps}.
-
-
 \end{answer}
 
       \begin{figure}[h]
           \centering
           \includegraphics[width=0.2\textwidth]{img/symDifSteps.png}
-          \caption{\emph{"Symmetrische Differenz"} in einzelnen Schritten veranschaulicht.}
+          \caption{\emph{Symmetrische Differenz} in einzelnen Schritten veranschaulicht.}
           \label{fig:symDifSteps}
       \end{figure}
 
@@ -139,25 +152,88 @@ Vergl. mit Abschnitt \ref{sec:bool}!
 \label{sec:funktionen}
 
 \todo[]{alles.}
+Die \emph{Abbildung} oder \emph{Funktion} $f$ bildet die Menge $D$ auf die Menge $Z$ ab. Sie ordnet jedem Element von $D$ \emph{genau ein} Element von $Z$ zu.
 
-\important{
-    $$ f : A \to B$$
+    $$ f : D \to Z$$
 
+Man schreibt $f\coloneqq x \mapsto y$ oder $f(x) = y$.
+
+\begin{itemize}
+    \item $D$ Definitionsbereich, Definitionsmenge
+    \item $Z$ Zielmenge
+    \item $f(A)$ Bildmenge (wobei stets $f(A)=B, B \in Z$, heißt: Die Bildmenge ist eine Teilmenge der Zielmenge.)
+    \item $x$ unabhängige Variable
+    \item $y$ abhängige Variable
+    \item $f(x) = y$ Funktionsgleichung
+\end{itemize}
+
+
+\example{
+    \textbf{Beispiel} \\
+    $$f : \mathbb{R} \to \mathbb{R} , \: f(x) = sin(x)$$
+
+    \begin{figure}[H]
+        \centering
+        \input{img/funktion_beispiel.pgf}
+        % \includegraphics[]{}
+        \caption{Der Funktionsgraph der Funktion $f(x)$.}
+        \label{fig:figure1}
+    \end{figure}
 }
 
+\subsection{Gerade und Ungerade Funktionen}\label{subsec:geradeUngerade}
+Von \href{https://de.wikipedia.org/wiki/Gerade\_und\_ungerade\_Funktionen}{Wikipedia}, um zu demonstrieren dass das zuvor gelernte ständig anzutreffen ist:
+
+\emph{"Eine reelle Funktion $f\colon D\to \mathbb {R} $ mit einer bezüglich der Null symmetrischen Definitionsmenge 
+$ D\subseteq \mathbb {R}$ heißt gerade, wenn für alle Argumente $ x\in D$  $f(-x)=f(x)$."} \\
+
+Kurz:
+\begin{itemize}
+    \item Gerade Funktion:  $f(-x) = f(x)$. Achsensymmetrisch zur $y$-Achse.
+    \item Ungerade Funktion:  $f(-x) = -f(x)$. Punktsymmetrisch zum Ursprung.
+\end{itemize}
+
+\todo{gerade vs ungerade funkt graph}
+\todo[]{Gerade vs ungerade -> Verzerrung, faust beispiel auch.}
+
+\important{
+Dies hat tontechnische Relevanz, da bei nichtlinearen Funktionen Obertöne entstehen. Diese Obertöne sind entweder gerade oder ungerade vielfache der
+Grundfrequenz. Gerade Obertöne entstehen bei geraden Funktionen, ungerade bei ungeraden Funktionen.}
+
+
+
+\subsection{Periodizität}
+$f(x)$ heißt periodisch mit Periode $p>0$ wenn für alle $ x \in \mathbb{R}$ gilt $f(x) = f(x+p)$.
+
 \subsection{Linearität}
-Aus Tontechnischer/Signalverarbeitungssicht ist hier eine wichtige Unterscheidung zu machen. Einige der schon vorgestellten Rechenoperationen sind \emph{linear} andere nicht. 
+Aus Tontechnischer/Signalverarbeitungssicht ist hier eine wichtige Unterscheidung zu machen. Manche Rechenoperationen sind \emph{linear} andere nicht. 
 Linearität ist die Eigenschaft eines Systems \emph{proportional} zu reagieren.
 Wenn also der Input an einem linearen System steigt, steigt der Output proportional dazu. Das einfache System idealer 'Verstärker' soll uns als Beispiel dienen:
 $$f(x) = x \cdot a$$ wobei $a$ hier der Verstärkungsfaktor wäre. Nennen wir den Output $y$, also sei $y \coloneqq f(x)$ dann können wir sagen $$y \propto x.$$ 
 $y$ verhält sich proportional zu $x$. 
 
-\todo[]{Linearität, zoezler definition.}
+\important{
 
-\todo[]{Gerade vs ungerade -> Verzerrung}
+\begin{equation}
+f(Ax)=Af(x) \label{eq:linearity1}
+\end{equation}
+
+Superpositionsprinzip:
+\begin{equation}
+f(x_1 + x_2) = f(x_1) + f(x_2) \label{eq:linearity2}
+\end{equation}
 
 
+In zB \cite{zolzer2002dafx} finden wir eine den obigen 2 bedingungen äquivalente Definition für Linearität von Systemen. Gegeben Input $x(t)$ und Output $y(t)$:
 
+\begin{equation}
+x(t) = Ax_1(t) + Bx_2(t) \to  y(t) = Ay_1(t) + By_2(t) \label{eq:linearity3}
+\end{equation}
+
+
+% $$ x(t) = Ax_1(t) + Bx_2(t) \to  y(t) = Ay_1(t) + By_2(t) \label{eq:linearity}$$
+
+Ist diese Bedingung erfüllt, handelt es sich um ein lineares System. In \emph{allen} anderen fällen nicht und Verzerrungen sind zu erwarten. }
 
 \section{Zahlen}
 
@@ -170,7 +246,7 @@ $y$ verhält sich proportional zu $x$.
 
 
 
-Die arten Mengen in Beziehung zu setzen verwendet werden um die unterschiedlichen Zahlen Korpora in Beziehung zu setzen:
+Die arten Mengen in Beziehung zu setzen kann verwendet werden um die unterschiedlichen Zahlen Korpora in Beziehung zu setzen:
 
 $$
 \mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q} \subset \mathbb{R} \subset \mathbb{C}
@@ -225,7 +301,7 @@ Reelle zahlen füllen die 'Lücken' zwischen den Rationalen Zahlen. Enthalten si
 
 
 \subsection{Komplexe Zahlen $\mathbb{C}$}
-Besonders wichtig für die Tontechnik, hierzu später mehr. Erweiterung der Zahlengeraden (siehe Abb. \ref{fig:zahlengerade}) auf die 'Komplexe Ebene'. Sei dienen uns zur Darstellung von Schwingungen, kommen vor in der Fouriertransformation (bei jeder Berechnung eines klassischen Audio Spektrums!) etc. \
+Besonders wichtig für die Tontechnik, hierzu mehr in Kapitel \ref{chap:complex}. Erweiterung der Zahlengeraden (siehe Abb. \ref{fig:zahlengerade}) auf die 'Komplexe Ebene'. Sei dienen uns zur Darstellung von Schwingungen, kommen vor in der Fouriertransformation (bei jeder Berechnung eines klassischen Audio Spektrums!) etc. \
 Es gibt noch weitere Zahlen Mengen, zum Beispiel die \emph{Quaternionen}, eine Erweiterung der Komplexen Zahlen. Diese finden zum Beispiel Anwendung in der Grafik Verarbeitung (in mehr oder weniger jeder 3D Animation zB.). 
 
 
@@ -265,9 +341,64 @@ Einfache Rechenoperationen wie $+, -, \cdot, / $, haben in der Tontechnik/Signal
 \important{Im Bereich der Signalverarbeitung allgemein ist $A*B$ \emph{nicht} Multiplikation! $A*B$ bedeutet in unserem Fach 'Faltung', 'Convolution', siehe Faltungshall etc. Multiplikation kann $A\times B$ geschrieben werden wobei das eher bei Vektoren üblich ist. In Programmiersprachen (auch in der Signalverarbeitung, wie \texttt{C}, \texttt{Matlab}, \texttt{Python} etc) wird \texttt{*} durchaus als Multiplikation verwendet aber nicht in der Mathematischen Notation.}
 
 
+\subsection{Modulo}
+
+Die \emph{Modulo} Operation ist eine Division zweier Zahlen, wobei das Resultat der Rest dieser Division ist. In mathematischer Notation schreibt man typischerweise $a \, mod \, b$ um zu sagen, "dividiere $a$ durch $b$ und 'nimm den Rest'".
+
+In vielen Programmiersprachen(Python, C, Java) wir die Modulo Operation als \texttt{\%} dargestellt, zB \texttt{14 \% 12}. Die Operation ist hier erwähnenswert da sie extrem nützlich ist aber oft in klassischen Mathematik Büchern keinen großen Stellenwert hat. \\
+\textbf{Der Modulo kann verwendet werden um aus einer Kontinuierlichen Funktion eine Periodische Funktion zu erzeugen.}
+
+Der Modulo kann verwendet werden um eine Zeit in 24 Stunden Format in 12 Stunden Format umzurechnen: $14 \, mod \, 12 = 2$. Er kann verwendet werden um einen 'Sägezahn Oszillator'\footnote{Bitte, das ist zwar richtig, sollte aber so nicht für Synthese Zwecke verwendet werden. Diese Vorgangsweise ist Problematisch im Bezug auf 'Aliasing', da diese Funktion nicht Bandlimitiert ist. Weitere Erklärungen an dieser Stelle würden zu weit führen.} zu erzeugen (siehe Abb. \ref{fig:modulo}), er kann verwendet werden um Rhythmen zu erzeugen (Andere Unterteilungen von Zählwerken/Sequencern) zu schaffen und vieles mehr.
+
+
+
+\begin{figure}[H]
+    \centering
+    \input{img/modulo.pgf}
+    % \includegraphics[width=0.4\textwidth]{betrag.png}
+    \caption{Der Verlauf Funktion $f(x) =  x \, mod \, 4$.}
+    \label{fig:modulo}
+\end{figure}
+
+
+\bgInfo{
+    Formaler ist die modulo Operation definiert als:
+    $$ a{\bmod {m}}:=a-\left\lfloor {\frac {a}{m}}\right\rfloor \cdot m.$$
+    Wobei die sog. Gaussklammern $\lfloor \cdot \rfloor$ hier fuer 'nach unten runden' (Engl. 'truncation') stehen. 
+
+}
+
+
+
+% \begin{wrapfigure}{r}{0.4\textwidth}
+%     \centering
+%     \input{img/modulo.pgf}
+%     \caption{An example figure}
+% \end{wrapfigure}
+
+\subsection{Summe und Produkt Notation}
+
+\begin{equation}
+{\displaystyle \sum _{k=m}^{n}a_{k}=\sum _{m\leq k\leq n}a_{k}=a_{m}+a_{m+1}+\dotsb +a_{n}.}
+\end{equation}
+
+\todo[]{summe erklärungen, beispiel.}
+
+\todo[]{prod}
+
+\begin{equation}
+{\displaystyle \prod _{i=1}^{6}i^{2} =  1\cdot 4\cdot 9\cdot 16\cdot 25\cdot 36}
+\end{equation}
 
 
 \subsection{Betrag}
+
+% \begin{wrapfigure}{r}{0.4\textwidth}
+%     \centering
+%     \includegraphics[width=0.4\textwidth]{betrag.png}
+%     \caption{Betrag als Input/Output Plot.}
+%     \label{fig:betrag}
+% \end{wrapfigure}
 
 Betrag macht alles positiv. Der \emph{Betrag} einer Zahl $a \in \mathbb{R}$, dargestellt als $|a|$ kann folgendermaßen definiert werden:
 $$ 
@@ -282,6 +413,7 @@ Der Betrag kann als \emph{Funktion} aufgefasst werden (später mehr zu Funktione
 \bgInfo{Merkhilfe: Alphabetisch, x vor y, Abszisse vor Ordinate.}
 
 
+
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.4\textwidth]{betrag.png}
@@ -290,7 +422,7 @@ Der Betrag kann als \emph{Funktion} aufgefasst werden (später mehr zu Funktione
 \end{figure}
 
 \praxis{
-Der Betrag (oder auch Absolutwert) hat in der Audio Technik eine Wichtige Rolle, speziell der Betrag von Komplexen Zahlen, den Ergebnissen der Fourier Transformation. In der Elektrotechnik kann er als 'Gleichrichter' wieder gefunden werden um Wechselströme zu Gleichströmen zu wandeln. Er ist die simpelste Verzerrung mit geraden harmonischen.
+Der Betrag (oder auch Absolutwert) hat in der Audio Technik eine Wichtige Rolle, speziell der Betrag von Komplexen Zahlen, den Ergebnissen der Fourier Transformation. In der Elektrotechnik kann er als 'Gleichrichter' gefunden werden um Wechselströme zu Gleichströmen zu wandeln. Er ist eine der simpelsten Verzerrungen mit geraden harmonischen.
 }
 
 Soundbeispiel hier: \faust{Betrag Einer 150Hz Sinus Schwingung}{https://faustide.grame.fr/?autorun=1\&voices=0\&name=abs_test\&inline=aW1wb3J0KCJzdGRmYXVzdC5saWIiKTsKcHJvY2VzcyA9IG9zLm9zYygxNTApOmFiczs\%3D}
@@ -346,6 +478,22 @@ $$\sqrt[2]{25} = 5$$
 
 $$ log_5 (25) = 2$$
 
+\important{
+    Wenn wir eine Gleichung der Art:
+    $$ b^x = a $$
+    Vorfinden wobei $a$ und $b$ konstanten sind und wir $x$ finden wollen und $a>0$ und $b \neq 1$ dann können wir auflösen:
+    \begin{equation}
+        log_b(a) = x
+    \end{equation}
+
+    Außerdem gilt allgemein:
+    \begin{equation}
+        log_b(b^x) = x
+    \end{equation}
+
+}
+
+
 
 Der dekadische Logarithmus ($log_{10}$) ist u.a. praktisch, da er quasi die Frage nach den Stellen einer Zahl im dezimal System beantwortet. Ein Negatives Ergebnis gibt hier an, dass es sich um eine zahl $<1$ handelt und sein wert gibt Aufschluss auf die zahl der 'Nullen' vor dem Komma an:
 
@@ -358,7 +506,55 @@ Der dekadische Logarithmus ($log_{10}$) ist u.a. praktisch, da er quasi die Frag
 \item  $ log_{10}(0.01) = -2$
 \end{itemize}
 
-Diese 'Eigenschaft' kann benutzt werden um Visualisierungen klarer zu machen, in denen werte mit sehr Unterschiedlichen Größenordnungen Verglichen werden sollen. Siehe Abbildung \ref{fig:time_lin} im Vergleich zu \ref{fig:time_log}. Das \emph{Dezibel} fällt mehr oder weniger in diese Kategorie. 
+Diese 'Eigenschaft' kann zB. benutzt werden um Visualisierungen klarer zu machen, in denen werte mit sehr Unterschiedlichen Größenordnungen Verglichen werden sollen. Siehe Abbildung \ref{fig:time_lin} im Vergleich zu \ref{fig:time_log}. Das \emph{Dezibel} fällt mehr oder weniger in diese Kategorie. 
+
+\textbf{Der Logarithmus von 0 ist undefiniert.} Manchmal stößt man (in Computersystemen zb.) auf Ergebnisse die uns zu sagen scheinen, dass  $log(0)=-\infty$. Das ist nicht korrekt/schlampig. Natürlich scheint sich der Funktionsverlauf diesem 'Wert' anzunähern. Korrekterweise lässt sich sagen: $\lim_{x\to 0} log(x)=-\infty$. 
+
+
+\subsubsection{Rechenregeln mit dem Logarithmus}
+\todo[]{todo}
+
+\important{
+\begin{equation}
+log_a (u \cdot v) = log_a(u) + log_a(v) \label{eq:logprods}
+\end{equation}
+
+\begin{equation}
+log_a \left(\frac{u}{v}\right) = log_a(u) - log_a(v) \label{eq:logdivs}
+\end{equation}
+
+\begin{equation}
+log_a (u ^ v) = v \cdot log_a(u) \label{eq:logexps}
+\end{equation}
+
+\begin{equation}
+log_a \left( \frac{1}{u} \right) = - log_a(u) \label{eq:logminone}
+\end{equation}
+}
+
+
+\begin{question}
+    Leite Gleichung \ref{eq:logminone} einmal aus Gleichung \ref{eq:logdivs} und einmal aus Gleichung \ref{eq:logexps} ab! 
+\end{question}
+
+\begin{answer}
+Zu \ref{eq:logdivs}: \\
+Man setzt ein, und hat ein leichtes Problem da die variablen Namen dafür ungünstig/verwirrend sind. Wir benennen diese also um für Gl. \ref{eq:logdivs}. Außerdem verwerfen wir die $log_a$ Notation da das $a$ hier stets irrelevant ist:
+$$ log \left(\frac{x}{y}\right) = log(x) - log(y).$$ 
+Wir setzen $x=1$:
+$$ log \left(\frac{1}{y}\right) = log(1) - log(y).$$
+Wir wissen dass $log(1) = 0$ da $\forall x \in \mathbb{R} \: , \: x^0 = 1$. 
+Daher: $$ log \left(\frac{1}{y}\right) = - log(y).$$ \\
+
+Zu \ref{eq:logexps}: \\
+Wenn man im Kopf hat dass $x^{-1}=\frac{1}{x}$ ist klar, dass auch hier einsetzten hilft. Ausgehend von Gl. \ref{eq:logexps} bleiben wir bei der $x, \: y$ Notation:
+$$log (x ^ y) = y \cdot log(x).$$
+Da wir in Gleichung \ref{eq:logminone} dieses vorfinden: $log_a \left( \frac{1}{u} \right)$ und aber wissen dass wir umformen können zu $log_a ( u^{-1}) $ 
+Wir setzten $y=-1$ und sind eigentlich schon fertig:
+$$log (x ^ {-1}) = -1 \cdot log(x) = $$
+$$log \left( \frac{1}{x} \right) = -log(x)$$
+
+\end{answer} 
 
 \subsubsection{Logarithmen 'Konvertieren'}
 
@@ -372,7 +568,7 @@ $$ log_b(x) = \frac{log_a(x)}{log_a(b)}$$
 Beispiel:
 
 Gegeben den natürlichen Logarithmus einer Messung $x$ benötigt man den 2er Logarithmus.
-$$log_2(x) = \frac{ln(x)}{ln(2)} \approx 2.32$$
+$$log_2(x) = \frac{ln(x)}{ln(2)} \approx 2.32$$\todo{what is this}
 
 
 \subsubsection {Dezibel \& $dB_{FS}$}
@@ -382,16 +578,21 @@ Das $Bel$ \emph{vergleicht} 2 \emph{Leistungsgrößen}, $P_1$ und $P_2$ und erle
 $$ L_{Bel} = log_{10} \left(\frac{P_1}{P_2}\right)$$
 }
 
-Dadurch dass wir nicht immer mit Leistungsgrößen zu tun haben, sonder manchmal zu diesen konvertieren müssen, findet sich oft der Faktor $2$ in der Formel. Konvertierung vom $Bel$ zum $Dezibel$ macht eine Multiplikation mit 10 erforderlich:
+Dadurch dass wir nicht immer mit Leistungsgrößen zu tun haben, sondern manchmal zu diesen konvertieren müssen, findet sich oft der Faktor $2$ in der Formel. Konvertierung vom $Bel$ zum $Dezibel$ macht eine Multiplikation mit 10 erforderlich:
 
 $$L = 20 \cdot log_{10}\left(\frac{x}{x_{ref}}\right)$$
 
 Wobei im im digitalen Fall $dB_{FS}$ ("Fullscale") sich $x_{ref}$  auf den Vollausschlag $1$ bezieht und damit vereinfacht werden kann zu: 
 $$L = 20 \cdot log_{10}(x)$$
 
+\todo[]{Exkurs: Leistung eines digitalsignals via URI}
+\todo[]{Andere Referenzwerte.}
+
 \faust{Lineare Lautstärken Steuerung verglichen mit klassisch Logarithmischer.}{https://faustide.grame.fr/?autorun=1&voices=0&name=example&inline=aW1wb3J0KCJzdGRmYXVzdC5saWIiKTsKYW1wID0gaHNsaWRlcigiTGluZWFyIEFtcGxpdHVkZSIsIDAuLCAwLCAxLCAwLjAwMSk6c2kuc21vbzsKCmFtcExvZyA9IGhzbGlkZXIoIkxvZyBBbXBsaXR1ZGUiLCAtNzAuLCAtNzAsIDAsIDAuMDEpOnNpLnNtb286YmEuZGIybGluZWFyOwoKcHJvY2VzcyA9IG5vLnBpbmtfbm9pc2UgKiBhbXAgKyBuby5waW5rX25vaXNlICogYW1wTG9nPDpfLF87}
 
-\todo[]{lin vs log spektrum plot}
+\todo[]{Wurzeln}
+
+
 
 \begin{figure}[h!]
     \centering
@@ -401,6 +602,13 @@ $$L = 20 \cdot log_{10}(x)$$
     \label{fig:dbfs}
 \end{figure}
 
+
+\begin{figure}[h!]
+    \centering
+    \input{python/linLog_spec.pgf}
+    \caption{Das Spektrum eines Signals, linear und in Dezibel. Die x-Achse ist in beiden Fällen Linear. Der Wertebereich der y-Achse identisch! Also $20\cdot log_{10}(10000) = 80$}
+    \label{fig:figure1}
+\end{figure}
 
 
 \begin{figure}[h!]
@@ -429,6 +637,7 @@ $$L = 20 \cdot log_{10}(x)$$
 \section{Aufgaben und Beispiele}
 
 \begin{enumerate}
+    \item $\forall x \in \mathbb{R}, \exists y \in \mathbb{R} \text{ sodass } x + y = 0$. Was bedeutet dieser Ausdruck? Ist er wahr oder falsch?
     \item Gegeben sind die Mengen in Abb. \ref{fig:dreiMengen}. Zeichne ein Diagramm für:
     \begin{enumerate} % Use alphabetical labels for subitems
         \item $A \setminus (B \cup C)$
@@ -441,7 +650,11 @@ $$L = 20 \cdot log_{10}(x)$$
         \item $f(x) = |x+1|-1$. Welche Bedeutung haben die beiden zahlen ($1$, $-1$ )? Wenn man sie verändern würde, was passiert mit dem Plot?
     \end{enumerate}
     \item Was sagt gibt es zu Abb. \ref{fig:distortion_online} zu sagen?
-    \item Konstruiere (mache eine formel, formale beschreibung) von einem 'hard clipper'. Dies ist eine Verzerrung. Die Verzerrung soll keine Werte 'durchlassen' die größer als 0.9 und kleiner als -0.9 sind. Zeichne den Graphen. Für Werte zwischen -0.9 und 0.9 soll sich der Verzerrer linear verhalten. Werden hier gerade oder ungerade Harmonische Erzeugt?
+    \item Konstruiere (mache eine Formel, formale Beschreibung) einen 'hard clipper'. Dies ist eine Verzerrung. Die Verzerrung soll keine Werte 'durchlassen' die größer als 0.9 und kleiner als -0.9 sind. Zeichne den Graphen. Für Werte zwischen -0.9 und 0.9 soll sich der Verzerrer linear verhalten. Werden hier gerade oder ungerade Harmonische Erzeugt?
+    \item Berechne die 'Spannung' $T$ (eine Kraft) in einer Piano Saite. Die Grundfrequenz der Saite ist 440 Hz, sie ist aus Stahl und ca. 50 cm lang. Gegeben ist folgende Formel: $f_0 = \lambda \sqrt{\frac{T}{\rho A}}$. Hier ist $\rho$ die Dichte des Materials und $A$ der Flächendurchschnitt der Saite. Wir nehmen an sie hat einen Durchmesser $d$ von ca 1mm. Siehe Abb. \ref{fig:string_ex}.
+
+    \item Beweise mittels Gleichungen \ref{eq:linearity1}, \ref{eq:linearity2} oder \ref{eq:linearity3} dass $f(x)=|x|$ nicht linear ist.
+
 
 
 \end{enumerate}
@@ -458,6 +671,13 @@ $$L = 20 \cdot log_{10}(x)$$
     \includegraphics[ width= 0.8\textwidth]{img/reddit_distortion.png}
     \caption{Online Diskussionen über Verzerrung.}
     \label{fig:distortion_online}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[ width= 0.6\textwidth]{img/saite_beispiel.png}
+    \caption{Saite.}
+    \label{fig:string_ex}
 \end{figure}
 
 

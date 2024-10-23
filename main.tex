@@ -16,7 +16,7 @@
 % Standard Packages
 \usepackage[utf8]{inputenc}
 \usepackage{svg}
-% \usepackage[german]{babel} % deutsch.
+\usepackage[german]{babel} % deutsch.
 \usepackage[T1]{fontenc}
 \usepackage{graphicx}
 \usepackage{graphicx, subfigure}
@@ -24,10 +24,36 @@
 % \usepackage{fancyhdr}
 \usepackage{lmodern}
 \usepackage{color}
+\usepackage[table]{xcolor}
 \usepackage{transparent}
-% Citation style
 
+% ==========COLORS=============================
+\definecolor{importantColor}{RGB}{255,255,241}
+\definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
+
+\definecolor{codeBlue}{HTML}{3F88C5}
+\definecolor{codeRed}{HTML}{E94F37}
+\definecolor{codeGreen}{HTML}{44BBA4}
+\definecolor{codeBlack}{HTML}{393E41}
+\definecolor{tableHighligh}{HTML}{E94F37}
+\definecolor{lightBg}{rgb}{0.95, 0.95, 0.95}
+
+
+% \usepackage{fontawesome5}
+\usepackage{pifont}
+
+% ==============================================
+% ===== CITATIONS======================
+
+% ---- Natbib based---------------------
 \usepackage[comma,authoryear]{natbib}
+% --------biblatex based----------------
+% \usepackage[backend=biber, style=authoryear]{biblatex}
+% \addbibresource{references.bib}
+% ======================================
+
+
 % \bibliography{references}
 % \usepackage[
 % backend=biber,
@@ -56,6 +82,9 @@
 % \usepackage{geometry} % Used to adjust the document margins
 \usepackage{amsmath} % Equations
 \usepackage{amssymb} % Equations
+\usepackage{polynom} %for polynomial longdivision.
+\usepackage{wrapfig}
+
 % \usepackage{mathrsfs}
 % \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
 % \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
@@ -72,12 +101,68 @@
 
 \usepackage{atbegshi}% http://ctan.org/pkg/atbegshi
 
+% for formelsammlung.
+\usepackage{tcolorbox}
+% \newtcolorbox{tightbox}{
+%   sharp corners, 
+%   colback=white,
+%   colframe=black,
+%   boxrule=0.5mm,
+%   arc=0mm,
+%   outer arc=0mm,
+%   left=1mm, % Reduced left margin
+%   right=1mm, % Reduced right margin
+%   top=1mm, % Reduced top margin
+%   bottom=1mm % Reduced bottom margin
+% }
+
+
+% Define a new command for a colored grid
+% \newcolumntype{C}{>{\centering\arraybackslash}m{3cm}} % Centered and fixed width
+% \newcommand{\mygrid}[2]{%
+%     \begin{tcolorbox}[colback=blue!5, colframe=blue!80, title=#1, sharp corners=south]%
+%         \begin{tabular}{C C C} #2 \end{tabular}
+%     \end{tcolorbox}
+% }
+% Define a new command for a colored grid with tighter fitting
+\newcolumntype{C}{>{\centering\arraybackslash}m{3cm}} % Centered and fixed width
+\newcommand{\mygrid}[2]{%
+    \begin{tcolorbox}[colback=gray!5, colframe=codeBlack, title=#1, sharp corners=south, boxrule=0.5mm, left=0mm, right=0mm, top=0mm, bottom=0mm]%
+        \begin{tabular}{|C|C|C|} % Added vertical lines
+            \hline % Horizontal line at the top
+            #2 \\ \hline % Horizontal line after each row
+        \end{tabular}
+    \end{tcolorbox}
+}
+
+
 \usepackage{listings}
+\usepackage{listingsutf8}
 \usepackage{todonotes}
 \usepackage{courier}
 \usepackage{todonotes}
+% \usepackage{html} 
+\usepackage{titlesec}
+% \titlespacing*{\chapter}{0pt}{-50pt}{20pt}
+% \setlength{\topmargin}{-1.5in}
+
+% % Customize chapter title spacing
+% \titleformat{\chapter}[display]
+%   {\normalfont\huge\bfseries} % Format of chapter title
+%   {\chaptername\ \thechapter}{20pt}{\huge} % Label, spacing before, formatting of title
+% \titlespacing*{\chapter}{0pt}{-50pt}{20pt} % Adjust spacing: {left}{before}{after}
+
+% Customize chapter title spacing and alignment
+\titleformat{\chapter}[display] % Use [display] to separate chapter title from content
+  {\normalfont\huge\bfseries}   % Format of chapter title
+  {\chaptername\ \thechapter}{20pt}{\hfill} % Label, spacing before, formatting of title
+\titlespacing*{\chapter}{0pt}{-50pt}{20pt} % Adjust spacing for chapter title
 
 
+% Keep the default formatting for sections and subsections
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalfont\normalsize\bfseries}{\thesubsubsection}{1em}{}
 
 
 % Dokumentinformationen
@@ -90,9 +175,9 @@
 	colorlinks=true,
  	breaklinks=true,
 	citecolor=black,
-	linkcolor=blue,
+	linkcolor=codeBlue,
 	menucolor=black,
-	urlcolor=blue
+	urlcolor=codeBlue
 ]{hyperref}
 
 \hypersetup{
@@ -113,7 +198,7 @@
     linkcolor=gray,          % color of internal links (change box color with linkbordercolor)
     citecolor=black,        % color of links to bibliography
     filecolor=black,      % color of file links
-    urlcolor=blue           % color of external links
+    urlcolor=codeBlue           % color of external links
 }
 
 
@@ -166,19 +251,20 @@
 %======================================
 
 
+% ============QUESTIONS AND ANSWERS OLD=================================
 \usepackage[framemethod=tikz]{mdframed}
 \newtheorem{question}{Problem}
 \mdfdefinestyle{que}{
-  linecolor=cyan,
-  backgroundcolor=cyan!20,
+  linecolor=codeRed,
+  backgroundcolor=lightBg,
 }
 \surroundwithmdframed[style=que]{question}
 
 \newtheorem{answer}{Lösung}
 \mdfdefinestyle{ans}{
-  linecolor=cyan,
-  backgroundcolor=yellow!20
-  % , rotatebox
+  linecolor=codeGreen,
+  backgroundcolor=lightBg, 
+  % rotatebox
 }
 \surroundwithmdframed[style=ans]{answer}
 
@@ -197,6 +283,7 @@
 }%
 
 
+% =============================================================
 
 % ============= Package Einstellungen & Sonstiges =============
 
@@ -214,9 +301,11 @@
 \newcommand{\link}[2]{\href{#1}{#2}\footnote{#1}}
 \usepackage{mdframed}
 
-\newcommand{\bgInfo}[1]{\begin{mdframed}[backgroundcolor=black!10,rightline=false,leftline=false] #1 \end{mdframed}}
+\newcommand{\bgInfo}[1]{\begin{mdframed}[backgroundcolor=lightBg,rightline=false,leftline=false] #1 \end{mdframed}}
 
-\newcommand{\praxis}[1]{\begin{mdframed}[backgroundcolor=black!10,rightline=false,leftline=false] #1 \end{mdframed}}
+\newcommand{\praxis}[1]{\begin{mdframed}[backgroundcolor=lightBg,rightline=false,leftline=false] #1 \end{mdframed}}
+
+\newcommand{\example}[1]{\begin{mdframed}[backgroundcolor=lightBg,rightline=false,leftline=false] #1 \end{mdframed}}
 
 \newcommand{\video}[1]{
 \begin{framed}
@@ -224,9 +313,16 @@
  #1 \end{framed}}
 
 
-\newcommand{\important}[1]{\begin{framed} #1 \end{framed}}
 
-
+\newcommand{\important}[1]{%
+    \begin{tcolorbox}[colback=lightBg, colframe=codeBlack, title=\color{codeRed}{\ding{224}}, sharp corners=south, boxrule=0.5mm, left=0mm, right=0mm, top=0mm, bottom=0mm]%
+        % \begin{tabular}{|C|C|C|} % Added vertical lines
+            % \hline % Horizontal line at the top
+            % #2 \\ \hline % Horizontal line after each row
+        % \end{tabular}
+        #1
+    \end{tcolorbox}
+}
 
 
 % ipython notebook reference
@@ -243,19 +339,6 @@
   \endgroup
 }
 
-
-% % Define the faust command
-% \newcommand{\faust}[2]{%
-%     \textbf{#1} % Display the text
-%     \hspace{0.5em} % Add some space
-%     \href{#2}{\tikz[baseline=1.55ex]{
-% \draw[thick,rounded corners=2pt, fill=black] (0,0.25) -- (0,0.45) -- (0.25,0.45) -- (0.5,0.7) -- (0.5,0) -- (0.25,0.25) -- cycle;
-%    \draw[line width=2pt,line cap=round] (0.6,0.25) arc (-30:30:2mm);
-%    \draw[line width=2pt,line cap=round] (0.7,0.15) arc (-30:30:4mm);
-%    \draw[line width=2pt,line cap=round] (0.8,0.05) arc (-30:30:6mm);
-%     }}%
-% }
-
 % Define the faust command
 \newcommand{\faust}[2]{%
     \href{#2}{%
@@ -271,9 +354,55 @@
 }
 
 
-\definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
-\definecolor{mylilas}{RGB}{170,55,241}
 
+
+\def\doubleunderline#1{\underline{\underline{#1}}}
+
+
+% ======== Python code listings=============
+% from: https://tex.stackexchange.com/questions/83882/how-to-highlight-python-syntax-in-latex-listings-lstinputlistings-command
+% Default fixed font does not support bold face
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{10} % for bold
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{10}  % for normal
+
+\lstdefinestyle{numbers} {numbers=left, stepnumber=1, numberstyle=\tiny, numbersep=10pt}
+
+% Python style for highlighting
+\newcommand\pythonstyle{\lstset{
+language=Python,
+basicstyle=\ttm,
+tabsize=4,
+style=numbers,
+% numberstyle=\tiny,
+numbersep=10pt,
+morekeywords={self},              % Add keywords here
+keywordstyle=\ttb\color{codeBlue},
+emph={MyClass,__init__, In, Out},          % Custom highlighting
+emphstyle=\ttb\color{codeRed},    % Custom highlighting style
+stringstyle=\color{codeGreen},
+frame=tb,                         % Any extra options here
+showstringspaces=false,
+inputencoding=utf8,
+literate={ϵ}{$\epsilon$}1
+}}
+
+
+% Python environment
+\lstnewenvironment{python}[2][]
+{
+\pythonstyle
+\lstset{#1, caption={#2}}
+}
+{}
+
+% Python for external files
+\newcommand\pythonexternal[2][]{{
+\pythonstyle
+\lstinputlisting[#1]{#2}}}
+
+% Python for inline
+\newcommand\pythoninline[1]{{\pythonstyle\lstinline!#1!}}
+% ================================================
 
 
 % ============= Dokumentbeginn =============
@@ -337,7 +466,23 @@
 
 \newpage
 \include{00_vorbemerkungen}
+\part{Semester I}
 \include{lesson1}
+\include{lesson2}
+\include{lesson3}
+\include{lesson4}
+\include{lesson5}
+\include{lesson6}
+\part{Semester II}
+\include{lesson7}
+\include{lesson8}
+\include{lesson9}
+\include{lesson10}
+\include{lesson11}
+\include{lesson12}
+% \include{lesson_DiffEq}
+
+\include{Anhang_A}
 % \include{modulation}
 % \include{05_filters}
 % \include{Karplus}
@@ -350,24 +495,19 @@
 % \include{polyPhony}
 
 \include{solutions}
-
 %Verzeichnis aller Bilder
-\newpage
-\listoffigures
-
-\newpage
-\lstlistoflistings
 
 %Literaturverzeichnis
 \newpage
 
-\bibliographystyle{plainnat}
-\bibliography{references}
+% \bibliographystyle{plainnat}
+% \bibliography{references}
 
 %===== NATBIB BASED BIBLIOGRAPHY
 % \bibliographystyle{apalike}
-% % \bibliographystyle{plainnat}
-% \bibliography{references}
+\bibliographystyle{plainnat}
+\bibliography{references}
+\addcontentsline{toc}{chapter}{Literaturverzeichnis}
 % ===============================
 
 % ===BIBLATEX BASED
@@ -377,4 +517,13 @@
 % title={Literaturverzeichnis}
 % ]
 % ====================
+
+\newpage
+\listoffigures
+\addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
+
+\newpage
+\lstlistoflistings
+\addcontentsline{toc}{chapter}{Listings}
+
 \end{document}
