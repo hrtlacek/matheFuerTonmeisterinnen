@@ -1,0 +1,39 @@
+
+%!TEX root = main.tex
+
+\section*{Python Cheat Sheet}
+\subsection*{Numerisches,Arrays und Plots}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|l|p{7cm}|}
+        \hline
+    \textbf{Befehl} & \textbf{Beispiel} & \textbf{Kommentar} \\ \hline
+    
+    \texttt{\%pylab} & \texttt{\%pylab} & Schneller import von üblichen paketen (\texttt{matplotlib} und \texttt{numpy}). \\ \hline
+    \texttt{zeros()} & \texttt{x = zeros(5)} & Generierung eines arrays, mit nullen befüllt. \\ \hline
+    \texttt{linspace()} & \texttt{x = linspace(0,1, 5)} & Generierung eines arrays, zahlen linear zwischen Argument 1 und 2 erzeugt, Anzahl der zahlen bestimmt durch argument 3. \\ \hline
+    \texttt{plot()} & \texttt{plot(x,y)} & Line-plot erzeugen.  \\ \hline
+    \texttt{clf()} & \texttt{clf(x,y)} & Clear figure. Aktuellen plot löschen.  \\ \hline
+    \texttt{scatter()} & \texttt{scatter(x,y)} & Scatter Plot erzeugen. \\ \hline
+    \texttt{stem()} & \texttt{stem(x,y)} & Stem Plot erzeugen. \\ \hline
+
+    \texttt{[]} & \texttt{x[5] = 3} & Element aus array anzeigen holen oder bearbeiten. Im Bsp. wird dem 6. Element des array \texttt{x} der Wert 3 zugewiesen. \\ \hline
+    \texttt{random.random()} & \texttt{random.random(50)} & Erzeuge 50 gleichverteilte Zufallszahlen im halboffenen Intervall $[0.0, 1.0)$. \\ \hline
+    \texttt{**} & \texttt{x**3} & Exponenzieren. Im Bsp.: $x^3$. \\ \hline
+
+    \end{tabular}
+\end{table}
+
+\subsection*{Symbolische Mathematik}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|l|p{7cm}|}
+        \hline
+    \textbf{Befehl} & \textbf{Beispiel} & \textbf{Kommentar} \\ \hline
+    
+    \texttt{import sympy as sp} & \texttt{import sympy as sp} & Import des \texttt{sympy} Pakets für symbolische Berechnungen. \\ \hline
+    \texttt{sp.roots()} & \texttt{x = sp.roots(p)} & Findet die Nullstellen des polynoms \texttt{p}. \\ \hline
+    
+
+    \end{tabular}
+\end{table}
