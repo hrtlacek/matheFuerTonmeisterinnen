@@ -27,13 +27,16 @@
 \subsection*{Symbolische Mathematik}
 \begin{table}[H]
     \centering
-    \begin{tabular}{|l|l|p{7cm}|}
+    \begin{tabular}{|p{3cm}|p{6cm}|p{6cm}|}
         \hline
     \textbf{Befehl} & \textbf{Beispiel} & \textbf{Kommentar} \\ \hline
     
     \texttt{import sympy as sp} & \texttt{import sympy as sp} & Import des \texttt{sympy} Pakets für symbolische Berechnungen. \\ \hline
-    \texttt{sp.roots()} & \texttt{x = sp.roots(p)} & Findet die Nullstellen des polynoms \texttt{p}. \\ \hline
-    
+    \texttt{from sympy.abc import} & \texttt{from sympy.abc import x,y,z} & Variablen \texttt{x,y,z} als symbolische variablen importieren. \\ \hline
+    \texttt{sp.roots()} & \texttt{nullst = sp.roots(p)} & Findet die Nullstellen des polynoms \texttt{p}. \\ \hline
+    \texttt{sp.factor()} & \texttt{factors = sp.factor(p)} & Linearfaktor Zerlegung des polynoms \texttt{p}. \\ \hline
+    \texttt{sp.apart()} & \texttt{brueche = sp.apart(p, full=True).doit()} & Partialbruch Zerlegung polynoms \texttt{p}. \\ \hline
+    \texttt{sp.lambdify()} & \texttt{f  = sp.lambdify(x,p)} & Erzeugt eine ausführbare numerische funktion (\texttt{f}) aus dem symbolischen Ausdruck \texttt{p}. \\ \hline
 
     \end{tabular}
 \end{table}

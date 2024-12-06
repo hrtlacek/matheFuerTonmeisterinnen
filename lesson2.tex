@@ -31,7 +31,7 @@ Hier eine Auflistung von Interpretationen unter der Annahme dass die horizontale
 % \section{Wichtige Funktionen im Audio Bereich}
 
 \section{Impuls, $\delta(t)$}
-Impuls, delta funktion, dirak delta funktion, kronecker delta, (Engl. 'unit impulse'). Alle diese Worte bezeichnen ähnliche Ideen. Je nachdem ob im 'analogen' oder 'digitalen' wird der Impuls unterschiedlich definiert, hat aber im wesentlichen die gleiche Funktion. Die analoge Idee ist ein wenig abstrakt: Ein unendlich kurzes unendlich hohes Signal mit der Fläche 1 ('Dirak Delta Funktion'):
+Impuls, delta funktion, dirac delta funktion, kronecker delta, (Engl. 'unit impulse'). Alle diese Worte bezeichnen ähnliche Ideen. Je nachdem ob im 'analogen' oder 'digitalen' wird der Impuls unterschiedlich definiert, hat aber im wesentlichen die gleiche Funktion. Die analoge Idee ist ein wenig abstrakt: Ein unendlich kurzes unendlich hohes Signal mit der Fläche 1 ('Dirac Delta Funktion'):
 
 \begin{equation}
  \delta (x)={\begin{cases}0,&x\neq 0\\{\infty },&x=0\end{cases}}
@@ -102,7 +102,7 @@ Engl. 'unit step' auch oft Heaviside-Funktion genannt. Typischerweise $u(t)$ abe
 \end{figure}
 
 \section{Sinus und Kosinus}
-
+\todo[inline]{Todo. Not urgent.}
 \begin{figure}[H]
 	\centering
 	\input{img/sinCos.pgf}
@@ -143,7 +143,7 @@ cos(x) = cos(-x)
 \begin{figure}[H]
 	\centering
 	\input{python/sincAsSum.pgf}
-	\caption{Die sinc funktioon angenähert durch eine Summe von Kosiunus Funktionen.}
+	\caption{Die sinc Funktion angenähert durch eine Summe von Kosiunus Funktionen.}
 	\label{fig:sincAsSum}
 \end{figure}
 
@@ -173,7 +173,7 @@ x_{1,2} = -\frac{p}{2} \sqrt{\left( \frac{p}{2} \right)^2 - q } \label{eq:pq-for
 \end{equation}
 
 \subsection{Der allgemeine Fall: Nullstellen von Polynomen beliebigen Grades}
-Es gibt keine allgemeingültigen Lösungsformeln für Polynome beliebigen Grades, aber es gibt einiges über diese SItuation zu sagen.
+Es gibt keine allgemeingültigen Lösungsformeln für Polynome beliebigen Grades, aber es gibt einiges über diese Situation zu sagen.
 
 \important{ Fundamentalsatz der Algebra: \\
 Werden die Nullstellen mit der richtigen Vielfachheit (wiederholte Nullstellen) gezählt so gilt: \emph{\textbf{Ein Polynom vom Grad $n$ hat $n$ komplexe Nullstellen.}} }
@@ -183,11 +183,11 @@ Werden die Nullstellen mit der richtigen Vielfachheit (wiederholte Nullstellen) 
 Zunächst sei ganz pragmatisch darauf verwiesen dass diverse Computersysteme sehr gut in dieser Situation funktionieren, siehe zB. Abschnitt \ref{sec:python}. \\
 Bei hochgradingen Polynomen ist es sicherlich ein guter Schritt sich den Funktionsverlauf zu plotten und den Verlauf anzusehen. Durchaus lassen sich hier NUllstellen 'raten', die dann als Linearfaktor abgespalten werden können Abschnitt \ref{sec:linearfaktoren}. \emph{Numerische Verfahren} wie \emph{Newton-Raphson} sind hier auch äußerst wichtig, speziell in der Audio Technik. Ein Beispiel für die Numerische Suche nach Nullstellen im Kontext der Klangprozessierung wäre die Simulation von nicht-linearen Schaltkreisen ('Diode clipper'), siehe zB. \cite{holmes2015improving}. \\
 
-Da man in der Gestaltung von Filtern, Hall Algorithmen etc oft die Notwendigkeit hat Funktionen zu Gestalten, deren Nullstellen an bestimmte Orte zu verschieben ist es notwendig, nicht nur ein Polynom einem Computer zuzuführen um die Nullstellen 'ausgespuckt' zu bekommen. Es ist oft Notwendig Systeme umzuformulieren um 'Zugriff' auf die Orte der Nullstellen zu haben, zb. durch Zerlegung in Linearfaktoren. 
+Da man in der Gestaltung von Filtern, Hall Algorithmen etc oft die Notwendigkeit hat Funktionen zu Gestalten und deren Nullstellen an bestimmte Orte zu verschieben ist es notwendig, nicht nur ein Polynom einem Computer zuzuführen um die Nullstellen 'ausgespuckt' zu bekommen. Es ist oft Notwendig Systeme umzuformulieren um 'Zugriff' auf die Orte der Nullstellen zu haben, zb. durch Zerlegung in Linearfaktoren. 
 \todo[inline]{Rational root theorem? https://en.wikipedia.org/wiki/Rational\_root\_theorem}
 
 
-\subsection{Rationale Funktionen}
+\subsection{Gebrochen Rationale Ausdrücke}
 
 Wenn wir ein wenig über die Hintergründe von digitalen Filter recherchieren stoßen wir schnell auf 
 \cite{FILTERSWEB07}\footnote{\href{http://ccrma.stanford.edu/\~jos/filters/BiQuad\_Section.html}{http://ccrma.stanford.edu/\~jos/filters/BiQuad\_Section.html}}. Eines der Standardwerke wenn es um digitale Signalverarbeitung im musikalischen Kontext geht. Hier finden wir einen Filter der sich 'Biquad'\footnote{Der Name 'Biquad' deutet darauf hin dass hier 2 ('Bi') quadratische Gleichungen vorliegen.} nennt und durch Gleichung \ref{eq:biquad} beschrieben wird.
@@ -239,6 +239,8 @@ Zurückgreifend auf die Definition aus Gleichung \ref{eq:rationaleFunktion} läs
 	\label{fig:ratio1}
 \end{figure}
 
+
+
 % \begin{equation}
 % \displaystyle x
 
@@ -266,10 +268,19 @@ Was hier interessant ist, ist dass $(x-2)$ ein \emph{linearer Faktor} ist, also 
 
 
 \subsection{Partialbruchzerlegung}
+\todo{Vereinfachen.}
+Zum Beispiel in \cite{liski2019converting} und \cite{freeman2011} kann klar gesehen welche zentrale Rolle Partialbruchzerlegung und Polynomdivision im Bereich der Signalverarbeitung spielen.
 
-Zum Beispiel in \cite{liski2019converting} kann klar gesehen welche zentrale Rolle Partialbruchzerlegung und Polynomdivision im Bereich der Signalverarbeitung spielen.
 
-\cite{freeman2011} 
+
+\[
+f(x) = \frac{P(x)}{Q(x)}
+\]
+mit \(\deg(P) < \deg(Q)\), zerlegt man \(f(x)\) in die Form 
+\[
+f(x) = \sum_{i} \frac{A_i}{(x - r_i)^{m_i}} + \sum_{j} \frac{B_j x + C_j}{(x^2 + px + q)^{n_j}}.
+\]
+Hierbei sind \(r_i\) reelle Nullstellen und \(x^2 + px + q\) irreduzible quadratische Faktoren von \(Q(x)\).
 
 
 \section{Rekursive Funktionen}
@@ -279,36 +290,97 @@ Zum Beispiel in \cite{liski2019converting} kann klar gesehen welche zentrale Rol
 
 \section{Python}\label{sec:python}
 
+In diesem Unterricht wird python verwendet. Alternativ könnte man vieles andere verwenden, MATLAB, Octave,  Mathematica, R, Julia etc. Alle diese Sprachen haben Vor- und Nachteile. Hier einige der Vorteile von Python:
+\begin{itemize}
+	\item Gratis
+	\item Open Source
+	\item General Purpose Langage (Industriestandard fuer Machine Learnung zB.) 
+\end{itemize}
+Allgemein versucht dieser Unterricht die details des Programmierens eher in den Hintergrund zu Stellen und es wird versucht ein Fokus auf die dahinterliegenden Mathematischen Probleme zu legen, weshalb zu Teil die informatik ein wenig kurz und bündig ausfallen wird. 
 
-\begin{python}{Rekursive Python Implementierung von Gleichung \ref{eq:fib}}
-def fib(x):
-	if x == 0:
-		return 0
-	elif x == 1:
-		return 1
-	else:
-		return fib(x-1) + fib(x-2)
-\end{python}
+\subsection{Laden von Bibliotheken}
+Oft wollen wir \texttt{python} einfach als 'Taschenrechner' verwenden. Da für \texttt{python} zahllose Zusatzpakete und Programmbibliotheken existieren können wir sehr komplexe Abläufe auslagern durch die Einbindung diese Bibliothheken. Sehr oft werden wir unsere 'Session' mit folgenden importen beginnen:
 
-
-\begin{python}{import von Paketen und Definition eines symbolischen Polynoms.}
+\begin{python}{üblicher beginn einer Python session für unsere Zwecke.}
+%pylab
 import sympy as sp
-sp.init_session()
-%matplotlib inline # Nur sinnvoll in Notebook environments
+\end{python}
+Hier werden in Zeile \texttt{1} durch \texttt{\%pylab} 2 Pakete importiert: \texttt{numpy} und \texttt{matplotlib}\footnote{\texttt{numpy} ist das gängigste Paket für numerische OPerationen im allgemeinen und speziell auf arrays. \texttt{matplotlib} ist zuständig fÚr das anzeigen von plots.}. In Zeile \texttt{2} wird \texttt{sympy} importiert und zwar unter dem kürzel \texttt{sp}\footnote{Wir könnten auch statt \texttt{hans} verwenden. \texttt{sp} ist sehr verbreitet und wirkt übersichtlich.}. Das kürzel erlaubt uns funktionen in \texttt{sympy} durch dieses zu verwenden, z.B..: \texttt{sp.roots()}. \\
 
-p= x**5 +2*x**4 -x**3 -2*x**2
+
+\subsection{Numerische Berechnug vs Symbolische Bearbeitung}
+
+Durch den obigen import haben wir nun die Möglichkeit mathematische Probleme sowohl numerisch als auf analytisch zu lösen. Es gilt hier vorsichtig zu sein, und sich immer bewusst zu sein ob wir symbolisch oder numerisch arbeiten. 
+
+\example{\textbf{Beispiel} \\
+Das polynom $p(x) = x^3 - 4 \cdot x^2 - 7 \cdot x + 10$ soll auf Nullstellen untersucht werden.
+
+Eine variante wäre es einfach mit verschiedenen Zahlen zu evaluieren:
+}
+
+\begin{python}{Einfache Evaluierung eines Polynoms.}
+In [1]: x = 3
+In [2]: x**3 - 4*x**2 - 7*x + 10
+Out[2]: -20
+\end{python}
+\todo{Make lisings work inside 'examples'.}
+\example{
+	Anstatt mehrfach verschiedene Werte zu probieren kann ein sig. \texttt{array} verwendet werden um viele Zahlen gleichzeitig zu evalieren und das resultat kann in einem Graphen ('plot') angezeigt werden. Ein array mit aufsteigenden Zahlen kann erzeugt werden via \texttt{linspace()}. Zum Beispiel werden im Folgenden 11 Zahlen zwischen 0 und 5 erzeugt:
+}
+\begin{python}{Einfache Evaluierung eines Polynoms.}
+In [1]: linspace(0, 5, 11)
+Out[1]: array([0. , 0.5, 1. , 1.5, 2. , 2.5, 3. , 3.5, 4. , 4.5, 5. ])
 \end{python}
 
-\begin{python}{Nullstellen des Polynoms berechnen.}
-sp.roots(p)
+\example{
+	Nun können wir eine variable \texttt{x} durch einen array definieren und das polynom auf allen werten in \texttt{x} evaluieren. Das ergebnis weisen wir der Variable \texttt{y} zu und wir nutzten den \texttt{plot} befehl um uns den Grafen anzuzeigen.
+}
+
+\begin{python}{Numerische Auswertung eines Polynoms.}
+In [1]: x = linspace(-10, 10, 300)
+In [2]: y = x**3 - 4*x**2 - 7*x + 10
+In [3]: plot(x,y)
 \end{python}
+
+test.
 
 \begin{figure}[tb]
 	\centering
 	\input{img/polynom1.pgf}
-	\caption{Polynom}
+	\caption{Der Funktiongraph des Polynoms  $p(x) = x^3 - 4x^2 - 7x + 10$.}
 	\label{fig:poly1}
 \end{figure}
+
+% \begin{python}{Rekursive Python Implementierung von Gleichung \ref{eq:fib}}
+% def fib(x):
+% 	if x == 0:
+% 		return 0
+% 	elif x == 1:
+% 		return 1
+% 	else:
+% 		return fib(x-1) + fib(x-2)
+% \end{python}
+
+
+% \begin{python}{import von Paketen und Definition eines symbolischen Polynoms.}
+% import sympy as sp
+% sp.init_session()
+% %matplotlib inline # Nur sinnvoll in Notebook environments
+
+% p= x**5 +2*x**4 -x**3 -2*x**2
+% \end{python}
+
+
+
+\begin{python}{Symbolische extraktion d Nullstelle in Python}
+import sympy as sp
+from sympy.abc import x
+p = x**3 - 4*x**2 - 7*x + 10
+sp.roots(p,x)
+
+Out[1]: {5: 1, 1: 1, -2: 1}
+\end{python}
+
 
 
 
@@ -321,20 +393,7 @@ sp.roots(p)
 
 % In [3]:
 
-% \end{python}
-\begin{python}{Paketimport.}
-%pylab
-from sympy import *
-init_session()
-%matplotlib inline
-\end{python}
 
-
-\begin{python}{Achsen Hervorhebung und 'Grid' aktivieren (Erfordert Installation des \texttt{seaborn} Pakets).}
-import seaborn as sns
-sns.set()
-sns.set_style("whitegrid", {'grid.linestyle': '--'})
-\end{python}
 
 \section{Aufgaben}
 
