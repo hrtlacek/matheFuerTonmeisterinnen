@@ -3,7 +3,7 @@
 
 \section{Motivation}
 
-
+\todo{TODO}
 
 \section{Aussagen}
 
@@ -240,7 +240,7 @@ Ist diese Bedingung erfüllt, handelt es sich um ein lineares System. In \emph{a
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.6\textwidth]{img/zahlen.png}
-    \caption{Zahlen als u Euler Diagramm. }
+    \caption{Zahlen als Euler Diagramm. }
     \label{fig:zahlen}
 \end{figure}
 
@@ -314,27 +314,28 @@ Einfache Rechenoperationen wie $+, -, \cdot, / $, haben in der Tontechnik/Signal
 
 \begin{figure}[h!]
     \centering
-        \input{python/signale_rechenop.pgf}
-    \caption{Zwei Signale}
+        \input{python/plots/signale_rechenop.pgf}
+    \caption{Zwei Signale, $A$ und $B$ die in Tabelle \ref{tab:rechen} unterschiedlich verknüpft werden.}
     \label{fig:signale}
 \end{figure}
 
 \begin{table}
 \begin{center}
-\begin{tabular}{|c|p{3cm}|c|}
+\begin{tabular}{|c|p{5cm}|c|}
     \hline
     \textbf{} & \textbf{Audio Konzept} & \textbf{Plot} \\
     \hline
-    $A + B$ & "$A$ und $B$ zusammen mischen" & \input{python/signale_rechenop_AplusB.pgf} \\
+    $A + B$ & $A$ und $B$ "zusammen mischen" & \input{python/plots/signale_rechenop_AplusB.pgf} \\
     \hline
-    $A - B$ & "Mischen mit Invertierter Phase des $B$ Signals"& \input{python/signale_rechenop_AminusB.pgf} \\
+    $A - B$ & "Mischen mit Invertierter Phase des $B$ Signals"& \input{python/plots/signale_rechenop_AminusB.pgf} \\
     \hline
-    $A \cdot B$ & Verstärken, Modulation & \input{python/signale_rechenop_AtimesB.pgf} \\
+    $A \cdot B$ & Verstärken, Modulation & \input{python/plots/signale_rechenop_AtimesB.pgf} \\
     \hline
-    $B / A$ & & \input{python/signale_rechenop_BdivA.pgf} \\
+    $B / A$ & Divisionen mit Signalen werden vermieden (Nulldurchgänge!) & \input{python/plots/signale_rechenop_BdivA.pgf} \\
     \hline
 \end{tabular}
 \caption{Tabelle mit Ergebnissen unterschiedlicher Rechenoperationen zwischen 2 Signalen.}
+\label{tab:rechen}
 \end{center}
 \end{table}
 
@@ -343,7 +344,7 @@ Einfache Rechenoperationen wie $+, -, \cdot, / $, haben in der Tontechnik/Signal
 
 \subsection{Modulo}
 
-Die \emph{Modulo} Operation ist eine Division zweier Zahlen, wobei das Resultat der Rest dieser Division ist. In mathematischer Notation schreibt man typischerweise $a \, mod \, b$ um zu sagen, "dividiere $a$ durch $b$ und 'nimm den Rest'".
+Die \emph{Modulo} Operation ist eine Division zweier Zahlen, wobei das Resultat der \emph{Rest} dieser Division ist. In mathematischer Notation schreibt man typischerweise $a \, mod \, b$ um zu sagen, "dividiere $a$ durch $b$ und 'nimm den Rest'".
 
 In vielen Programmiersprachen(Python, C, Java) wir die Modulo Operation als \texttt{\%} dargestellt, zB \texttt{14 \% 12}. Die Operation ist hier erwähnenswert da sie extrem nützlich ist aber oft in klassischen Mathematik Büchern keinen großen Stellenwert hat. \\
 \textbf{Der Modulo kann verwendet werden um aus einer Kontinuierlichen Funktion eine Periodische Funktion zu erzeugen.}
@@ -429,7 +430,7 @@ Soundbeispiel hier: \faust{Betrag Einer 150Hz Sinus Schwingung}{https://faustide
 
 \begin{figure}[H]
     \centering
-    \input{python/signale_absolutwert.pgf}
+    \input{python/plots/signale_absolutwert.pgf}
     % \includegraphics[width=0.4\textwidth]{betrag.png}
     \caption{Betrag verglichen mit 'clipping'. Sinus Schwingung als Input.}
     \label{fig:sinBetrag}
@@ -606,7 +607,7 @@ $$L = 20 \cdot log_{10}(x)$$
 
 \begin{figure}[h!]
     \centering
-    \input{python/linLog_spec.pgf}
+    \input{python/plots/linLog_spec.pgf}
     \caption{Das Spektrum eines Signals, linear und in Dezibel. Die x-Achse ist in beiden Fällen Linear. Der Wertebereich der y-Achse identisch! Also $20\cdot log_{10}(10000) = 80$}
     \label{fig:figure1}
 \end{figure}
