@@ -382,6 +382,9 @@ sp.roots(p,x)
 Out[1]: {5: 1, 1: 1, -2: 1}
 \end{python}
 
+Hier ist hervorzuheben dass \texttt{\{5: 1, 1: 1, -2: 1\}} ein sog. \texttt{Dictionary} darstellt  das sowohl die Position der Nullstellen als auch die \emph{Anzahl} der Nullstellen an der jeweiligen Stelle enthält. \\
+Beispielsweise das Polynom $f(x) = x^2 - 6^x + 9$ liefert das \texttt{Dictionary} \texttt{\{3: 2\}}. 
+
 
 
 
@@ -393,6 +396,23 @@ Out[1]: {5: 1, 1: 1, -2: 1}
 % Out[2]: 2.0
 
 % In [3]:
+
+
+\subsection{Symbolische Linearfaktorzerlegung}
+\begin{python}{Symbolische Linearfaktorzerlegung in Python}
+p = x**2 - 6*x +9
+sp.factor(p)
+Out[1]: (x - 3)**2
+\end{python}
+
+
+\subsection{Symbolische Partialbruchzerlegung}
+
+\begin{python}{Symbolische Linearfaktorzerlegung in Python}
+p = (x + 2)/(x + 1)
+sp.apart(p)
+Out[1]: 1 + 1/(x + 1)
+\end{python}
 
 
 
