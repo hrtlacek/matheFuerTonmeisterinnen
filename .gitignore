@@ -1,6 +1,11 @@
 # Log files
 *.log
 
+# indexing
+*.idx
+*.ilg
+*.ind
+
 # Auxiliary files
 *.aux
 *.lof

@@ -2,22 +2,229 @@
 \chapter{Komplexe Zahlen} \label{chap:complex}
 
 
-Komplexe Zahlen haben äusserst grosse Wichtigkeit in der Beschreibung von Harmonischen Schwingungen und daher natürlich grosse wichtigkeit in der Audio Domäne.  
+Komplexe Zahlen haben äußerst große Wichtigkeit in der Beschreibung von Harmonischen Schwingungen und daher natürlich ebensolche Relevanz in der Audio Domäne. \\
+\todo[inline]{Beispiele}
+
+Beim Versuch ein einfaches Polynom auf Nullstellen zu untersuchen stoßen wir auf Probleme: $p(x) = x^2 + 1$. Wir suchen die Nullstellen durch einsetzen und Umformen:
+
+$$0 = x^2 + 1$$
+$$-1 = x^2$$
+$$\sqrt{-1} = x$$
+
+\important{
+Dies führt uns auf die Definition einer neuen 'Zahl', der imaginären Einheit, $i$.
+\begin{equation}
+i = \sqrt{-1}
+\end{equation}
+}
+
+Dies erlaubt die Lösung des obigen Polynoms: $x = \pm i$. Es ist nachvollziehbar wenn sich das nach einem dummen 'Trick' anfühlt an dieser Stelle. Historisch war die Etablierung dieser Zahl und der daraus resultierenden Komplexen Zahlen nicht unumstritten. Es wird in Abschnitt \ref{sec:anwendungen} versucht, die praktische Seite dieser Einführung unbestreitbar zu machen. \\
+\important{
+Nun kann der Zahlenkörper der Komplexen Zahlen $\mathbb{C}$ wie folgt beschrieben werden:
+Die Menge der Elemente in $\mathbb{R}^2$, also der Zahlenpaare $(a,b)$ wobei $a$ und $b$ reelle Zahlen sind \citep{merziger2024repetitorium} und das Element $i:= (0,1)$. \\
+
+Das Element $(a,b)$ kann zerlegt werden:
+$(a,b) = (a,0) + (0,b) = a+bi$
+Daher wird 
+\begin{itemize}
+	\item$a$ \textbf{Realteil} und 
+	\item $b$ \textbf{Imaginärteil} genannt.
+\end{itemize}
+}
+
+\section{Darstellung}
+Komplexe zahlen können auf verschiedene Arten dargestellt werden. Vielleicht darf dies metaphorisch mit unterschiedlichen Darstellungen von Dezimalzahlen verglichen werden (die Ziffern $10$ in Binärsystem entsprechen dem wert des Ausdrucks $2$ in Dezimalsystem). Die unterschiedlichen Darstellungen erlauben unterschiedliche Einsichten und manche Darstellungen vereinfachen bestimmte Operationen wie Multiplikation, Addition etc. 
+Die üblicherweise als erstes Betrachtete Darstellung, ist die oben beschriebene\emph{Kartesische Darstellung}\footnote{Benannt nach René Descartes. 31. März 1596 – 11. Februar 1650.}:
+
+\important{
 
 \begin{equation}
 z = a + bi
 \end{equation}
+}
+\begin{figure}[h]
+	\centering
+	\input{python/plots/comp_cart01.pgf}
+	\caption{Kartesische Darstellung der Komplexen Zahl $z = 2 + 3i$.}
+	\label{fig:komp_kart}
+\end{figure}
+
+Vielleicht ist es einleuchtend dass wir den selben Punkt auf dieser \emph{Zahlenebene} nicht nur per 'x/y' Koordinaten darstellen können sondern alternativ via Radius $r$ und Winkel $\varphi$, siehe Abb. \ref{fig:komp_pol}.
 
 
-\begin{equation}
-e^{xi} = cos(x) + isinx()
-\end{equation}
+\begin{figure}[h]
+	\centering
+	\input{python/plots/comp_polar.pgf}
+	\caption{Polare Darstellung der Komplexen Zahl $z = 2 + 3i$.}
+	\label{fig:komp_pol}
+\end{figure}
 
-\section{Rechenregeln}
+
+
+
+\section{Rechenregeln für die Kartesische Darstellung}
+
+Die Addition folgt der Vektoraddition, im wesentlichen dürfen Real- und Imaginärteil nicht 'vermischt' werden. Generell kann mit komplexen Zahlen wie mit reellen Zahlen gerechnet werden, nur dass eben auf $i$ Rücksicht genommen werden muss.
 \begin{equation}
 z_1 + z_2 = (a_1 + a_2) + i(b_1 + b_2)
 \end{equation}
 
-\begin{equation}
-z_1 \cdot z_2 = (a_1 + a_2) + i(b_1 + b_2)
+
+Die Multiplikation von Komplexen zahlen weicht ab vom Vergleich mit Vektoren:  
+\begin{equation}\label{eq:cartMult}
+z_1 \cdot z_2 = (a_1 a_2 - b_1 b_2)  + i(a_1 b_2 +a_2 b_1)
 \end{equation}
+Das mag verwirrend wirken, ist jedoch 1. sehr leicht herzuleiten und 2. ist es ein Vorteil der polaren Darstellung dass hier die Multiplikation wesentlich einfacher wird als eben hier in der Kartesischen. 
+
+\begin{question}
+    Leite Gleichung \ref{eq:cartMult} her aus den bis jetzt bekannten Prinzipien! 
+\end{question}
+
+\begin{answer}
+$$(a_1 + b_1i) (a_2 + b_2i)$$
+$$ = a_1a_2 + a_1b_2i + b_1i a_2 +b_1i b_2i$$
+$$ = a_1a_2 +  a_1b_2i +b_1i a_2 - b_1 b_2 \qquad\text{ Da } ii = i^2 \text{ und } i^2=-1$$
+$$ = a_1a_2 - b_1 b_2 + b_1i a_2 + a_1b_2i  \qquad\text{ Sammeln von real/imag}$$
+$$ = a_1a_2 - b_1 b_2 +  i (b_1 a_2 + a_1b_2)$$
+\end{answer}
+
+
+\section{Konvertierung Zwischen Kartesischer und Polarer Darstellung}
+Die Konvertierung folgt klassischen trigonometrischen Prinzipien.
+Der Radius $r$ kann aus der Kartesischen Darstellung via Pythagoras berechnet werden:
+\important{
+$$r = \sqrt{a^2 + b^2}$$
+$$ tan \varphi = \frac{b}{a}$$
+}
+Wenn man versucht die Umkehrfunktion des Tangens (Arkustangens, $arctan$) zu verwenden muss man beachten im richtigen Quadranten zu landen. Wenn $x<0$ muss $\pm \pi$ zum dem Ergebnis addiert werden. Daher ist in den meisten Programmiersprachen die Funktion \texttt{atan2} zu finden, die den Winkel Eindeutig berechnet (in Radianten). 
+
+% \important{
+$$|z| = r = \sqrt{a^2 + b^2}, \qquad \text{Wird Betrag genannt.}$$
+$$ arg(z) = \varphi = atan2(b,a), \qquad \text{Wird Argument genannt.} $$
+
+
+
+Umgekehrt kann $a$ und $b$ via Sinus und Kosinus berechnet werden:
+
+$$a = r cos(\varphi)$$
+$$b = r sin(\varphi)$$
+
+Hieraus ergibt sich schließlich die \textbf{Polare Darstellung}:
+$$ z = r (cos(\varphi) + i sin(\varphi))$$
+% }
+
+
+
+
+\section{Eulersche Darstellung}
+
+
+
+Wohl eine der wichtigsten Gleichungen für die Audio Technik ist die \index{Eulersche Formel}:
+
+\important{
+\begin{equation}\label{eq:euler}
+e^{xi} = cos(x) + isin(x)
+\end{equation}
+}
+
+Aus Gleichung \ref{eq:euler} und der Polaren Darstellung leitet sich die '\index{Eulersche Darstellung}' oder auch '\index{Exponentialform}' für komplexe Zahlen ab:
+
+\important{
+\begin{equation}\label{eq:eulerNotation}
+z = re^{i \varphi} 
+\end{equation}
+}
+
+Dies ist wohl die Kompakteste und in vielen Fällen Praktischste Darstellung für unsere Zwecke. Sie findet sich zB. in der üblichen Schreibweise der Fourier Transformation und vielen anderen Ausdrücken unseres Feldes. \textbf{Aufgrund von Gleichung \ref{eq:euler} sollte uns klar sein dass der Ausdruck $e^{ix}$ (den wir oft vorfinden) immer als Sinus und Kosinus Schwingungen gedacht werden kann.}
+
+\section{Rechenregeln in Eulerscher Darstellung}
+
+Die Multiplikation zweier komplexer Zahlen in Eulerscher Darstellung wird durch Multiplikation der Radii und \emph{Addition} der Winkel ausgeführt:
+
+\important{
+$$z_1 \cdot z_2 = r_1e^{i\varphi_1} \cdot r_2e^{i\varphi_2} =  r_1 \cdot r_2 \cdot e^{i (\varphi_1 + \varphi_2)}$$}
+
+Die komplexe Division ist 'gegenteilig' definiert: Beträge werden dividiert und Winkel subtrahiert:
+
+$$\frac{z_1}{z_2} = \frac{r_1e^{i\varphi_1}} { r_2e^{i\varphi_2}} =  \frac{r_1}{ r_2} \cdot e^{i (\varphi_1 - \varphi_2)}$$
+
+
+Potenzieren lässt sich aus der Multiplikation ableiten als: 
+\important{
+$$z_1 ^n = (r_1 e^{i\varphi_1})^n  = r_1^{n} e^{in\varphi_1} $$}
+
+\praxis{In der Beschreibung digitaler Filter und Verzögerungen (Delays) werden üblicherweise Potenzen komplexer Zahlen verwendet ($z^{-1}$ entspricht einer Verzögerung um 1 Sample, siehe Abschnitt \ref{subsec:rationalExp}). Daher ist es natürlich sinnvoll Komfort mit komplexen Potenzen aufzubauen. }
+
+So wie die Multiplikation in Kartesischer Darstellung wesentlich komplizierter wirkt als in Eulerscher Darstellung ist die Addition in Eulerscher Darstellung komplizierter als in Kartesischer und wir oft in Einführender Literatur Ausgespart.
+
+
+\section{Konjugiert Komplexe Zahl}
+Gegeben $z_1 = a + bi$ wir die zahl $z_2 = a - bi = \overline{z_1}$ als \index{konjugiert komplex} bezeichnet. Oder in Exponentialform:
+$$z = re^{\varphi i} \iff \overline{z} = re^{-\varphi i}$$
+
+\begin{figure}[h]
+	\centering
+	\input{python/plots/comp_conju.pgf}
+	\caption{Konjugiert komplexe zahl $\overline{z}$.}
+	\label{fig:komp_conju}
+\end{figure}
+
+
+\section{Komplexe Funktionen}
+In der Audiotechnik sind komplexwertige Funktionen wichtig. Ein Beispiel wäre die Funktion $f(z) = z$ mit $z \in \mathbb{C}$. Ihr Betrag kann auf der Komplexen Ebene durch Farben dargestellt werden aber es ist auch manchmal hilfreich sich das Ergebnis als dreidimensionale Landschaft vorzustellen, siehe Abb. \ref{fig:komp_3D}. 
+
+\begin{figure}[h]
+	\centering
+	\input{python/plots/comp_3d.pgf}
+	\caption{Zwei Arten den Betrag einer Komplexen Zahl zu plotten.}
+	\label{fig:komp_3D}
+\end{figure}
+
+
+\section{Komplexe Zahlen in Python}
+
+In \texttt{Python} wird die Zahl $i$ durch \texttt{1j} ausgedrückt. \texttt{j} alleine hat zunächst keine Bedeutung und führt zu einer Fehlermeldung wenn \texttt{j} nicht definiert ist. \texttt{1j} hingegen ist $i$, wobei \texttt{1} hier durch andere zahlen ersetzt werden kann, zB \texttt{5j} oder \texttt{2.7j}. Die folgende (ein wenig gekürzte) Aufzeichnung einer interaktiven \texttt{iPython} Session soll diesen vielleicht im ersten Moment verwirrenden Unterschied klar machen:
+
+\begin{python}{Verwendung von i in Python.}
+In [1]: %pylab
+
+In [2]: 1j
+Out[2]: 1j
+
+In [3]: j
+
+NameError: name 'j' is not defined
+
+In [4]: b = 3
+
+In [5]: 2 + bj
+
+NameError: name 'bj' is not defined
+
+In [6]: 2 + b*1j
+Out[6]: (2+3j)
+\end{python}
+
+
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{3cm}|p{6cm}|p{6cm}|}
+        \hline
+    \textbf{Befehl} & \textbf{Beispiel} & \textbf{Kommentar} \\ \hline
+    
+    \texttt{1j} & \texttt{z = 3+5j} & Die Zahl $i$. \\ \hline
+    \texttt{abs()} & \texttt{r = abs(z)} & Berechnet den Betrag von \texttt{z}. \\ \hline
+    \texttt{angle()} & \texttt{phi = angle(z)} & Berechnet das Argument von \texttt{z}. \\ \hline
+
+
+    \end{tabular}
+\end{table}
+
+
+
+
+\todo[inline]{ polynome mit reellen koeefizienten -> kompl konj oder reelle nullstellen. Division von compl zahlen durch mult mit kompl. konj., $e^z$, $ln z$, python, 3d plots of complex functions}
+\section{Anwendungen}\label{sec:anwendungen}
+\todo[]{TODO}

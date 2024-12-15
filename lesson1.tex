@@ -85,7 +85,7 @@ $\forall x \in X, \: A(x)$ : Für alle $x$ in $X$ ist die Aussage $A(x)$ wahr.
 
 \section{Mengen}
 
-\important{Eine Menge ist eine Zusammenfassung unterscheidbarer Objekte zu einer Gesamtheit. Die Objekte werden 'Elemente' genannt}
+\important{Eine \index{Menge} ist eine Zusammenfassung unterscheidbarer Objekte zu einer Gesamtheit. Die Objekte werden 'Elemente' genannt}
 
 % \equation{ 
 Beispiele für \emph{explizite} Mengen:
@@ -159,12 +159,12 @@ Die \emph{Abbildung} oder \emph{Funktion} $f$ bildet die Menge $D$ auf die Menge
 Man schreibt $f\coloneqq x \mapsto y$ oder $f(x) = y$.
 
 \begin{itemize}
-    \item $D$ Definitionsbereich, Definitionsmenge
-    \item $Z$ Zielmenge
-    \item $f(A)$ Bildmenge (wobei stets $f(A)=B, B \in Z$, heißt: Die Bildmenge ist eine Teilmenge der Zielmenge.)
+    \item $D$ \index{Definitionsbereich}, \index{Definitionsmenge}
+    \item $Z$ \index{Zielmenge}
+    \item $f(A)$ \index{Bildmenge} (wobei stets $f(A)=B, B \in Z$, heißt: Die Bildmenge ist eine Teilmenge der Zielmenge.)
     \item $x$ unabhängige Variable
     \item $y$ abhängige Variable
-    \item $f(x) = y$ Funktionsgleichung
+    \item $f(x) = y$ \index{Funktionsgleichung}
 \end{itemize}
 
 
@@ -189,8 +189,8 @@ $ D\subseteq \mathbb {R}$ heißt gerade, wenn für alle Argumente $ x\in D$  $f(
 
 Kurz:
 \begin{itemize}
-    \item Gerade Funktion:  $f(-x) = f(x)$. Achsensymmetrisch zur $y$-Achse.
-    \item Ungerade Funktion:  $f(-x) = -f(x)$. Punktsymmetrisch zum Ursprung.
+    \item \index{Gerade Funktion}:  $f(-x) = f(x)$. Achsensymmetrisch zur $y$-Achse.
+    \item \index{Ungerade Funktion}:  $f(-x) = -f(x)$. Punktsymmetrisch zum Ursprung.
 \end{itemize}
 
     \begin{figure}[H]
@@ -216,7 +216,7 @@ $f(x)$ heißt periodisch mit Periode $p>0$ wenn für alle $ x \in \mathbb{R}$ gi
 
 \subsection{Linearität}
 Aus Tontechnischer/Signalverarbeitungssicht ist hier eine wichtige Unterscheidung zu machen. Manche Rechenoperationen sind \emph{linear} andere nicht. 
-Linearität ist die Eigenschaft eines Systems \emph{proportional} zu reagieren.
+\index{Linearität} ist die Eigenschaft eines Systems \emph{proportional} zu reagieren.
 Wenn also der Input an einem linearen System steigt, steigt der Output proportional dazu. Das einfache System idealer 'Verstärker' soll uns als Beispiel dienen:
 $$f(x) = x \cdot a$$ wobei $a$ hier der Verstärkungsfaktor wäre. Nennen wir den Output $y$, also sei $y \coloneqq f(x)$ dann können wir sagen $$y \propto x.$$ 
 $y$ verhält sich proportional zu $x$. 
@@ -273,7 +273,7 @@ Alle Ganzzahlen inkl. $0$ und negativen Zahlen.
 Zahlen die als Brüche von Ganzzahlen ausgedrückt werden können. zB. $5$ $\frac{1}{2}$ oder $\frac{1}{3}$.
 
 \subsection{Reelle Zahlen $\mathbb{R}$}
-Reelle zahlen füllen die 'Lücken' zwischen den Rationalen Zahlen. Enthalten sind auch irrationale Zahlen wie $\pi$ oder $\sqrt{2}$.
+\index{Reelle Zahlen} füllen die 'Lücken' zwischen den Rationalen Zahlen. Enthalten sind auch irrationale Zahlen wie $\pi$ oder $\sqrt{2}$.
 
 
 
@@ -353,7 +353,7 @@ Einfache Rechenoperationen wie $+, -, \cdot, / $, haben in der Tontechnik/Signal
 
 \subsection{Modulo}
 
-Die \emph{Modulo} Operation ist eine Division zweier Zahlen, wobei das Resultat der \emph{Rest} dieser Division ist. In mathematischer Notation schreibt man typischerweise $a \, mod \, b$ um zu sagen, "dividiere $a$ durch $b$ und 'nimm den Rest'".
+Die \emph{\index{Modulo}} Operation ist eine Division zweier Zahlen, wobei das Resultat der \emph{Rest} dieser Division ist. In mathematischer Notation schreibt man typischerweise $a \, mod \, b$ um zu sagen, "dividiere $a$ durch $b$ und 'nimm den Rest'".
 
 In vielen Programmiersprachen(Python, C, Java) wir die Modulo Operation als \texttt{\%} dargestellt, zB \texttt{14 \% 12}. Die Operation ist hier erwähnenswert da sie extrem nützlich ist aber oft in klassischen Mathematik Büchern keinen großen Stellenwert hat. \\
 \textbf{Der Modulo kann verwendet werden um aus einer Kontinuierlichen Funktion eine Periodische Funktion zu erzeugen.}
@@ -410,7 +410,7 @@ Der Modulo kann verwendet werden um eine Zeit in 24 Stunden Format in 12 Stunden
 %     \label{fig:betrag}
 % \end{wrapfigure}
 
-Betrag macht alles positiv. Der \emph{Betrag} einer Zahl $a \in \mathbb{R}$, dargestellt als $|a|$ kann folgendermaßen definiert werden:
+Der Betrag macht alles positiv. Der \emph{Betrag} einer Zahl $a \in \mathbb{R}$, dargestellt als $|a|$ kann folgendermaßen definiert werden:
 $$ 
 |a| \coloneqq
 \begin{cases} 
@@ -432,7 +432,7 @@ Der Betrag kann als \emph{Funktion} aufgefasst werden (später mehr zu Funktione
 \end{figure}
 
 \praxis{
-Der Betrag (oder auch Absolutwert) hat in der Audio Technik eine Wichtige Rolle, speziell der Betrag von Komplexen Zahlen, den Ergebnissen der Fourier Transformation. In der Elektrotechnik kann er als 'Gleichrichter' gefunden werden um Wechselströme zu Gleichströmen zu wandeln. Er ist eine der simpelsten Verzerrungen mit geraden harmonischen.
+Der \index{Betrag} (oder auch Absolutwert) hat in der Audio Technik eine Wichtige Rolle, speziell der Betrag von Komplexen Zahlen, den Ergebnissen der Fourier Transformation. In der Elektrotechnik kann er als 'Gleichrichter' gefunden werden um Wechselströme zu Gleichströmen zu wandeln. Er ist eine der simpelsten Verzerrungen mit geraden harmonischen.
 }
 
 Soundbeispiel hier: \faust{Betrag Einer 150Hz Sinus Schwingung}{https://faustide.grame.fr/?autorun=1\&voices=0\&name=abs_test\&inline=aW1wb3J0KCJzdGRmYXVzdC5saWIiKTsKcHJvY2VzcyA9IG9zLm9zYygxNTApOmFiczs\%3D}

@@ -405,6 +405,12 @@ literate={ϵ}{$\epsilon$}1
 % ================================================
 
 
+% ===================INDEXING=====================
+\usepackage{imakeidx}
+\makeindex
+% ================================================
+
+
 % ============= Dokumentbeginn =============
 
 \begin{document}
@@ -529,5 +535,8 @@ literate={ϵ}{$\epsilon$}1
 \newpage
 \lstlistoflistings
 \addcontentsline{toc}{chapter}{Listings}
+
+\printindex
+\addcontentsline{toc}{chapter}{Index}
 
 \end{document}

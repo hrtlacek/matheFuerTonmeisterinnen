@@ -128,6 +128,7 @@ cos(x) = cos(-x)
 \end{equation}
 
 \section{$e^x$}
+Eulersche Zahl $e \approx 2.718281828459045$.\footnote{Benannt nach Leonhard Euler, 15. April 1707 – 18. September 1783. Einer der wichtigsten Mathematiker der Geschichte. }
 
 \begin{figure}[H]
 	\centering
@@ -138,7 +139,19 @@ cos(x) = cos(-x)
 
 \todo{TODO}
 
+
 \section{Sinc}
+
+Die sinc Funktion ist definiert als:
+\begin{equation}
+ sinc (x)={\begin{cases} \frac{sin(x)}{x} ,&x\neq 0\\{1},&x=0\end{cases}}
+\end{equation}
+
+Alternativ wird manchmal nie \emph{normalisierte \index{sinc Funktion}} verwendet in der  Faktor $\pi$ in die Funktion hineingenommen wird: $sin(\pi x) \ \pi x$.
+
+Die Funktion hat für uns relevanz u.a. da sie die \index{Impulsantwort} eines idealen Lowpass \index{Filter}s beschreibt\citep{enwiki:sincFilter}. Eine möglichkeit sich diese Tatsache zu verdeutlichen ist dass die $sinc$ Funktion aus Cusinus schwingungen unterschiedlicher Frequenzen zusammengesetzt werden kann, siehe Abb \ref{fig:sincAsSum}. 
+
+
 
 \begin{figure}[H]
 	\centering
@@ -160,7 +173,7 @@ cos(x) = cos(-x)
 mit reellen Koeffizienten $a_k, k = 0,1...n$ und $a_n \neq 0$ wird Polynom n-ten Grades genannt.
 }
 
-Für die Tontechnik und Signalverarbeitung gibt es hier viele Anwendungen, seien es Filter, Verzerrungen etc. Oft müssen wir \emph{Nullstellen} (Engl. 'roots') oder \emph{Polstellen} einer Funktion finden. 
+Für die Tontechnik und Signalverarbeitung gibt es hier viele Anwendungen, seien es Filter, Verzerrungen etc. Oft müssen wir \emph{\index{Nullstellen}} (Engl. 'roots') oder \emph{\index{Polstellen}} einer Funktion finden. 
 
 \subsection{Nullstellen von quadratischen Gleichungen}
 
@@ -175,7 +188,7 @@ x_{1,2} = -\frac{p}{2} \sqrt{\left( \frac{p}{2} \right)^2 - q } \label{eq:pq-for
 \subsection{Der allgemeine Fall: Nullstellen von Polynomen beliebigen Grades}
 Es gibt keine allgemeingültigen Lösungsformeln für Polynome beliebigen Grades, aber es gibt einiges über diese Situation zu sagen.
 
-\important{ Fundamentalsatz der Algebra: \\
+\important{ \textbf{Fundamentalsatz der Algebra}: \\
 Werden die Nullstellen mit der richtigen Vielfachheit (wiederholte Nullstellen) gezählt so gilt: \emph{\textbf{Ein Polynom vom Grad $n$ hat $n$ komplexe Nullstellen.}} }
 \todo{Proof?}
 
@@ -187,10 +200,10 @@ Da man in der Gestaltung von Filtern, Hall Algorithmen etc oft die Notwendigkeit
 \todo[inline]{Rational root theorem? https://en.wikipedia.org/wiki/Rational\_root\_theorem}
 
 
-\subsection{Gebrochen Rationale Ausdrücke}
+\subsection{Gebrochen Rationale Ausdrücke}\label{subsec:rationalExp}
 
-Wenn wir ein wenig über die Hintergründe von digitalen Filter recherchieren stoßen wir schnell auf 
-\cite{FILTERSWEB07}\footnote{\href{http://ccrma.stanford.edu/\~jos/filters/BiQuad\_Section.html}{http://ccrma.stanford.edu/\~jos/filters/BiQuad\_Section.html}}. Eines der Standardwerke wenn es um digitale Signalverarbeitung im musikalischen Kontext geht. Hier finden wir einen Filter der sich 'Biquad'\footnote{Der Name 'Biquad' deutet darauf hin dass hier 2 ('Bi') quadratische Gleichungen vorliegen.} nennt und durch Gleichung \ref{eq:biquad} beschrieben wird.
+Wenn wir ein wenig über die Hintergründe von digitalen \index{Filter} recherchieren stoßen wir schnell auf 
+\cite{FILTERSWEB07}\footnote{\href{http://ccrma.stanford.edu/\~jos/filters/BiQuad\_Section.html}{http://ccrma.stanford.edu/\~jos/filters/BiQuad\_Section.html}}. Eines der Standardwerke wenn es um digitale Signalverarbeitung im musikalischen Kontext geht. Hier finden wir einen Filter der sich '\index{Biquad}'\footnote{Der Name 'Biquad' deutet darauf hin dass hier 2 ('Bi') quadratische Gleichungen vorliegen.} nennt und durch Gleichung \ref{eq:biquad} beschrieben wird.
 
 % 
 	% H(z) \eqsp g\frac{1 + b_1 z^{-1}+ b_2 z^{-2}}{1 + a_1 z^{-1}+ a_2 z^{-2}}. \label{eq:biquad}
