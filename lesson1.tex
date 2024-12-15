@@ -388,17 +388,47 @@ Der Modulo kann verwendet werden um eine Zeit in 24 Stunden Format in 12 Stunden
 
 \subsection{Summe und Produkt Notation}
 
+Das grosse Sigma, $\Sigma$ ist eine kuyrzschreibweise für Summen. Wir finden dieses Zeichen oft in Blockdiagrammen um eine Addition zu verdeutlichen und manchmal sogar auf Mischpulten als Zier in der Gegend der 'Summe'/des Master Faders. Es handelt sich um eine simple Addition, also nichts was zu Irritation führen sollte. In der Praxis kann es allerdings vorkommen dass, sich vor allem bei unendlichen Summen einige Komplexität hinter so einer Summer verbirgt. Die Notation alleine sollte aber nicht abschrecken:
+
+\begin{equation}
+{\displaystyle \sum _{k=1}^{5}k = 1 + 2 + 3 + 4 + 5 }
+\end{equation}
+
+Hier ist $k$ der \emph{index} (Auch 'Laufindex' oder 'Zähler' genannt). Unter dem Sigma steht bei welcher zahl zu zählen begonnen wird und welchen Buchstaben wir als index wählen. über dem Sigma steht bis wohin wir zählen. Nach dem Sigma steht was addiert wird. Allgemein:
+
+\important{
 \begin{equation}
 {\displaystyle \sum _{k=m}^{n}a_{k}=\sum _{m\leq k\leq n}a_{k}=a_{m}+a_{m+1}+\dotsb +a_{n}.}
 \end{equation}
+}
 
-\todo[]{summe erklärungen, beispiel. Praxisbezug. Beschreibung des ausgangssignals bei einem Mixer, DSF synthesis, diskrete fourier transf. }
 
-\todo[]{prod. Beispiel filter Kaskadieren (produkte)}
+Natürlich kann diese schreibweise verwendet werden um kompliziertere Ausdrücke zu formen.
+
+\begin{question}
+Schreiben Sie einen Ausdruck der die \textbf{geraden} Zahlen zwischen 0 und 11 quadiert und addiert!
+\end{question}
+\begin{answer}
+
+$${\displaystyle \sum _{k=0}^{5} (k \cdot 2)^2 = 0 + (1 \cdot 2)^2 + (2 \cdot 2)^2 + (3 \cdot 2)^2 + (4 \cdot 2)^2 + (5 \cdot 2)^2}$$
+
+\end{answer}
+
+
+\praxis{Im Audio Bereich finden wir Summenzeichen in vielen Bereichen. Bei der Diskreten Fourier Transformation, bei Filtern, bei der Beschreibung des Zusammenmischens vieler Signale im Allgemeinen (egal ob elektrisch oder akustisch), bei 'Discrete Summation Formula'(DSF)-Synthese und in vielen anderen Bereichen.}
+
+
+% \todo[]{summe erklärungen, beispiel. Praxisbezug. Beschreibung des ausgangssignals bei einem Mixer, DSF synthesis, diskrete fourier transf. }
+
+% \todo[]{prod. Beispiel filter Kaskadieren (produkte)}
+
+Die Notation für Produkte trifft man nicht ganz so oft an wie jene für Summen:
 
 \begin{equation}
 {\displaystyle \prod _{i=1}^{6}i^{2} =  1\cdot 4\cdot 9\cdot 16\cdot 25\cdot 36}
 \end{equation}
+
+Im Audio bereich ist natürlich auch diese Notation wichtig (Multiplikation ist eine wichtige operation). Ein Beipiel wäre, gegeben einen Filter mit der Transferfunktion $H$ könnte man $n$ hintereinandergeschaltene ('kaskadierte') Filter schreiben als $\prod _{i=1}^{n}H$.
 
 
 \subsection{Betrag}
@@ -447,7 +477,7 @@ Soundbeispiel hier: \faust{Betrag Einer 150Hz Sinus Schwingung}{https://faustide
 
 
 \subsection{Potenzen, Wurzeln, Logarithmen}
-\todo[]{Potenzen, Wurzeln, Logarithmen}
+\todo[inline]{Erklärender Text evtl}
 
 \subsubsection{Potenzgesetze}
 
@@ -549,7 +579,7 @@ log_a \left( \frac{1}{u} \right) = - log_a(u) \label{eq:logminone}
 
 \begin{answer}
 Zu \ref{eq:logdivs}: \\
-Man setzt ein, und hat ein leichtes Problem da die variablen Namen dafür ungünstig/verwirrend sind. Wir benennen diese also um für Gl. \ref{eq:logdivs}. Außerdem verwerfen wir die $log_a$ Notation da das $a$ hier stets irrelevant ist:
+Man setzt ein, und hat ein kleines Problem da die variablen Namen dafür ungünstig/verwirrend sind. Wir benennen diese also um für Gl. \ref{eq:logdivs}. Außerdem verwerfen wir die $log_a$ Notation da das $a$ hier stets irrelevant ist:
 $$ log \left(\frac{x}{y}\right) = log(x) - log(y).$$ 
 Wir setzen $x=1$:
 $$ log \left(\frac{1}{y}\right) = log(1) - log(y).$$
@@ -593,7 +623,7 @@ Dadurch dass wir nicht immer mit Leistungsgrößen zu tun haben, sondern manchma
 
 $$L = 20 \cdot log_{10}\left(\frac{x}{x_{ref}}\right)$$
 
-Wobei im im digitalen Fall $dB_{FS}$ ("Fullscale") sich $x_{ref}$  auf den Vollausschlag $1$ bezieht und damit vereinfacht werden kann zu: 
+Wobei im im digitalen Fall $dB_{FS}$ ('Fullscale') sich $x_{ref}$  auf den Vollausschlag $1$ bezieht und damit vereinfacht werden kann zu: 
 $$L = 20 \cdot log_{10}(x)$$
 
 \todo[]{Exkurs: Leistung eines digitalsignals via URI}
