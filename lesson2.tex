@@ -150,9 +150,9 @@ Die sinc Funktion ist definiert als:
  sinc (x)={\begin{cases} \frac{sin(x)}{x} ,&x\neq 0\\{1},&x=0\end{cases}}
 \end{equation}
 
-Alternativ wird manchmal nie \emph{normalisierte sinc Funktion} verwendet in der  Faktor $\pi$ in die Funktion hineingenommen wird: $sin(\pi x) \ \pi x$.
+Alternativ wird manchmal die \emph{normalisierte sinc Funktion} verwendet in der Faktor $\pi$ in die Funktion hineingenommen wird: $sin(\pi x) / \pi x$.
 
-Die Funktion hat für uns relevanz u.a. da sie die Impulsantwort eines idealen Lowpass Filters beschreibt \citep{smith1997scientist}\footnote{\href{https://www.dspguide.com/ch16/1.htm}{https://www.dspguide.com/ch16/1.htm}} , \citep{enwiki:sincFilter}. Eine Möglichkeit sich diese Tatsache zu verdeutlichen ist dass die $sinc$ Funktion aus Cusinus schwingungen unterschiedlicher Frequenzen zusammengesetzt werden kann, siehe Abb \ref{fig:sincAsSum}. 
+Die Funktion hat für uns Relevanz u.a. da sie die Impulsantwort eines idealen Lowpass Filters beschreibt \citep{smith1997scientist}\footnote{\href{https://www.dspguide.com/ch16/1.htm}{https://www.dspguide.com/ch16/1.htm}} , \citep{enwiki:sincFilter}. Eine Möglichkeit sich diese Tatsache zu verdeutlichen ist dass die $sinc$ Funktion aus Kosinus Schwingungen unterschiedlicher Frequenzen zusammengesetzt werden kann, siehe Abb \ref{fig:sincAsSum}. 
 
 
 
@@ -198,10 +198,10 @@ Werden die Nullstellen mit der richtigen Vielfachheit (wiederholte Nullstellen) 
 \todo{Proof?}
 
 
-Zunächst sei ganz pragmatisch darauf verwiesen dass diverse Computersysteme sehr gut in dieser Situation funktionieren, siehe zB. Abschnitt \ref{sec:python}. \\
-Bei hochgradingen Polynomen ist es sicherlich ein guter Schritt sich den Funktionsverlauf zu plotten und den Verlauf anzusehen. Durchaus lassen sich hier NUllstellen 'raten', die dann als Linearfaktor abgespalten werden können Abschnitt \ref{sec:linearfaktoren}. \emph{Numerische Verfahren} wie \emph{Newton-Raphson} sind hier auch äußerst wichtig, speziell in der Audio Technik. Ein Beispiel für die Numerische Suche nach Nullstellen im Kontext der Klangprozessierung wäre die Simulation von nicht-linearen Schaltkreisen ('Diode clipper'), siehe zB. \cite{holmes2015improving}. \\
+Zunächst sei ganz pragmatisch darauf verwiesen, dass diverse Computersysteme sehr gut in dieser Situation funktionieren, siehe zB. Abschnitt \ref{sec:python}. \\
+Bei hochgradingen Polynomen ist es sicherlich ein guter Schritt sich den Funktionsverlauf zu plotten und den Verlauf anzusehen. Durchaus lassen sich hier Nullstellen 'raten', die dann als Linearfaktor abgespalten werden können,siehe Abschnitt \ref{sec:linearfaktoren}. \emph{Numerische Verfahren} wie \emph{Newton-Raphson} sind hier auch äußerst wichtig, speziell in der Audio Technik. Ein Beispiel für die numerische Suche nach Nullstellen im Kontext der Klangprozessierung wäre die Simulation von nicht-linearen Schaltkreisen ('Diode clipper'), siehe zB. \cite{holmes2015improving}. \\
 
-Da man in der Gestaltung von Filtern, Hall Algorithmen etc oft die Notwendigkeit hat Funktionen zu Gestalten und deren Nullstellen an bestimmte Orte zu verschieben ist es notwendig, nicht nur ein Polynom einem Computer zuzuführen um die Nullstellen 'ausgespuckt' zu bekommen. Es ist oft Notwendig Systeme umzuformulieren um 'Zugriff' auf die Orte der Nullstellen zu haben, zb. durch Zerlegung in Linearfaktoren. 
+Da man in der Gestaltung von Filtern, Hall Algorithmen etc oft die Notwendigkeit hat Funktionen zu Gestalten und deren Nullstellen an bestimmte Orte zu verschieben ist es nicht ausreichend, nur ein Polynom einem Computer zuzuführen um die Nullstellen 'ausgespuckt' zu bekommen. Es ist oft notwendig Systeme umzuformulieren um 'Zugriff' auf die Orte der Nullstellen zu haben, zb. durch Zerlegung in Linearfaktoren. 
 \todo[inline]{Rational root theorem? https://en.wikipedia.org/wiki/Rational\_root\_theorem}
 
 
@@ -220,7 +220,7 @@ H(z) = g\frac{1 + b_1 z^{-1}+ b_2 z^{-2}}{1 + a_1 z^{-1}+ a_2 z^{-2}}. \label{eq
 
 Wenngleich die Bedeutung, Herkunft, Anwendung etc dieser Funktion für den Moment rätselhaft bleiben soll ist 
 \begin{itemize}
-\item erstens festzuhalten dass diese Gleichung, und damit dieser Filter einer der verbreitetsten Filter überhaupt ist und 
+\item erstens festzuhalten dass dieser Filter (und damit diesee Gleichung) einer der verbreitetsten Filter überhaupt ist und 
 \item zweitens es sich hier um eine Gleichung handelt die zwei Polynome in Beziehung setzt, sie dividiert. \\
 \end{itemize}
 
@@ -281,8 +281,8 @@ Was hier interessant ist, ist dass $(x-2)$ ein \emph{linearer Faktor} ist, also 
 
 \subsection{Zerlegung in Linearfaktoren}\label{sec:linearfaktoren}
 
-\todo[inline]{Erklärungen.}
-\polylongdiv[style=C]{x^{3} + 5 x^{2} - 2 x - 24}{x-2}
+\todo[inline]{TODO}
+% \polylongdiv[style=C]{x^{3} + 5 x^{2} - 2 x - 24}{x-2}
 
 
 
@@ -323,7 +323,7 @@ Oft wollen wir \texttt{python} einfach als 'Taschenrechner' verwenden. Da für \
 %pylab
 import sympy as sp
 \end{python}
-Hier werden in Zeile \texttt{1} durch \texttt{\%pylab} 2 Pakete importiert: \texttt{numpy} und \texttt{matplotlib}\footnote{\texttt{numpy} ist das gängigste Paket für numerische OPerationen im allgemeinen und speziell auf arrays. \texttt{matplotlib} ist zuständig fÚr das anzeigen von plots.}. In Zeile \texttt{2} wird \texttt{sympy} importiert und zwar unter dem kürzel \texttt{sp}\footnote{Wir könnten auch statt \texttt{hans} verwenden. \texttt{sp} ist sehr verbreitet und wirkt übersichtlich.}. Das kürzel erlaubt uns funktionen in \texttt{sympy} durch dieses zu verwenden, z.B..: \texttt{sp.roots()}. \\
+Hier werden in Zeile \texttt{1} durch \texttt{\%pylab} 2 Pakete importiert: \texttt{numpy} und \texttt{matplotlib}\footnote{\texttt{numpy} ist das gängigste Paket für numerische Operationen im allgemeinen und speziell auf arrays. \texttt{matplotlib} ist zuständig für das Anzeigen von plots.}. In Zeile \texttt{2} wird \texttt{sympy} importiert und zwar unter dem kürzel \texttt{sp}\footnote{Wir könnten statt \texttt{sp} auch \texttt{hans} verwenden. \texttt{sp} ist sehr verbreitet und wirkt übersichtlich.}. Das kürzel erlaubt uns funktionen in \texttt{sympy} durch dieses zu verwenden, z.B..: \texttt{sp.roots()}. \\
 
 
 \subsection{Numerische Berechnug vs Symbolische Bearbeitung}
