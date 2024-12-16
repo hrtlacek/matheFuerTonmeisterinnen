@@ -11,10 +11,10 @@
 Es ist wichtig ein Gefühl zu entwickeln wie sich einfache Rechenoperationen auf Funktionen auswirken und welche 'Audiointerpretation' hier naheliegt. Siehe Abbildung \ref{fig:functManipul}.
 Hier eine Auflistung von Interpretationen unter der Annahme dass die horizontale Achse die Zeit $t$ darstellt:
 \begin{itemize}
-	\item $f(x) + a$: Gleichspannungsversatz hinzufügen/abziehen, Energie bei $0 Hz$, Verschieben der Welle nach 'oben und unten'
-	\item $f(x+a)$: für $a<0$: \emph{Delay}, da Verschiebung auf der Zeitachse nach rechts. Besonders wichtig in der digital Technik, Filter etc. 
-	\item $f(x) \cdot a$: Amplitudenänderung
-	\item $f(x \cdot a)$: Zeitliche Streckung / Stauchung. Schnelleres oder langsameres abspielen, Änderung der Frequenz.
+	\item $f(t) + a$: Gleichspannungsversatz hinzufügen/abziehen, Energie bei $0 Hz$, Verschieben der Welle nach 'oben und unten'
+	\item $f(t+a)$: für $a<0$: \emph{Delay}, da Verschiebung auf der Zeitachse nach rechts. Besonders wichtig in der digital Technik, Filter etc. 
+	\item $f(t) \cdot a$: Amplitudenänderung
+	\item $f(t \cdot a)$: Zeitliche Streckung / Stauchung. Schnelleres oder langsameres abspielen, Änderung der Frequenz.
 
 \end{itemize}
 
@@ -152,7 +152,7 @@ Die sinc Funktion ist definiert als:
 
 Alternativ wird manchmal nie \emph{normalisierte sinc Funktion} verwendet in der  Faktor $\pi$ in die Funktion hineingenommen wird: $sin(\pi x) \ \pi x$.
 
-Die Funktion hat für uns relevanz u.a. da sie die Impulsantwort eines idealen Lowpass Filters beschreibt\citep{enwiki:sincFilter}. Eine möglichkeit sich diese Tatsache zu verdeutlichen ist dass die $sinc$ Funktion aus Cusinus schwingungen unterschiedlicher Frequenzen zusammengesetzt werden kann, siehe Abb \ref{fig:sincAsSum}. 
+Die Funktion hat für uns relevanz u.a. da sie die Impulsantwort eines idealen Lowpass Filters beschreibt \citep{smith1997scientist}\footnote{\href{https://www.dspguide.com/ch16/1.htm}{https://www.dspguide.com/ch16/1.htm}} , \citep{enwiki:sincFilter}. Eine Möglichkeit sich diese Tatsache zu verdeutlichen ist dass die $sinc$ Funktion aus Cusinus schwingungen unterschiedlicher Frequenzen zusammengesetzt werden kann, siehe Abb \ref{fig:sincAsSum}. 
 
 
 
@@ -187,7 +187,7 @@ Eine Gleichung der Form $x^2 + p \cdot x + q = 0$ kann mit der \emph{p-q-Formel}
 % \label{eq:pq-formel}
 
 \begin{equation}
-x_{1,2} = -\frac{p}{2} \sqrt{\left( \frac{p}{2} \right)^2 - q } \label{eq:pq-formel}
+x_{1,2} = -\frac{p}{2} \pm \sqrt{\left( \frac{p}{2} \right)^2 - q } \label{eq:pq-formel}
 \end{equation}
 
 \subsection{Der allgemeine Fall: Nullstellen von Polynomen beliebigen Grades}
