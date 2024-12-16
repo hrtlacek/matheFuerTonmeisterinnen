@@ -142,15 +142,9 @@
 \usepackage{courier}
 \usepackage{todonotes}
 % \usepackage{html} 
-\usepackage{titlesec}
-% \titlespacing*{\chapter}{0pt}{-50pt}{20pt}
-% \setlength{\topmargin}{-1.5in}
 
-% % Customize chapter title spacing
-% \titleformat{\chapter}[display]
-%   {\normalfont\huge\bfseries} % Format of chapter title
-%   {\chaptername\ \thechapter}{20pt}{\huge} % Label, spacing before, formatting of title
-% \titlespacing*{\chapter}{0pt}{-50pt}{20pt} % Adjust spacing: {left}{before}{after}
+% ======ADJUSTMENT OF CHAPTER TITLES=====================================================
+\usepackage{titlesec}
 
 % Customize chapter title spacing and alignment
 \titleformat{\chapter}[display] % Use [display] to separate chapter title from content
@@ -163,7 +157,7 @@
 \titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
 \titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
 \titleformat{\subsubsection}{\normalfont\normalsize\bfseries}{\thesubsubsection}{1em}{}
-
+% ========================================================================================
 
 % Dokumentinformationen
 \usepackage[
@@ -459,6 +453,7 @@ literate={ϵ}{$\epsilon$}1
 % \include{03_zusammenfassung}
 
 \newpage
+% \pagestyle{fancy}
 
 % \include{titel}
 \include{titel}
@@ -466,13 +461,13 @@ literate={ϵ}{$\epsilon$}1
 % \include{titel}
 
 \newpage
-% \pagestyle{fancy}
 %Inhaltsverzeichnis
 \tableofcontents
 
+\pagestyle{headings}
 \newpage
 %Seitennummerierung neu beginnen, Zahlen [arabic], röm.Zahlen [roman,Roman], Buchstaben [alph,Alph]
-% \pagenumbering{arabic}
+\pagenumbering{arabic}
 
 \newpage
 \include{00_vorbemerkungen}
