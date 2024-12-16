@@ -141,15 +141,18 @@ Eulersche Zahl $e \approx 2.718281828459045$.\footnote{Benannt nach Leonhard Eul
 
 
 \section{Sinc}
+\index{Sinc Funktion}
+\index{Impulsantwort}
+\index{Filter}
 
 Die sinc Funktion ist definiert als:
 \begin{equation}
  sinc (x)={\begin{cases} \frac{sin(x)}{x} ,&x\neq 0\\{1},&x=0\end{cases}}
 \end{equation}
 
-Alternativ wird manchmal nie \emph{normalisierte \index{sinc Funktion}} verwendet in der  Faktor $\pi$ in die Funktion hineingenommen wird: $sin(\pi x) \ \pi x$.
+Alternativ wird manchmal nie \emph{normalisierte sinc Funktion} verwendet in der  Faktor $\pi$ in die Funktion hineingenommen wird: $sin(\pi x) \ \pi x$.
 
-Die Funktion hat für uns relevanz u.a. da sie die \index{Impulsantwort} eines idealen Lowpass \index{Filter}s beschreibt\citep{enwiki:sincFilter}. Eine möglichkeit sich diese Tatsache zu verdeutlichen ist dass die $sinc$ Funktion aus Cusinus schwingungen unterschiedlicher Frequenzen zusammengesetzt werden kann, siehe Abb \ref{fig:sincAsSum}. 
+Die Funktion hat für uns relevanz u.a. da sie die Impulsantwort eines idealen Lowpass Filters beschreibt\citep{enwiki:sincFilter}. Eine möglichkeit sich diese Tatsache zu verdeutlichen ist dass die $sinc$ Funktion aus Cusinus schwingungen unterschiedlicher Frequenzen zusammengesetzt werden kann, siehe Abb \ref{fig:sincAsSum}. 
 
 
 
@@ -172,8 +175,10 @@ Die Funktion hat für uns relevanz u.a. da sie die \index{Impulsantwort} eines i
 	\end{equation}
 mit reellen Koeffizienten $a_k, k = 0,1...n$ und $a_n \neq 0$ wird Polynom n-ten Grades genannt.
 }
+\index{Nullstellen}
+\index{Polstellen}
 
-Für die Tontechnik und Signalverarbeitung gibt es hier viele Anwendungen, seien es Filter, Verzerrungen etc. Oft müssen wir \emph{\index{Nullstellen}} (Engl. 'roots') oder \emph{\index{Polstellen}} einer Funktion finden. 
+Für die Tontechnik und Signalverarbeitung gibt es hier viele Anwendungen, seien es Filter, Verzerrungen etc. Oft müssen wir \emph{Nullstellen} (Engl. 'roots') oder \emph{Polstellen} einer Funktion finden. 
 
 \subsection{Nullstellen von quadratischen Gleichungen}
 
@@ -201,9 +206,10 @@ Da man in der Gestaltung von Filtern, Hall Algorithmen etc oft die Notwendigkeit
 
 
 \subsection{Gebrochen Rationale Ausdrücke}\label{subsec:rationalExp}
-
-Wenn wir ein wenig über die Hintergründe von digitalen \index{Filter} recherchieren stoßen wir schnell auf 
-\cite{FILTERSWEB07}\footnote{\href{http://ccrma.stanford.edu/\~jos/filters/BiQuad\_Section.html}{http://ccrma.stanford.edu/\~jos/filters/BiQuad\_Section.html}}. Eines der Standardwerke wenn es um digitale Signalverarbeitung im musikalischen Kontext geht. Hier finden wir einen Filter der sich '\index{Biquad}'\footnote{Der Name 'Biquad' deutet darauf hin dass hier 2 ('Bi') quadratische Gleichungen vorliegen.} nennt und durch Gleichung \ref{eq:biquad} beschrieben wird.
+\index{Filter}
+\index{Biquad}
+Wenn wir ein wenig über die Hintergründe von digitalen Filter recherchieren stoßen wir schnell auf 
+\cite{FILTERSWEB07}\footnote{\href{http://ccrma.stanford.edu/\~jos/filters/BiQuad\_Section.html}{http://ccrma.stanford.edu/\~jos/filters/BiQuad\_Section.html}}. Eines der Standardwerke wenn es um digitale Signalverarbeitung im musikalischen Kontext geht. Hier finden wir einen Filter der sich 'Biquad'\footnote{Der Name 'Biquad' deutet darauf hin dass hier 2 ('Bi') quadratische Gleichungen vorliegen.} nennt und durch Gleichung \ref{eq:biquad} beschrieben wird.
 
 % 
 	% H(z) \eqsp g\frac{1 + b_1 z^{-1}+ b_2 z^{-2}}{1 + a_1 z^{-1}+ a_2 z^{-2}}. \label{eq:biquad}
@@ -275,7 +281,7 @@ Was hier interessant ist, ist dass $(x-2)$ ein \emph{linearer Faktor} ist, also 
 
 \subsection{Zerlegung in Linearfaktoren}\label{sec:linearfaktoren}
 
-
+\todo[inline]{Erklärungen.}
 \polylongdiv[style=C]{x^{3} + 5 x^{2} - 2 x - 24}{x-2}
 
 
@@ -284,17 +290,15 @@ Was hier interessant ist, ist dass $(x-2)$ ein \emph{linearer Faktor} ist, also 
 \todo{Vereinfachen.}
 Zum Beispiel in \cite{liski2019converting} und \cite{freeman2011} kann klar gesehen welche zentrale Rolle Partialbruchzerlegung und Polynomdivision im Bereich der Signalverarbeitung spielen.
 
+Die idee der Partialbruchzerlegung ist es einen gebrochen rationalen Ausdruck in eine \emph{summe} von anderen gebrochen rationalen Ausdrücken zu verwandeln. 
 
+\begin{equation}
+{\displaystyle {f(x) = \frac {P(x)}{Q(x)}}=p(x)+\sum _{j}{\frac {P_{j}(x)}{Q_{j}(x)}}}
+\end{equation}
 
-\[
-f(x) = \frac{P(x)}{Q(x)}
-\]
-mit \(\deg(P) < \deg(Q)\), zerlegt man \(f(x)\) in die Form 
-\[
-f(x) = \sum_{i} \frac{A_i}{(x - r_i)^{m_i}} + \sum_{j} \frac{B_j x + C_j}{(x^2 + px + q)^{n_j}}.
-\]
-Hierbei sind \(r_i\) reelle Nullstellen und \(x^2 + px + q\) irreduzible quadratische Faktoren von \(Q(x)\).
+Wie zB. in \citep{freeman2011} demonstriert, kann dies verwendet werden um eine komplizierte Filterschaltung in eine Summe von einfacheren Filtern 'umzubauen'.
 
+Das eigentliche verfahren dies händisch zu vollziehen ist nicht unkompliziert und wir werden daher recht praxisnah schlicht \texttt{Python} bemühen.
 
 \section{Rekursive Funktionen}
 \todo{TODO. not urgent.}
@@ -308,14 +312,14 @@ In diesem Unterricht wird python verwendet. Alternativ könnte man vieles andere
 \begin{itemize}
 	\item Gratis
 	\item Open Source
-	\item General Purpose Langage (Industriestandard fuer Machine Learnung zB.) 
+	\item General Purpose Langage (Industriestandard für Datascience, Machine Learnung, ...) 
 \end{itemize}
 Allgemein versucht dieser Unterricht die details des Programmierens eher in den Hintergrund zu Stellen und es wird versucht ein Fokus auf die dahinterliegenden Mathematischen Probleme zu legen, weshalb zu Teil die informatik ein wenig kurz und bündig ausfallen wird. 
 
 \subsection{Laden von Bibliotheken}
 Oft wollen wir \texttt{python} einfach als 'Taschenrechner' verwenden. Da für \texttt{python} zahllose Zusatzpakete und Programmbibliotheken existieren können wir sehr komplexe Abläufe auslagern durch die Einbindung diese Bibliothheken. Sehr oft werden wir unsere 'Session' mit folgenden importen beginnen:
 
-\begin{python}{üblicher beginn einer Python session für unsere Zwecke.}
+\begin{python}{Üblicher beginn einer Python session für unsere Zwecke.}
 %pylab
 import sympy as sp
 \end{python}
@@ -351,7 +355,7 @@ Out[1]: array([0. , 0.5, 1. , 1.5, 2. , 2.5, 3. , 3.5, 4. , 4.5, 5. ])
 }
 
 \begin{python}{Numerische Auswertung eines Polynoms.}
-In [1]: x = linspace(-10, 10, 300)
+In [1]: x = linspace(-6, 6, 300)
 In [2]: y = x**3 - 4*x**2 - 7*x + 10
 In [3]: plot(x,y)
 \end{python}
@@ -395,8 +399,8 @@ sp.roots(p,x)
 Out[1]: {5: 1, 1: 1, -2: 1}
 \end{python}
 
-Hier ist hervorzuheben dass \texttt{\{5: 1, 1: 1, -2: 1\}} ein sog. \texttt{Dictionary} darstellt  das sowohl die Position der Nullstellen als auch die \emph{Anzahl} der Nullstellen an der jeweiligen Stelle enthält. \\
-Beispielsweise das Polynom $f(x) = x^2 - 6^x + 9$ liefert das \texttt{Dictionary} \texttt{\{3: 2\}}. 
+Hier ist hervorzuheben dass \texttt{\{5: 1, 1: 1, -2: 1\}} ein sog. \texttt{Dictionary} darstellt  das sowohl die Position der Nullstellen als auch die \emph{Anzahl} der Nullstellen an der jeweiligen Stelle enthält. 
+Beispielsweise das Polynom $f(x) = x^2 - 6^x + 9$ liefert das \texttt{Dictionary} \texttt{\{3: 2\}}, also eine \emph{Doppelte Nullstelle} an der Position $x=3$. 
 
 
 
