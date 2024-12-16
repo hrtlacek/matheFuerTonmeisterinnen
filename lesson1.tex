@@ -390,13 +390,13 @@ Der Modulo kann verwendet werden um eine Zeit in 24 Stunden Format in 12 Stunden
 
 \subsection{Summe und Produkt Notation}
 
-Das grosse Sigma, $\Sigma$ ist eine kuyrzschreibweise für Summen. Wir finden dieses Zeichen oft in Blockdiagrammen um eine Addition zu verdeutlichen und manchmal sogar auf Mischpulten als Zier in der Gegend der 'Summe'/des Master Faders. Es handelt sich um eine simple Addition, also nichts was zu Irritation führen sollte. In der Praxis kann es allerdings vorkommen dass, sich vor allem bei unendlichen Summen einige Komplexität hinter so einer Summer verbirgt. Die Notation alleine sollte aber nicht abschrecken:
+Das große Sigma, $\Sigma$ ist eine kurzschreibweise für Summen. Wir finden dieses Zeichen oft in Blockdiagrammen um eine Addition zu verdeutlichen und manchmal sogar auf Mischpulten als Zier in der Gegend der 'Summe'/des Master Faders. Es handelt sich um eine simple Addition, also nichts was zu Irritation führen sollte. In der Praxis kann es allerdings vorkommen dass, sich vor allem bei unendlichen Summen einige Komplexität hinter so einer Summer verbirgt. Die Notation alleine sollte aber nicht abschrecken:
 
 \begin{equation}
 {\displaystyle \sum _{k=1}^{5}k = 1 + 2 + 3 + 4 + 5 }
 \end{equation}
 \emph{Index}
-Hier ist $k$ der index (Auch 'Laufindex' oder 'Zähler' genannt). Unter dem Sigma steht bei welcher zahl zu zählen begonnen wird und welchen Buchstaben wir als index wählen. über dem Sigma steht bis wohin wir zählen. Nach dem Sigma steht was addiert wird. Allgemein:
+Hier ist $k$ der Index (Auch 'Laufindex' oder 'Zähler' genannt). Unter dem Sigma steht bei welcher zahl zu zählen begonnen wird und welchen Buchstaben wir als Index wählen. über dem Sigma steht bis wohin wir zählen. Nach dem Sigma steht was addiert wird. Allgemein:
 
 \important{
 \begin{equation}
@@ -405,10 +405,10 @@ Hier ist $k$ der index (Auch 'Laufindex' oder 'Zähler' genannt). Unter dem Sigm
 }
 
 
-Natürlich kann diese schreibweise verwendet werden um kompliziertere Ausdrücke zu formen.
+Natürlich kann diese Schreibweise verwendet werden um kompliziertere Ausdrücke zu formen.
 
 \begin{question}
-Schreiben Sie einen Ausdruck der die \textbf{geraden} Zahlen zwischen 0 und 11 quadiert und addiert!
+Schreiben Sie einen Ausdruck der die \textbf{geraden} Zahlen zwischen 0 und 11 quadriert und addiert!
 \end{question}
 \begin{answer}
 
@@ -430,7 +430,7 @@ Die Notation für Produkte trifft man nicht ganz so oft an wie jene für Summen:
 {\displaystyle \prod _{i=1}^{6}i^{2} =  1\cdot 4\cdot 9\cdot 16\cdot 25\cdot 36}
 \end{equation}
 
-Im Audio bereich ist natürlich auch diese Notation wichtig (Multiplikation ist eine wichtige operation). Ein Beipiel wäre, gegeben einen Filter mit der Transferfunktion $H$ könnte man $n$ hintereinandergeschaltene ('kaskadierte') Filter schreiben als $\prod _{i=1}^{n}H$.
+Im Audio Bereich ist natürlich auch diese Notation wichtig (Multiplikation ist eine wichtige Operation). Ein Beispiel wäre, gegeben einen Filter mit der Transferfunktion $H$ könnte man $n$ hintereinander geschaltene ('kaskadierte') Filter schreiben als $\prod _{i=1}^{n}H$.
 
 
 \subsection{Betrag}
@@ -611,11 +611,11 @@ $$ log_b(x) = \frac{log_a(x)}{log_a(b)}$$
 
 \example{\textbf{Beispiel} \\
 
-Gegeben den natürlichen Logarithmus einer Messung $x$ benötigt man den 2er Logarithmus. Der natuerliche Logaritmus der messgroesse $x$ ist ca. $1.61$. 
+Gegeben den natürlichen Logarithmus einer Messung $x$ benötigt man den 2er Logarithmus. Der natürliche Logarithmus der Messgröße $x$ ist ca. $1.61$. 
 $$log_2(x) = \frac{ln(x)}{ln(2)} $$
 Also:
 $$log_2(x) = \frac{1.61}{ln(2)} \approx 2.32$$
-In diesem beispiel war $x=5$ und wir koennen überprüfen dass $log_2(5) \approx 2.32$.
+In diesem Beispiel war $x=5$ und wir können überprüfen dass $log_2(5) \approx 2.32$.
 }
 \subsubsection {Dezibel \& $dB_{FS}$}
 Speziell wichtig in der (Audio-) Signalverarbeitung: $dB$ (Dezibel, ein Zehntel \emph{Bel}). 
@@ -697,7 +697,7 @@ $$L = 20 \cdot log_{10}(x)$$
     \end{enumerate}
     \item Was sagt gibt es zu Abb. \ref{fig:distortion_online} zu sagen?
     \item Konstruiere (mache eine Formel, formale Beschreibung) einen 'hard clipper'. Dies ist eine Verzerrung. Die Verzerrung soll keine Werte 'durchlassen' die größer als 0.9 und kleiner als -0.9 sind. Zeichne den Graphen. Für Werte zwischen -0.9 und 0.9 soll sich der Verzerrer linear verhalten. Werden hier gerade oder ungerade Harmonische Erzeugt?
-    \item Berechne die 'Spannung' $T$ (eine Kraft) in einer Piano Saite. Die Grundfrequenz der Saite ist 440 Hz, sie ist aus Stahl und ca. 50 cm lang. Gegeben ist folgende Formel: $f_0 = \lambda \sqrt{\frac{T}{\rho A}}$. Hier ist $\rho$ die Dichte des Materials und $A$ der Flächendurchschnitt der Saite. Wir nehmen an sie hat einen Durchmesser $d$ von ca 1mm. Siehe Abb. \ref{fig:string_ex}.
+    \item Berechne die 'Spannung' $T$ (eine Kraft) in einer Piano Saite. Die Grundfrequenz der Saite ist 440 Hz, sie ist aus Stahl und ca. 50 cm lang. Gegeben ist folgende Formel: $f_0 = \lambda \sqrt{\frac{T}{\rho A}}$. Hier ist $\rho$ die Dichte des Materials und $A$ der Flächendurchschnitt der Saite. Wir nehmen an sie hat einen Durchmesser $d$ von ca. 1mm. Siehe Abb. \ref{fig:string_ex}.
 
     \item Beweise mittels Gleichungen \ref{eq:linearity1}, \ref{eq:linearity2} oder \ref{eq:linearity3} dass $f(x)=|x|$ nicht linear ist.
 
