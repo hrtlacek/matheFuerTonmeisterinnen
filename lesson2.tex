@@ -7,7 +7,7 @@
 
 % \todo[]{Funktionsmanipulation im allgemeinen. }
 
-\section{Funktionen Manipulieren}
+\section{Funktionen Manipulieren}\label{sec:manipFuncts}
 Es ist wichtig ein Gefühl zu entwickeln wie sich einfache Rechenoperationen auf Funktionen auswirken und welche 'Audiointerpretation' hier naheliegt. Siehe Abbildung \ref{fig:functManipul}.
 Hier eine Auflistung von Interpretationen unter der Annahme dass die horizontale Achse die Zeit $t$ darstellt:
 \begin{itemize}
@@ -109,7 +109,7 @@ Engl. 'unit step' auch oft Heaviside-Funktion genannt. Typischerweise $u(t)$ abe
 	\caption{Sinus und Kosinus Funktionsverlauf.}
 	\label{fig:sincos}
 \end{figure}
-
+\todo[]{x achse beschriftung fehlt.}
 
 
 \begin{figure}[H]
@@ -150,7 +150,7 @@ Die sinc Funktion ist definiert als:
  sinc (x)={\begin{cases} \frac{sin(x)}{x} ,&x\neq 0\\{1},&x=0\end{cases}}
 \end{equation}
 
-Alternativ wird manchmal die \emph{normalisierte sinc Funktion} verwendet in der Faktor $\pi$ in die Funktion hineingenommen wird: $sin(\pi x) / \pi x$.
+Alternativ wird manchmal die \emph{normalisierte sinc Funktion} verwendet bei der der Faktor $\pi$ in die Funktion hineingenommen wird: $sin(\pi x) / \pi x$.
 
 Die Funktion hat für uns Relevanz u.a. da sie die Impulsantwort eines idealen Lowpass Filters beschreibt \citep{smith1997scientist}\footnote{\href{https://www.dspguide.com/ch16/1.htm}{https://www.dspguide.com/ch16/1.htm}} , \citep{enwiki:sincFilter}. Eine Möglichkeit sich diese Tatsache zu verdeutlichen ist dass die $sinc$ Funktion aus Kosinus Schwingungen unterschiedlicher Frequenzen zusammengesetzt werden kann, siehe Abb \ref{fig:sincAsSum}. 
 
@@ -343,15 +343,15 @@ Out[2]: -20
 \end{python}
 \todo{Make lisings work inside 'examples'.}
 \example{
-	Anstatt mehrfach verschiedene Werte zu probieren kann ein sig. \texttt{array} verwendet werden um viele Zahlen gleichzeitig zu evalieren und das resultat kann in einem Graphen ('plot') angezeigt werden. Ein array mit aufsteigenden Zahlen kann erzeugt werden via \texttt{linspace()}. Zum Beispiel werden im Folgenden 11 Zahlen zwischen 0 und 5 erzeugt:
+	Anstatt mehrfach verschiedene Werte zu probieren kann ein sog. \texttt{array} verwendet werden um viele Zahlen gleichzeitig zu evalieren und das resultat kann in einem Graphen ('plot') angezeigt werden. Ein array mit aufsteigenden Zahlen kann erzeugt werden via \texttt{linspace()}. Zum Beispiel werden im Folgenden 11 Zahlen zwischen 0 und 5 erzeugt:
 }
-\begin{python}{Einfache Evaluierung eines Polynoms.}
+\begin{python}{Erzeugung eines Arrays mit aufsteigenden Zahlen.}
 In [1]: linspace(0, 5, 11)
 Out[1]: array([0. , 0.5, 1. , 1.5, 2. , 2.5, 3. , 3.5, 4. , 4.5, 5. ])
 \end{python}
 
 \example{
-	Nun können wir eine variable \texttt{x} durch einen array definieren und das polynom auf allen werten in \texttt{x} evaluieren. Das ergebnis weisen wir der Variable \texttt{y} zu und wir nutzten den \texttt{plot} befehl um uns den Grafen anzuzeigen.
+	Nun können wir eine Variable \texttt{x} durch einen array definieren und das Polynom für alle Werte in \texttt{x} evaluieren. Das Ergebnis weisen wir der Variable \texttt{y} zu und wir nutzten den \texttt{plot} Befehl um uns den Grafen anzuzeigen.
 }
 
 \begin{python}{Numerische Auswertung eines Polynoms.}
@@ -390,7 +390,7 @@ In [3]: plot(x,y)
 
 
 
-\begin{python}{Symbolische extraktion d Nullstelle in Python}
+\begin{python}{Symbolische extraktion von Nullstellen in Python}
 import sympy as sp
 from sympy.abc import x
 p = x**3 - 4*x**2 - 7*x + 10
@@ -399,7 +399,7 @@ sp.roots(p,x)
 Out[1]: {5: 1, 1: 1, -2: 1}
 \end{python}
 
-Hier ist hervorzuheben dass \texttt{\{5: 1, 1: 1, -2: 1\}} ein sog. \texttt{Dictionary} darstellt  das sowohl die Position der Nullstellen als auch die \emph{Anzahl} der Nullstellen an der jeweiligen Stelle enthält. 
+Hier ist hervorzuheben dass \texttt{\{5: 1, 1: 1, -2: 1\}} ein sog. \texttt{Dictionary} darstellt das sowohl die Position der Nullstellen als auch die \emph{Anzahl} der Nullstellen an der jeweiligen Stelle enthält. 
 Beispielsweise das Polynom $f(x) = x^2 - 6^x + 9$ liefert das \texttt{Dictionary} \texttt{\{3: 2\}}, also eine \emph{Doppelte Nullstelle} an der Position $x=3$. 
 
 
@@ -437,4 +437,5 @@ Out[1]: 1 + 1/(x + 1)
 
 \begin{enumerate}
 \item Versuchen Sie Python Code zu entwerfen der die Funktion in Abbildung \ref{fig:functManipul} erzeugt.
+\item In Abschnitt \ref{sec:manipFuncts} wurde die Auswirkung von verschiedenen 'Manipulationen' besprochen unter der Annahme dass das argument der Funktion die Zeitachse darstellt ($f(t)$ wobei $t$ die zeit in Sekunden). Welche Interpretationen drängen sich auf unter der Annahme dass das Argument die Frequenzachse ist, also $f(\omega)$ wobei $\omega$ die Frequenz? An dieser Stelle ist es nicht wichtig ob es sich um die Kreisfrequenz, normierte Frequenz oder Frequenz in Hz handelt.
 \end{enumerate}
