@@ -102,7 +102,7 @@
 \usepackage{atbegshi}% http://ctan.org/pkg/atbegshi
 
 % for formelsammlung.
-\usepackage{tcolorbox}
+\usepackage[most]{tcolorbox}
 % \newtcolorbox{tightbox}{
 %   sharp corners, 
 %   colback=white,
@@ -181,12 +181,12 @@
     pdfmenubar=true,        % show Acrobat’s menu?
     pdffitwindow=false,     % window fit to page when opened
     pdfstartview={FitH},    % fits the width of the page to the window
-    pdftitle={EPRO/IAS Scriptum},    % title
+    pdftitle={Mathematik für TonmeisterInnen},    % title
     pdfauthor={Patrik Lechner},     % author
-    pdfsubject={EPRO/IAS},   % subject of the document
+    pdfsubject={Mathematik für TonmeisterInnen},   % subject of the document
     pdfcreator={Patrik Lechner},   % creator of the document
     pdfproducer={Patrik Lechner}, % producer of the document
-    pdfkeywords={dsp} {pure data} {audio}, % list of keywords
+    pdfkeywords={dsp} {math} {audio}, % list of keywords
     pdfnewwindow=true,      % links in new window
     colorlinks=true,       % false: boxed links; true: colored links
     linkcolor=gray,          % color of internal links (change box color with linkbordercolor)
@@ -295,28 +295,55 @@
 \newcommand{\link}[2]{\href{#1}{#2}\footnote{#1}}
 \usepackage{mdframed}
 
-\newcommand{\bgInfo}[1]{\begin{mdframed}[backgroundcolor=lightBg,rightline=false,leftline=false] #1 \end{mdframed}}
+% \newcommand{\bgInfo}[1]{\begin{mdframed}[backgroundcolor=lightBg,rightline=false,leftline=false] #1 \end{mdframed}}
 
-\newcommand{\praxis}[1]{\begin{mdframed}[backgroundcolor=lightBg,rightline=false,leftline=false] #1 \end{mdframed}}
+% \newcommand{\praxis}[1]{\begin{mdframed}[backgroundcolor=lightBg,rightline=false,leftline=false] #1 \end{mdframed}}
 
-\newcommand{\example}[1]{\begin{mdframed}[backgroundcolor=lightBg,rightline=false,leftline=false] #1 \end{mdframed}}
+% \newcommand{\example}[1]{\begin{mdframed}[backgroundcolor=lightBg,rightline=false,leftline=false] #1 \end{mdframed}}
 
-\newcommand{\video}[1]{
-\begin{framed}
-\textbf{Video Analogies}\\
- #1 \end{framed}}
+% \newcommand{\video}[1]{
+% \begin{framed}
+% \textbf{Video Analogies}\\
+%  #1 \end{framed}}
 
+
+
+% \newcommand{\important}[1]{%
+%     \begin{tcolorbox}[colback=lightBg, colframe=codeBlack, title=\color{codeRed}{\ding{224}}, sharp corners=south, boxrule=0.5mm, left=0mm, right=0mm, top=0mm, bottom=0mm]%
+%         % \begin{tabular}{|C|C|C|} % Added vertical lines
+%             % \hline % Horizontal line at the top
+%             % #2 \\ \hline % Horizontal line after each row
+%         % \end{tabular}
+%         #1
+%     \end{tcolorbox}
+% }
+
+\newcommand{\example}[1]{%
+    \begin{tcolorbox}[colback=lightBg, colframe=codeBlack, title=\color{codeGreen}{\ding{47}}, 
+                      sharp corners=south, boxrule=0.5mm, left=0mm, right=0mm, top=0mm, bottom=0mm, 
+                      breakable, enhanced]%
+        #1
+    \end{tcolorbox}%
+}
+
+\newcommand{\praxis}[1]{%
+    \begin{tcolorbox}[colback=lightBg, colframe=codeBlack, title=\color{codeBlue}{\ding{224}}, 
+                      sharp corners=south, boxrule=0.5mm, left=0mm, right=0mm, top=0mm, bottom=0mm, 
+                      breakable, enhanced]%
+        #1
+    \end{tcolorbox}%
+}
 
 
 \newcommand{\important}[1]{%
-    \begin{tcolorbox}[colback=lightBg, colframe=codeBlack, title=\color{codeRed}{\ding{224}}, sharp corners=south, boxrule=0.5mm, left=0mm, right=0mm, top=0mm, bottom=0mm]%
-        % \begin{tabular}{|C|C|C|} % Added vertical lines
-            % \hline % Horizontal line at the top
-            % #2 \\ \hline % Horizontal line after each row
-        % \end{tabular}
+    \begin{tcolorbox}[colback=lightBg, colframe=codeBlack, title=\color{codeRed}{\ding{74}}, 
+                      sharp corners=south, boxrule=0.5mm, left=0mm, right=0mm, top=0mm, bottom=0mm, 
+                      breakable, enhanced]%
         #1
-    \end{tcolorbox}
+    \end{tcolorbox}%
 }
+
+
 
 
 % ipython notebook reference
@@ -378,6 +405,8 @@ frame=tb,                         % Any extra options here
 showstringspaces=false,
 inputencoding=utf8,
 literate={ϵ}{$\epsilon$}1
+         {In}{{{\color{codeGreen}In}\textnormal}}1
+         {Out}{{{\hspace{1.5em}\color{codeRed}{Out}\hspace{1.9em}}}}1
 }}
 
 

@@ -3,7 +3,7 @@
 
 \section{Motivation}
 
-\todo{TODO}
+\todo[inline]{TODO, Dimensionsanalyse?}
 
 \section{Aussagen}
 
@@ -15,23 +15,23 @@
 \begin{table}[h!]
     \centering
     \renewcommand{\arraystretch}{1.5} % Vergrößert den Zeilenabstand
-    \begin{tabular}{|c|c|}
+    \begin{tabular}{|c|c|c|}
         \hline
-        \textbf{Operation} & \textbf{Mathematische Aussage} \\
+        \textbf{Operation} & \textbf{Mathematische Notation} & \textbf{Erklärung} \\
         \hline
-        Negation & $\neg A$ oder $\bar A$ (nicht A) \\
+        Negation & $\neg A$ oder $\bar A$  & nicht A \\
         \hline
-        Konjunktion & $A \land B$ (A und B) \\
+        Konjunktion & $A \land B$ & A und B \\
         \hline
-        Disjunktion & $A \lor B$ (A oder B) \\
+        Disjunktion & $A \lor B$ & A oder B \\
         \hline
-        Implikation & $A \implies B$ (Wenn A, dann B) \\
+        Implikation & $A \implies B$ & Wenn A, dann B \\
         \hline
-        Äquivalenz & $A \iff B$ (A genau dann, wenn B) \\
+        Äquivalenz & $A \iff B$ & A genau dann, wenn B \\
         \hline
-        Tautologie & $\top$ (immer wahr) \\
+        Tautologie & $\top$ & immer wahr \\
         \hline
-        Kontradiktion & $\bot$ (immer falsch) \\
+        Kontradiktion & $\bot$ & immer falsch \\
         \hline
     \end{tabular}
     \caption{Tabelle über mathematische Aussagen und Operationen}
@@ -383,12 +383,12 @@ Der Modulo kann verwendet werden um eine Zeit in 24 Stunden Format in 12 Stunden
 \end{figure}
 
 
-\bgInfo{
+% \bgInfo{
     Formaler ist die modulo Operation definiert als:
     $$ a{\bmod {m}}:=a-\left\lfloor {\frac {a}{m}}\right\rfloor \cdot m.$$
-    Wobei die sog. Gaussklammern $\lfloor \cdot \rfloor$ hier fuer 'nach unten runden' (Engl. 'truncation') stehen. 
+    Wobei die sog. Gaussklammern $\lfloor \cdot \rfloor$ hier für 'nach unten runden' (Engl. 'truncation') stehen. 
 
-}
+% }
 
 
 
@@ -461,8 +461,7 @@ a & \text{wenn } a \geq 0
 \end{cases}
 $$ 
 
-Der Betrag kann als \emph{Funktion} aufgefasst werden (später mehr zu Funktionen). Es Kann ein Graph gezeichnet werden auf dessen x-Achse ('Abszisse') der Input zu sehen ist und auf der y-Achse ('Ordinate'). 
-\bgInfo{Merkhilfe: Alphabetisch, x vor y, Abszisse vor Ordinate.}
+Der Betrag kann als \emph{Funktion} aufgefasst werden (später mehr zu Funktionen). Es Kann ein Graph gezeichnet werden auf dessen x-Achse ('Abszisse') der Input zu sehen ist und auf der y-Achse ('Ordinate'). Merkhilfe: Alphabetisch: x vor y, Abszisse vor Ordinate.
 
 
 
@@ -724,14 +723,14 @@ $$L = 20 \cdot log_{10}(x)$$
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[ width= 0.8\textwidth]{img/reddit_distortion.png}
+    \includegraphics[ width= 0.7\textwidth]{img/reddit_distortion.png}
     \caption{Online Diskussionen über Verzerrung.}
     \label{fig:distortion_online}
 \end{figure}
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[ width= 0.6\textwidth]{img/saite_beispiel.png}
+    \includegraphics[ width= 0.4\textwidth]{img/saite_beispiel.png}
     \caption{Saite.}
     \label{fig:string_ex}
 \end{figure}
