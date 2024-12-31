@@ -1,7 +1,70 @@
 %!TEX root = main.tex
 \chapter{Lineare Algebra, Vektoren und Matrizen}
 \todo{Probabilistische system entwicklung, https://www.youtube.com/watch?v=K-8F\_zDMDUI\&list=PLMrJAkhIeNNTYaOnVI3QpH7jgULnAmvPA\&index=3}
-\todo[inline]{Digital Audio als vektor, Vector scope, stereo sachen, Rotationsmatrix, Hadamardmatrix, Householdermatrix,  state space formulations, modal analyse}
+\todo[inline]{Digital Audio als vektor, Vector scope/oscilloscope music, stereo sachen, Rotationsmatrix, Hadamardmatrix, Householdermatrix,  state space formulations, modal analyse}
+
+\section{Motivation}
+Vektoren und Matrizen findet man sehr häufig in der Audiotechnischen Literatur. Wie bereits in Kapitel \ref{chap:complex} beschrieben, sind komplexe Zahlen allgegenwärtig und deren Interpretation als Vektor bedeutsam und praktisch. Andererseits kann zB. ein Stereosignal als Vektor aufgefasst werden: Zu jedem Zeitpunkt hat es 2 Zahlen, diese können als Vektor im 2-dimensionalen Raum aufgefasst werden, was wiederum diverse Operationen nahelegt. Ebenso scheint es spätestens an diesem Punkt naheliegend ein $n$-Kanal Signal als Vektor mit $n$ Einträgen zu verstehen und womöglich hieraus Schlüsse ziehen zu dürfen. Wenn es um verräumlichung von Signalen (zB. Ambisonics) geht und daher Positionen im Dreidimensionalen Raum ($\mathbb{R}^3$) benötigt werden ist klar, dass wir diese mittels Vektoren beschreiben können. Aber auch wenn es um Direktionalität von Lautsprechern oder Mikrophonen geht werden letztlich 2 bis 3 Dimensionale Felder beschrieben und auch hier kommen Vektoren zum Einsatz. Es sei aber an dieser Stelle betont dass Vektoren und Matrizen nicht ausschließlich für Audioanwendungen im Dreidimensionalen Raum zum Einsatz kommen. Rotations- Hadamard- und Householdermatrizen werden für Hall-Algorithmen und Resonatoren verwendet, Filtersysteme können über Zustandsraumdarstellungen via Vektoren und Matrizen beschrieben werden und vieles mehr.       
+
+\section{Vektoren}
+Es wird nun einführendes über Vektoren gesagt aber recht kurz und bündig da 1. angenommen wird, dass insbesondere 2 und 3 dimensionale Vektoren zu den weniger abstrakten und aus der Schule bekannten Themen gehören und 2. Vektoren als Spezialfall von Matrizen gesehen werden können und wir unsere Aufmerksamkeit so schnell wie möglich diesen zuwenden wollen.
+
+\important{
+Ein Vektor in einem $n$-Dimensionalen Raum ($\mathbb{R}^n$) ist eine geordnete Liste von Zahlen.
+
+\begin{equation}
+\vec{a} = \begin{bmatrix}
+a_1 & a_2 & \dots & a_n
+\end{bmatrix}
+\end{equation}
 
 
+Der Vektor $\vec{a}$ und seine Elemente $a_1, a_2, \dots a_n$ sind hier als \textbf{Reihenvektor} (auch 'Zeilenvektor', engl.'Row vector') dargestellt. Ebenso können wir \textbf{Spaltenvektoren} (engl. 'column vector') darstellen:
+\begin{equation}
+\vec{a} = \begin{bmatrix}
+a_1 \\
+a_2 \\
+\vdots \\
+a_n
+\end{bmatrix}
+\end{equation}
 
+\textbf{Konventionen} \\
+Dieses Dokument wird die Konvention 'Reihen' statt 'Zeilen' verwenden. Vorteilhaft ist daran, dass 'R' vor 'S' im Alphabet kommt und es hilft uns uns die \emph{Reihenfolge} von Indizes von Matrizen zu merken: \textbf{Reihe, Spalte}.
+
+Es gibt unterschiedliche Schreibweisen in Unterschiedlicher Literatur. Dieses Dokument verwendet die Schreibweise $\vec{a}$. Manchmal findet man auch fett gedruckte Buchstaben um zu notieren, dass es sich um einen Vektor handelt: $\mathbf{a}$. Zudem gibt es Literatur die runde Klammern bevorzugt statt eckigen wie in diesem Dokument: $\mathbf{a} = \begin{pmatrix}
+a_1 & a_2 & \dots & a_n
+\end{pmatrix}$. All das ist lediglich ein Unterschied in Konventionen.
+}
+
+\subsection*{Hadamard Produkt}
+\index{Hadamard Produkt}
+
+Auch Elementweises oder Komponentenweises Produkt. Einfache elementweise multiplikation.
+$$ \vec{a}\circ \vec{b}$$
+
+\subsection*{Skalarprodukt}
+\index{Skalarprodukt}
+
+Auch 'inneres Produkt' oder 'Punktprodukt', engl. 'Dot product'. Ergibt im fall von Vektoren einen Skalar aber eigentlich ein Spezialfall der Matrixmultiplikation!
+$$\vec{a}\cdot \vec{b} = |\vec{a}|\cdot |\vec{b}|\cdot cos(\alpha) = a_x b_x + a_y b_y$$
+Siehe \citep[p.~45]{Westermmann2008}  für Herleitung.
+
+\subsection*{Kreuzprodukt}
+\index{Kreuzprodukt}
+Auch 'Vektorprodukt'. 
+$$ \vec{c} = \vec{a} \times \vec{b}$$
+Nur in $\mathbb{R}^3$ definiert!
+
+\section{Matrizen}
+\subsection*{Einheitsmatrix}
+\subsection*{Determinante}
+\subsection*{Eigenwert und Eigenvektoren}
+\index{Eigenwert}\index{Eigenvektor}\index{Zustandsraumdarstellung}\index{State-Space}
+
+\praxis{Eigenwerte der $A$ Matrix in der Zustandsraumdarstellung (engl. 'State-Space') von Systemen sind die Pole des Systems. Eigenvektoren bei der Modalanalyse können Modenformen (die eigentliche Bewegung eines Systems zB.) darstellen und in Eigenwerten sind die entsprechenden Frequenzen ($\Im(\lambda)$) und die Stabilität ($\Re(\lambda)$) enthalten. Eigenvektoren von Matrizen die für Probabilistische Modellierung (siehe Markov Modelle) können Stationäre Wahrscheinlichkeits-Vektoren sein.}
+
+\section{Aufgaben}
+\begin{enumerate}
+\item \todo[inline]{Aufgabe: Stereo/Vectorscope aus Oszilloscop bauen. Rotation d Vektors um 45 grad. }
+\end{enumerate}
