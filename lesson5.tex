@@ -37,11 +37,57 @@ a_1 & a_2 & \dots & a_n
 \end{pmatrix}$. All das ist lediglich ein Unterschied in Konventionen.
 }
 
-\subsection*{Hadamard Produkt}
+
+\begin{python}{Vektoren: Arrays in Python}
+In [1]: %pylab
+In [2]: a = array([1,2,3]) #Vektor Definition
+   ...: print(a.shape)
+   ...: print(a)
+(3,)
+[1 2 3]
+In [3]: b = array([[5, 6, 7]]) # Matrix, 1 Reihenvektor
+   ...: print(b.shape)
+   ...: print(b)
+(1, 3)
+[[5 6 7]]
+In [4]: c = array([[8, 9, 10]]).T # Matrix, 1 Spaltenvektor
+   ...: print(c.shape)
+   ...: print(c)
+(3, 1)
+[[ 8]
+ [ 9]
+ [10]]
+\end{python}
+
+\subsection*{Hadamard\footnote{Jacques Hadamard (Jacques Salomon Hadamard; * 8. Dezember 1865 in Versailles; † 17. Oktober 1963 in Paris) war ein französischer Mathematiker.} Produkt}
 \index{Hadamard Produkt}
 
-Auch Elementweises oder Komponentenweises Produkt. Einfache elementweise multiplikation.
+Auch Elementweises oder Komponentenweises Produkt. Einfache elementweise Multiplikation.
 $$ \vec{a}\circ \vec{b}$$
+
+In Python kann diese Operation durch einfache Multiplikation ausgeführt werden: \pythoninline{c = a*b}\footnote{Hier ist ein wichtiger unterschied zu \texttt{MATLAB} Code da dort punktweise Multiplikation mit \texttt{.*} ausgeführt wird.}.
+
+\begin{python}{Elementweise Multiplikation von 2 Arrays in Python.}
+In [1]: %pylab
+In [2]: a = array([1,2,3])
+In [3]: b = array([5, 6, 7])
+In [4]: a*b
+Out[4]: array([ 5, 12, 21])
+\end{python}
+
+\begin{question}
+In Python, definiere 2 Arrays, $\vec{a}$ und $\vec{b}$. Diese sollen jeweils eine Sinus Schwingung enthalten, aber jeweils mit anderer Frequenz. Multipliziere sie, plotte das Ergebnis und höre dir das Ergebnis an. Befehle um Arrays auf die Festplatte zu schreiben sind im Python Cheat-Sheet zu finden in Abschnitt \ref{sec:pythonCheat}. Was passiert hier aus Audio Sicht?
+\end{question}
+
+\begin{answer}
+Zunächst, was passiert ist eine 'Ringmodulation' (sozusagen eine Variante der Amplitudenmodulation). Um eine Sinus Schwingung mit Frequenz $f_a$ definieren wir eine Funktion $a(t)$:
+\begin{equation}
+a(t) = sin(2 \pi t f_a)
+\end{equation}
+Um hier eine Sekunde Sound zu erzeugen mit Samplingrate $f_s = 44100$ benötigen wir einen Vektor $\vec{t}$ der die Zeit in Sekunden enthält: $\vec{t}:= \begin{bmatrix} 0 & \Delta_t& 2 \Delta_t &  \dots 1-\Delta_t \end{bmatrix}$ wobei $\Delta_t$ das Sampling-Intervall $\Delta_t = \frac{1}{f_s}$.
+
+\end{answer}
+\todo{todo}
 
 \subsection*{Skalarprodukt}
 \index{Skalarprodukt}
@@ -50,11 +96,15 @@ Auch 'inneres Produkt' oder 'Punktprodukt', engl. 'Dot product'. Ergibt im fall 
 $$\vec{a}\cdot \vec{b} = |\vec{a}|\cdot |\vec{b}|\cdot cos(\alpha) = a_x b_x + a_y b_y$$
 Siehe \citep[p.~45]{Westermmann2008}  für Herleitung.
 
+Python: \pythoninline{dot(a,b)}
+
 \subsection*{Kreuzprodukt}
 \index{Kreuzprodukt}
 Auch 'Vektorprodukt'. 
 $$ \vec{c} = \vec{a} \times \vec{b}$$
 Nur in $\mathbb{R}^3$ definiert!
+
+Python: \pythoninline{cross(a,b)}
 
 \section{Matrizen}
 \subsection*{Einheitsmatrix}

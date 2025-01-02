@@ -193,22 +193,15 @@ In der Audiotechnik sind komplexwertige Funktionen wichtig. Ein Beispiel wäre d
 
 In \texttt{Python} wird die Zahl $i$ durch \texttt{1j} ausgedrückt. \texttt{j} alleine hat zunächst keine Bedeutung und führt zu einer Fehlermeldung wenn \texttt{j} nicht definiert ist. \texttt{1j} hingegen ist $1\cdot i$, wobei \texttt{1} hier durch andere zahlen ersetzt werden kann, zB \texttt{5j} ($=5\cdot i$) oder \texttt{2.7j}($=2.7 \cdot i$). Die folgende (ein wenig gekürzte) Aufzeichnung einer interaktiven \texttt{iPython} Session soll diesen vielleicht im ersten Moment verwirrenden Unterschied klar machen:
 
-\begin{python}{Verwendung von i in Python.}
+\begin{python}{Verwendung von $i$ in Python.}
 In [1]: %pylab
-
 In [2]: 1j
 Out[2]: 1j
-
 In [3]: j
-
 NameError: name 'j' is not defined
-
 In [4]: b = 3
-
 In [5]: 2 + bj
-
 NameError: name 'bj' is not defined
-
 In [6]: 2 + b*1j
 Out[6]: (2+3j)
 \end{python}
