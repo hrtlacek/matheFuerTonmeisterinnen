@@ -63,9 +63,11 @@ In [4]: c = array([[8, 9, 10]]).T # Matrix, 1 Spaltenvektor
 \index{Hadamard Produkt}
 
 Auch Elementweises oder Komponentenweises Produkt. Einfache elementweise Multiplikation.
-$$ \vec{a}\circ \vec{b}$$
+$$ \vec{a}\circ \vec{b} = \begin{bmatrix}a_1b_1 & a_2b_2 & \dots & a_n b_n\end{bmatrix}$$ 
 
-In Python kann diese Operation durch einfache Multiplikation ausgeführt werden: \pythoninline{c = a*b}\footnote{Hier ist ein wichtiger unterschied zu \texttt{MATLAB} Code da dort punktweise Multiplikation mit \texttt{.*} ausgeführt wird.}.
+Leider wird üblicherweise die selbe Notation benutzt um die Verkettung von Funktionen zu beschreiben: $(f \circ g)(x) = f(g(x))$. Welche Operation nun gemeint ist, erschließt sich typischerweise aus dem Kontext. Beide Notationen kommen ohnehin nicht wahnsinnig oft vor.
+
+In Python kann elementweise Multiplikation durch einfache Multiplikation ausgeführt werden: \pythoninline{c = a*b}\footnote{Hier ist ein wichtiger unterschied zu \texttt{MATLAB} Code da dort punktweise Multiplikation mit \texttt{.*} ausgeführt wird.}.
 
 \begin{python}{Elementweise Multiplikation von 2 Arrays in Python.}
 In [1]: %pylab
@@ -84,10 +86,23 @@ Zunächst, was passiert ist eine 'Ringmodulation' (sozusagen eine Variante der A
 \begin{equation}
 a(t) = sin(2 \pi t f_a)
 \end{equation}
-Um hier eine Sekunde Sound zu erzeugen mit Samplingrate $f_s = 44100$ benötigen wir einen Vektor $\vec{t}$ der die Zeit in Sekunden enthält: $\vec{t}:= \begin{bmatrix} 0 & \Delta_t& 2 \Delta_t &  \dots 1-\Delta_t \end{bmatrix}$ wobei $\Delta_t$ das Sampling-Intervall $\Delta_t = \frac{1}{f_s}$.
+Um hier eine Sekunde Sound zu erzeugen mit Samplingrate $f_s = 44100$ benötigen wir einen Vektor $\vec{t}$ der die Zeit in Sekunden enthält: $\vec{t}:= \begin{bmatrix} 0 & \Delta_t& 2 \Delta_t &  \dots 1-\Delta_t \end{bmatrix}$ wobei $\Delta_t$ das Sampling-Intervall $\Delta_t = \frac{1}{f_s}$. Praktisch ist es am einfachsten man erzeugt man einen Array der einen Index enthält: $ns := \begin{bmatrix} 0 & 1 & 2 &  N-1 \end{bmatrix}$. Dies kann man in python via \texttt{arange(N)} erzielen. Diese kann anschliessend durch die samplingrate dividiert werden um $\vec{t}$ zu erhalten. Da wir eine Sekunde Audio erzeugen wollen ist $N=f_s$ die Samplingrate.
 
+
+\begin{python}{Ringmodulation.}
+In [1]: %pylab
+In [2]: import soundfile as sf
+In [3]: sr= 44100
+In [4]: ns = arange(sr)
+In [5]: t = ns/sr
+In [6]: a = sin(2*pi*t*100)
+In [7]: b = sin(2*pi*t*50)
+In [8]: c = a*b
+In [9]: plot(t,c)
+In [10]: sf.write('ringmodTest.wav', c, sr)
+\end{python}
 \end{answer}
-\todo{todo}
+
 
 \subsection*{Skalarprodukt}
 \index{Skalarprodukt}
@@ -107,6 +122,15 @@ Nur in $\mathbb{R}^3$ definiert!
 Python: \pythoninline{cross(a,b)}
 
 \section{Matrizen}
+
+
+\begin{equation}
+A = \begin{bmatrix} a_{11} & a_{12} & \dots & a_{1m} \\
+                    a_{21} & a_{22} &       &  \vdots   \\
+                    \vdots &        &\ddots &  \vdots \\
+                    a_{n 1} & \dots & \dots & a_{n m}
+ \end{bmatrix}
+\end{equation}
 \subsection*{Einheitsmatrix}
 \subsection*{Determinante}
 \subsection*{Eigenwert und Eigenvektoren}

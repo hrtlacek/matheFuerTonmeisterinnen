@@ -12,6 +12,7 @@
     \texttt{\%pylab} & \texttt{\%pylab} & Schneller import von üblichen paketen (\texttt{matplotlib} und \texttt{numpy}). \\ \hline
     \texttt{zeros()} & \texttt{x = zeros(5)} & Generierung eines arrays, mit nullen befüllt. \\ \hline
     \texttt{linspace()} & \texttt{x = linspace(0,1, 5)} & Generierung eines arrays, zahlen linear zwischen Argument 1 und 2 erzeugt, Anzahl der zahlen bestimmt durch argument 3. \\ \hline
+    \texttt{arange()} & \texttt{x = arange(10)} & Generierung eines arrays, $N$ Ganzzahlen von $0$ bis $N-1$. Im Beispiel da $N=10$: $\begin{bmatrix}0& 1& 2& \dots & 8 & 9\end{bmatrix}$. \\ \hline
     \texttt{plot()} & \texttt{plot(x,y)} & Line-plot erzeugen.  \\ \hline
     \texttt{clf()} & \texttt{clf()} & Clear figure. Aktuellen plot löschen.  \\ \hline
     \texttt{scatter()} & \texttt{scatter(x,y)} & Scatter Plot erzeugen. \\ \hline
@@ -27,7 +28,7 @@
     \end{tabular}
 \end{table}
 
-\subsection*{Symbolische Mathematik}
+\subsection*{Symbolische Mathematik, Polynome}
 \begin{table}[H]
     \centering
     \begin{tabular}{|p{3cm}|p{6cm}|p{6cm}|}
@@ -35,14 +36,22 @@
     \textbf{Befehl} & \textbf{Beispiel} & \textbf{Kommentar} \\ \hline
     
     \texttt{import sympy as sp} & \texttt{import sympy as sp} & Import des \texttt{sympy} Pakets für symbolische Berechnungen. \\ \hline
+    \texttt{sp.init} & \texttt{sp.init\_printing()} & 'Hübschen' output von symbolischen Ausdrücken aktivieren. \\ \hline
+    \texttt{sp.lambdify()} & {\texttt{p = x**2 \newline 
+f = sp.lambdify(x, p) \newline
+f(5) \newline 
+Out[26]: 25
+}} & Erzeugt eine ausführbare numerische funktion (\texttt{f}) aus dem symbolischen Ausdruck \texttt{p}. \\ \hline
     \texttt{from sympy.abc import} & \texttt{from sympy.abc import x,y,z} & Variablen \texttt{x,y,z} als symbolische variablen importieren. \\ \hline
     \texttt{sp.roots()} & \texttt{nullst = sp.roots(p)} & Findet die Nullstellen des polynoms \texttt{p}. \\ \hline
     \texttt{sp.factor()} & \texttt{factors = sp.factor(p)} & Linearfaktor Zerlegung des polynoms \texttt{p}. \\ \hline
     \texttt{sp.apart()} & \texttt{brueche = sp.apart(p, full=True).doit()} & Partialbruch Zerlegung polynoms \texttt{p}. \\ \hline
-    \texttt{sp.lambdify()} & \texttt{f  = sp.lambdify(x,p)} & Erzeugt eine ausführbare numerische funktion (\texttt{f}) aus dem symbolischen Ausdruck \texttt{p}. \\ \hline
 
     \end{tabular}
 \end{table}
+
+\subsection*{Symbolische Mathematik, Algebra}
+\todo{TODO}
 
 \subsection*{Sound I/O}
 \begin{table}[H]
