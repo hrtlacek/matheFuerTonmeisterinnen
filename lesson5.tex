@@ -67,7 +67,7 @@ $$ \vec{a}\circ \vec{b} = \begin{bmatrix}a_1b_1 & a_2b_2 & \dots & a_n b_n\end{b
 
 Leider wird üblicherweise die selbe Notation benutzt um die Verkettung von Funktionen zu beschreiben: $(f \circ g)(x) = f(g(x))$. Welche Operation nun gemeint ist, erschließt sich typischerweise aus dem Kontext. Beide Notationen kommen ohnehin nicht wahnsinnig oft vor.
 
-In Python kann elementweise Multiplikation durch einfache Multiplikation ausgeführt werden: \pythoninline{c = a*b}\footnote{Hier ist ein wichtiger unterschied zu \texttt{MATLAB} Code da dort punktweise Multiplikation mit \texttt{.*} ausgeführt wird.}.
+In Python\footnote{Hier ist ein wichtiger unterschied zu \texttt{MATLAB} Code da dort punktweise Multiplikation mit \texttt{.*} ausgeführt wird.} kann elementweise Multiplikation durch einfache Multiplikation ausgeführt werden: \pythoninline{c = a*b}.
 
 \begin{python}{Elementweise Multiplikation von 2 Arrays in Python.}
 In [1]: %pylab
@@ -78,7 +78,7 @@ Out[4]: array([ 5, 12, 21])
 \end{python}
 
 \begin{question}
-In Python, definiere 2 Arrays, $\vec{a}$ und $\vec{b}$. Diese sollen jeweils eine Sinus Schwingung enthalten, aber jeweils mit anderer Frequenz. Multipliziere sie, plotte das Ergebnis und höre dir das Ergebnis an. Befehle um Arrays auf die Festplatte zu schreiben sind im Python Cheat-Sheet zu finden in Abschnitt \ref{sec:pythonCheat}. Was passiert hier aus Audio Sicht?
+In Python, definiere 2 Arrays, $\vec{a}$ und $\vec{b}$. Diese sollen jeweils eine Sinus Schwingung enthalten, aber jeweils mit anderer Frequenz. Multipliziere sie, plotte das Ergebnis und höre dir das Ergebnis an. Befehle um Arrays als Audio file auf die Festplatte zu schreiben sind im Python Cheat-Sheet zu finden in Abschnitt \ref{sec:pythonCheat}. Was passiert hier aus Audio Sicht?
 \end{question}
 
 \begin{answer}
@@ -131,6 +131,12 @@ A = \begin{bmatrix} a_{11} & a_{12} & \dots & a_{1m} \\
                     a_{n 1} & \dots & \dots & a_{n m}
  \end{bmatrix}
 \end{equation}
+
+\subsection*{Matrixmultiplikation}
+\begin{equation}
+{\displaystyle c_{ik}=\sum _{j=1}^{n}a_{ij}\cdot b_{jk}}
+\end{equation}
+
 \subsection*{Einheitsmatrix}
 \subsection*{Determinante}
 \subsection*{Eigenwert und Eigenvektoren}

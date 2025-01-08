@@ -176,6 +176,15 @@ $$z = re^{\varphi i} \iff \overline{z} = re^{-\varphi i}$$
 \end{figure}
 
 
+\section{Komplexe Division}
+Oft macht man sich bei der Division von 2 komplexen Zahlen folgendes zunutze:
+\begin{equation}
+\frac{z_1}{z_2} = \frac{z_1 \cdot \overline{z_2}}{z_2 \cdot \overline{z_2}} 
+\end{equation} 
+Durch die Erweiterung mit der Komplex Konjugierten Zahle des Nenners lässt sich der Ausdruck oft vereinfachen da der Nenner hierdurch seinen Imaginärteil verliert.
+
+\todo{Example}
+
 \section{Komplexe Funktionen}
 In der Audiotechnik sind komplexwertige Funktionen wichtig. Ein Beispiel wäre die Funktion $f(z) = z$ mit $z \in \mathbb{C}$. Ihr Betrag kann auf der Komplexen Ebene durch Farben dargestellt werden aber es ist auch manchmal hilfreich sich das Ergebnis als dreidimensionale Landschaft vorzustellen, siehe Abb. \ref{fig:komp_3D}. 
 
@@ -191,7 +200,7 @@ In der Audiotechnik sind komplexwertige Funktionen wichtig. Ein Beispiel wäre d
 
 \section{Komplexe Zahlen in Python}
 
-In \texttt{Python} wird die Zahl $i$ durch \texttt{1j} ausgedrückt. \texttt{j} alleine hat zunächst keine Bedeutung und führt zu einer Fehlermeldung wenn \texttt{j} nicht definiert ist. \texttt{1j} hingegen ist $1\cdot i$, wobei \texttt{1} hier durch andere zahlen ersetzt werden kann, zB \texttt{5j} ($=5\cdot i$) oder \texttt{2.7j}($=2.7 \cdot i$). Die folgende (ein wenig gekürzte) Aufzeichnung einer interaktiven \texttt{iPython} Session soll diesen vielleicht im ersten Moment verwirrenden Unterschied klar machen:
+In \texttt{Python} wird die Zahl $i$ durch \texttt{1j} ausgedrückt. \texttt{j} alleine hat zunächst keine Bedeutung und führt zu einer Fehlermeldung wenn \texttt{j} nicht definiert ist. \texttt{1j} hingegen ist $1\cdot i$, wobei \texttt{1} hier durch andere Zahlen ersetzt werden kann, zB \texttt{5j} ($=5\cdot i$) oder \texttt{2.7j}($=2.7 \cdot i$). Die folgende (ein wenig gekürzte) Aufzeichnung einer interaktiven \texttt{iPython} Session soll diesen vielleicht im ersten Moment verwirrenden Unterschied klar machen:
 
 \begin{python}{Verwendung von $i$ in Python.}
 In [1]: %pylab
