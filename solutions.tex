@@ -11,7 +11,7 @@
 \item Siehe Abb \ref{fig:Loes_abs}. Die Bedeutung der Parameter ist durchaus greifbar: die eine Zahl schiebt den Graphen auf und ab, die andere nach links und rechts. Siehe Abb. \ref{fig:Loes_abs_var}.
     \end{enumerate}
 
-\item Eine vielleich umständliche aber richtige Lösung wäre mit einer Fallunterscheidung:
+\item Eine vielleicht umständliche aber richtige Lösung wäre mit einer Fallunterscheidung:
 $$ f(x) = \begin{cases} 
 -0.9 & \text{für } x \leq -0.9 \\ 
 0.9 & \text{für } x \geq 0.9 \\
@@ -29,7 +29,7 @@ $$ f_0 \lambda =  \sqrt{\frac{T}{\rho A}} \qquad \Bigm\lvert  \cdot ^2$$
 $$ (f_0 \lambda)^2 =  \frac{T}{\rho A} \qquad \Bigm\lvert \cdot \rho A$$
 $$ \rho A (f_0 \lambda)^2 =  T $$ 
 
-$\lambda$ ist definiert als $2L$ da die halbe welle auf der Saite mit der Länge L schwingen kann. $\rho A$ kann vereinfacht werden zu $\mu$, dem Gewicht einer Saite mit Länge $1m$, Durchmesser $d$ dichte $\rho$.
+$\lambda$ ist definiert als $2L$ da die halbe Welle auf der Saite mit der Länge L schwingen kann. $\rho A$ kann vereinfacht werden zu $\mu$, dem Gewicht einer Saite mit Länge $1m$, Durchmesser $d$ dichte $\rho$.
 
 Als Überprüfung der Umformungen/Überlegungen kann man eine Dimensionsanalyse vornehmen: \\
 
@@ -101,6 +101,17 @@ def f(x):
 
 \end{python}
 \item \todo[inline]{TODO}.
+
+\item Gelöst werden kann mit dem Logarithmus:
+$$ log_4(4^x) = log_4(262144)$$
+ $$ x = log_4(262144)$$
+ Da der 4-er Logarithmus in Computersystemen oder auf Taschenrechnern selten zur Verfügung steht können wir ihn durch Division berechnen  
+ $$ x = log_4(262144) = \frac{ln(262144)}{ln(4)} = 9$$.
+ Probe: $4^9 = 262144$.
+
+\item Die Funktion kann in Python am einfachsten als sogenannte \texttt{lambda} Funktion implementiert werden: \pythoninline{g = lambda t: ((t-3)>0)*sin(t)*(1/(t-3))}. Der Vergleich \texttt{>0} implementiert hier die Heavyside Funktion mit dem entsprechenden offset. Die gespiegelte Funktion
+
+  $g_2(t) = u(-t-3) \cdot sin(-t) \cdot \frac{1}{-t-2}$
 
 \end{enumerate}
 
