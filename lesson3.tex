@@ -177,7 +177,7 @@ $$z = re^{\varphi i} \iff \overline{z} = re^{-\varphi i}$$
 
 
 \section{Komplexe Division}
-Oft macht man sich bei der Division von 2 komplexen Zahlen folgendes zunutze:
+Oft macht man sich bei der Division von zwei komplexen Zahlen folgendes zunutze:
 \begin{equation}
 \frac{z_1}{z_2} = \frac{z_1 \cdot \overline{z_2}}{z_2 \cdot \overline{z_2}} 
 \end{equation} 
@@ -216,7 +216,7 @@ Out[6]: (2+3j)
 \end{python}
 
 
-
+\subsection*{Numerische Python Befehle}
 \begin{table}[H]
     \centering
     \begin{tabular}{|p{3cm}|p{6cm}|p{6cm}|}
@@ -226,7 +226,23 @@ Out[6]: (2+3j)
     \texttt{1j} & \texttt{z = 3+5j} & Die Zahl $i$. \\ \hline
     \texttt{abs()} & \texttt{r = abs(z)} & Berechnet den Betrag von \texttt{z}. \\ \hline
     \texttt{angle()} & \texttt{phi = angle(z)} & Berechnet das Argument von \texttt{z}. \\ \hline
+    \texttt{real()} & \texttt{a = real(z)} & Berechnet den Realteil \texttt{z}. \\ \hline
+    \texttt{imag()} & \texttt{a = imag(z)} & Berechnet den Imaginärteil \texttt{z}. \\ \hline
 
+    \end{tabular}
+\end{table}
+
+\subsection*{Symbolische Python Befehle}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{3cm}|p{6cm}|p{6cm}|}
+        \hline
+    \textbf{Befehl} & \textbf{Beispiel} & \textbf{Kommentar} \\ \hline
+    \texttt{sp.Abs()} & \texttt{r = sp.Abs(z)} & Berechnet den Betrag von \texttt{z}. \\ \hline
+    \texttt{sp.arg()} & \texttt{phi = sp.arg(z)} & Berechnet das Argument von \texttt{z}. \\ \hline
+    \texttt{sp.re()} & \texttt{a = sp.re(z)} & Berechnet den Realteil \texttt{z}. \\ \hline
+    \texttt{sp.im()} & \texttt{a = sp.im(z)} & Berechnet den Imaginärteil \texttt{z}. \\ \hline
 
     \end{tabular}
 \end{table}
@@ -242,7 +258,7 @@ Out[6]: (2+3j)
 
 \section{Aufgaben}
 \begin{enumerate}
-\item TODO
+\item Lösen Sie folgende aufgabe zunächst ohne, dann nochmal mit python. Man berechne $Re(z)$, $Im(z)$, $|z|$, $arg(z)$, $\overline{z}$, $\frac{1}{z}$, $z^2$, $\frac{z}{\overline{z}}$ für folgende komplexe Zahlen $z$: $z=1+i$, $z=-3$, $z=2e^{-i\pi/3}$. (Aufgabe 4.34 aus \cite{merziger2024repetitorium})
 \end{enumerate}
 
 

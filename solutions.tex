@@ -109,9 +109,44 @@ $$ log_4(4^x) = log_4(262144)$$
  $$ x = log_4(262144) = \frac{ln(262144)}{ln(4)} = 9$$.
  Probe: $4^9 = 262144$.
 
-\item Die Funktion kann in Python am einfachsten als sogenannte \texttt{lambda} Funktion implementiert werden: \pythoninline{g = lambda t: ((t-3)>0)*sin(t)*(1/(t-3))}. Der Vergleich \texttt{>0} implementiert hier die Heavyside Funktion mit dem entsprechenden offset. Die gespiegelte Funktion
+\item Die Funktion kann in Python definiert werden. Man kann einen Array $t$ via \texttt{linspace} erzeugen und anschliessend evaluieren und plotten. Beispielsweise kann man \pythoninline{t = linspace(-30,30,200)} definieren und dann \pythoninline{y1 = ((t-3)>0)*sin(t)*(1/(t-3))}. Die gespiegelte Funktion lautet:
+  $$g_2(t) = u(-t-3) \cdot sin(-t) \cdot \frac{1}{-t-2}.$$
+Hier wurde einfach jedes $t$ mit $-1$ multipliziert. Diese könnte man nun abermals implementieren.
 
-  $g_2(t) = u(-t-3) \cdot sin(-t) \cdot \frac{1}{-t-2}$
+Wesentlich übersichtlicher und einfacher ist jedoch folgendes: man implementiert $g$ als sogenannte \texttt{lambda} Funktion.
+ \pythoninline{g = lambda t: ((t-3)>0)*sin(t)*(1/(t-3))}. Der Vergleich \texttt{>0} implementiert hier übrigens die Heavyside Funktion mit dem entsprechenden Offset. 
+
+Nun kann diese lambda Funktion einmal mit $t$ und einmal mit $-t$ evaluiert werden:
+
+\begin{python}{Der Python Code um $g(t)$ und $g_2(t)$ in Abbildung \ref{fig:Loes_g1g2} zu erzeugen.}
+In [1]: %pylab
+In [2]: t = linspace(-30,30,1000)
+In [3]: g = lambda t: ((t-3)>0)*sin(t)*(1/(t-3))
+In [5]: plot(t,g(t))
+In [6]: plot(t,g(-t))
+\end{python}
+
+
+\begin{figure}[H]
+    \centering
+    \input{python/plots/sol_g1_g2.pgf}
+    \caption{Lösung, skizzieren und spiegeln einer Funktion.}
+    \label{fig:Loes_g1g2}
+\end{figure}
+
+
+\item Die Gleichung $ \frac{x^{2} + 3 x + 2}{\left(x - 2\right) \left(x + 1\right) \left(x^{2} + x + 1\right)}$ wird in Python übersetzt und \texttt{sp.apart()} verwendet.
+\begin{python}{Lösung: Partialbruchzerlegung.}
+In [1]: import sympy as sp
+In [3]: from sympy.abc import x
+In [3]: g = (x**2 + 3*x + 2)/((x - 2)*(x + 1)*(x**2 + x + 1))
+
+In [4]: sp.apart(g)
+\end{python}
+
+Ergibt:
+$$- \frac{4 x + 5}{7 \left(x^{2} + x + 1\right)} + \frac{4}{7 \left(x - 2\right)}$$
+
 
 \end{enumerate}
 
