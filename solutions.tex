@@ -147,11 +147,32 @@ In [4]: sp.apart(g)
 Ergibt:
 $$- \frac{4 x + 5}{7 \left(x^{2} + x + 1\right)} + \frac{4}{7 \left(x - 2\right)}$$
 
+\item Polynomdivision ergibt: 
+
+\polylongdiv[style=C]{2 x^5 + 4 x^4 - 13 x^3 - 28 x^2 - 7 x}{x^2-7}
 
 \end{enumerate}
 
 \section{Kapitel 3}
 \begin{enumerate}
-\item
-\end{enumerate}
+\item 
 
+\renewcommand{\arraystretch}{1.5}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{|>{\raggedright}m{3cm}|c|c|c|c|c|c|c|c|c|}
+\hline
+\textbf{Komplexe Zahl} & $Re(z)$ & $Im(z)$ & $|z|$ & $arg(z)$ & $\overline{z}$ & $\frac{1}{z}$ & $z^2$ & $\frac{z}{\overline{z}}$ \\
+\hline
+$z = 1 + i$ & 1 & 1 & $\sqrt{2}$ & $\frac{\pi}{4}$ & $1 - i$ & $\frac{1}{2} - \frac{i}{2}$ & $2i$ & $i$ \\
+\hline
+$z = -3$ & -3 & 0 & 3 & $\pi$ & $-3$ & $-\frac{1}{3}$ & 9 & 1 \\
+\hline
+$z = 2e^{-i\pi/3}$ & 1 & $-\sqrt{3}$ & 2 & $-\frac{\pi}{3}$ & $2e^{i\pi/3}$  & $\frac{1}{2}e^{i\pi/3}$ & $4e^{-2i\pi/3}$ & $e^{-2i\pi/3}$ \\
+\hline
+\end{tabular}
+\caption{Lösungen}
+\end{table}
+
+\end{enumerate}
