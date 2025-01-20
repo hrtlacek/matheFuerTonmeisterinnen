@@ -176,7 +176,32 @@ $z = 2e^{-i\pi/3}$ & 1 & $-\sqrt{3}$ & 2 & $-\frac{\pi}{3}$ & $2e^{i\pi/3}$  & $
 \label{tab:sol_3_1}
 \end{table}
 
-\item TODO
-\item TODO
+\item $z_1 = \alpha e^{5i}$, 
+$z_2 = e^{it}$. 
+$z_3 = z_1 \cdot z_2 = \alpha e^{5i} e^{it} = \alpha e^{it + i5} = \alpha e^{i(t + 5)} = \alpha \cdot \left(cos(t+5) + i sin(t+5) \right)$.
+\item 
+\begin{enumerate}
+\item $e^i = e^{1i} = cos(1) + i sin(1) \implies Re(e^i) = cos(1) ,Im(e^i) = sin(1)$
+\item $e^i\pi = cos(\pi) + i sin(\pi)$. Da $cos(\pi) = -1$ und $sin(\pi) = 0$ sehen wir, dass $Re(e^{i\pi}) = -1$ und $Im(e^{i\pi}) = 0$. In Summe können wir vereinfachen zu: $e^{i\pi} = -1$. Gerne wird diese oder du umgestellte Variante $e^{i\pi} -1 = 0$ als eine der 'schönsten' Formeln bezeichnet da hier wichtige Konstanten in Zusammenhang gebracht werden: $e, \pi, i, 1, 0$.  
+\item Die Frage ist eine Fangfrage. $e^{\pi}$ ist nicht komplex. Der Realteil ist damit schlicht $e^{\pi} \approx 23.14$ und der Imaginärteil $0$.
+\end{enumerate}
+\item $e^{-i2\pi x} = cos(-2\pi x) + i sin(-2\pi x) \implies Im(e^{-i2\pi x}) = sin(-2\pi x) = -sin(2\pi x)$
 
+\begin{figure}[H]
+    \centering
+    \input{python/plots/sol_K3_4.pgf}
+    \caption{Lösung, Skizze von $Im(e^{-i2\pi x})$.}
+    \label{fig:Loes_K3_4}
+\end{figure}
+
+\item 
+    \begin{enumerate}
+        \item $z_1 + z_2 = 13 - \frac{3}{2} i $
+        \item $z_1 \cdot z_2 =  37 -16i$
+        \item $\frac{z_1}{z_2}$: Via üblicher Methoden (erweiterung durch konjugiert komplexe Zahl des Nenners) kommt man auf: $\frac{z_1}{z_2} = \frac{35-20i}{81.25}$. Via \texttt{sympy} entsteht durch \pythoninline{z_3 = z_1/z_2} und \pythoninline{z_3.simplify()}: $\frac{28}{68} - \frac{16i}{65}$. Diese Lösungen sind identisch. 
+        \item $|z_1| = \sqrt{20} \approx 4.47$
+        \item $arg(z_1) \approx -0.46$
+        \item $|z_2| = \sqrt{81 + \frac{1}{4}} \approx 9.014$
+        \item $arg(z_2) \approx 0.055$
+    \end{enumerate}
 \end{enumerate}
