@@ -1,6 +1,6 @@
 %!TEX root = main.tex
 \chapter{Komplexe Zahlen} \label{chap:complex}
-
+\index{Komplexe Zahlen}
 
 Komplexe Zahlen haben äußerst große Wichtigkeit in der Beschreibung von Harmonischen Schwingungen und daher natürlich ebensolche Relevanz in der Audio Domäne. \\
 \todo[inline]{Beispiele}
@@ -33,6 +33,7 @@ Daher wird
 }
 
 \section{Darstellung}
+\index{Kartesische Darstellung}
 Komplexe zahlen können auf verschiedene Arten dargestellt werden. Vielleicht darf dies metaphorisch mit unterschiedlichen Darstellungen von Dezimalzahlen verglichen werden (die Ziffern $10$ in Binärsystem entsprechen dem wert des Ausdrucks $2$ in Dezimalsystem). Die unterschiedlichen Darstellungen erlauben unterschiedliche Einsichten und manche Darstellungen vereinfachen bestimmte Operationen wie Multiplikation, Addition etc. 
 Die üblicherweise als erstes Betrachtete Darstellung, ist die oben beschriebene\emph{Kartesische Darstellung}\footnote{Benannt nach René Descartes. 31. März 1596 – 11. Februar 1650.}:
 
@@ -111,6 +112,7 @@ Umgekehrt kann $a$ und $b$ via Sinus und Kosinus berechnet werden:
 $$a = r cos(\varphi)$$
 $$b = r sin(\varphi)$$
 
+\index{Polare Darstellung}
 Hieraus ergibt sich schließlich die \textbf{Polare Darstellung}:
 $$ z = r (cos(\varphi) + i sin(\varphi))$$
 % }
@@ -224,6 +226,7 @@ Out[6]: (2+3j)
     \textbf{Befehl} & \textbf{Beispiel} & \textbf{Kommentar} \\ \hline
     
     \texttt{1j} & \texttt{z = 3+5j} & Die Zahl $i$. \\ \hline
+    \texttt{exp()} & \texttt{z = 2*exp(1j*3)} & $e^{\cdot}$, im Bsp.: $z = 2e^{3i}$. \\ \hline
     \texttt{abs()} & \texttt{r = abs(z)} & Berechnet den Betrag von \texttt{z}. \\ \hline
     \texttt{angle()} & \texttt{phi = angle(z)} & Berechnet das Argument von \texttt{z}. \\ \hline
     \texttt{real()} & \texttt{a = real(z)} & Berechnet den Realteil \texttt{z}. \\ \hline
@@ -262,7 +265,7 @@ Out[6]: (2+3j)
 
 \item Gegeben $z_1 = \alpha e^{5i}$ und $z_2 = e^{it}$ berechnen Sie (ohne und mit Python) $z_3 = z_1 \cdot z_2$. Stellen das ergebnis in \textbf{polarer Darstellung} dar. 
 
-\item Berechnen Sie (ohne und mit Python) imaginärteil und realteil von: $e^i$, $e^{i\pi}$, $e^{\pi}$. Zusatzaufgabe für den Fall $z=e^{i\pi}$: Schreiben sie auf: Polardarstellung $=$ kartesische Darstellung und betrachten Sie somit eine der 'schönsten' Formeln der Mathematik.
+\item Berechnen Sie (ohne und mit Python) imaginärteil und realteil von: $e^i$, $e^{i\pi}$, $e^{\pi}$. Zusatzaufgabe für den Fall $z=e^{i\pi}$: Schreiben sie auf: "Eulersche Darstellung $=$ polare Darstellung" und betrachten Sie somit eine der 'schönsten' Formeln der Mathematik.
 
 \item Skizzieren Sie $Im(e^{-i 2\pi x})$. (ohne und mit Python).
 

@@ -31,7 +31,7 @@ Hier eine Auflistung von Interpretationen unter der Annahme dass die horizontale
 % \section{Wichtige Funktionen im Audio Bereich}
 
 \section{Impuls, $\delta(t)$}
-Impuls, delta funktion, dirac delta funktion, kronecker delta, (Engl. 'unit impulse'). Alle diese Worte bezeichnen ähnliche Ideen. Je nachdem ob im 'analogen' oder 'digitalen' wird der Impuls unterschiedlich definiert, hat aber im wesentlichen die gleiche Funktion. Die analoge Idee ist ein wenig abstrakt: Ein unendlich kurzes unendlich hohes Signal mit der Fläche 1 ('Dirac Delta Funktion'):
+Impuls, Delta-Funktion, Dirac-Delta-Funktion, Kronecker Delta, (Engl. 'unit impulse'). Alle diese Worte bezeichnen ähnliche Ideen. Je nachdem ob im 'analogen' oder 'digitalen' wird der Impuls unterschiedlich definiert, hat aber im wesentlichen die gleiche Funktion. Die analoge Idee ist ein wenig abstrakt: Ein unendlich kurzes unendlich hohes Signal mit der Fläche 1 ('Dirac Delta Funktion'\footnote{Paul Adrien Maurice Dirac (* 8. August 1902 in Bristol; † 20. Oktober 1984 in Tallahassee) war ein britischer Physiker. \citep{dewiki:251726014} }):
 
 \begin{equation}
  \delta (x)={\begin{cases}0,&x\neq 0\\{\infty },&x=0\end{cases}}
@@ -366,7 +366,7 @@ In [3]: plot(x,y)
 \begin{figure}[h]
 	\centering
 	\input{python/plots/polynom1.pgf}
-	\caption{Der Funktiongraph des Polynoms  $p(x) = x^3 - 4x^2 - 7x + 10$.}
+	\caption{Der Funktionsgraph des Polynoms  $p(x) = x^3 - 4x^2 - 7x + 10$.}
 	\label{fig:poly1}
 \end{figure}
 
@@ -391,7 +391,7 @@ In [3]: plot(x,y)
 
 
 
-\begin{python}{Symbolische extraktion von Nullstellen in Python}
+\begin{python}{Symbolische Extraktion von Nullstellen in Python}
 import sympy as sp
 from sympy.abc import x
 p = x**3 - 4*x**2 - 7*x + 10
@@ -438,13 +438,13 @@ Out[1]: 1 + 1/(x + 1)
 \section{Aufgaben}
 \begin{enumerate}
 \item Versuchen Sie Python Code zu entwerfen der die Funktion in Abbildung \ref{fig:functManipul} erzeugt.
-\item In Abschnitt \ref{sec:manipFuncts} wurde die Auswirkung von verschiedenen 'Manipulationen' besprochen unter der Annahme dass das argument der Funktion die Zeitachse darstellt ($f(t)$ wobei $t$ die zeit in Sekunden). Welche Interpretationen drängen sich auf unter der Annahme dass das Argument die Frequenzachse ist, also $f(\omega)$ wobei $\omega$ die Frequenz? An dieser Stelle ist es nicht wichtig ob es sich um die Kreisfrequenz, normierte Frequenz oder Frequenz in Hz handelt.
+\item In Abschnitt \ref{sec:manipFuncts} wurde die Auswirkung von verschiedenen 'Manipulationen' besprochen unter der Annahme dass das Argument der Funktion die Zeitachse darstellt ($f(t)$ wobei $t$ die zeit in Sekunden). Welche Interpretationen drängen sich auf unter der Annahme dass das Argument die Frequenzachse ist, also $f(\omega)$ wobei $\omega$ die Frequenz? An dieser Stelle ist es nicht wichtig ob es sich um die Kreisfrequenz, normierte Frequenz oder Frequenz in Hz handelt.
 
 \item $4^x = 262144$, löse für $x$.
 
-\item Sie finden folgende funktion vor $g(t) = u(t-3) \cdot sin(t) \cdot \frac{1}{t-3}$. Plotten / Skizzieren sie diese. Könnten Sie sie zeitlich 'umdrehen' (spiegelung um die ordinate)?
+\item Sie finden folgende Funktion vor $g(t) = u(t-3) \cdot sin(t) \cdot \frac{1}{t-3}$. Plotten / Skizzieren sie diese. Könnten Sie sie zeitlich 'umdrehen' (Spiegelung um die Ordinate)?
 
-\item Gegeben $$ \frac{x^{2} + 3 x + 2}{\left(x - 2\right) \left(x + 1\right) \left(x^{2} + x + 1\right)}$$ ermitteln Sie die Partialbruchzerlegung in python!
+\item Gegeben $$ \frac{x^{2} + 3 x + 2}{\left(x - 2\right) \left(x + 1\right) \left(x^{2} + x + 1\right)}$$ ermitteln Sie die Partialbruchzerlegung in Python!
 
 \item Führen Sie eine Polynomdivision von $\frac{g}{f}$ durch:
 $$g(x) = 2 x^{5} + 4 x^{4} - 13 x^{3} - 28 x^{2} - 7 x $$
