@@ -2,6 +2,9 @@ debugging.*
 # Log files
 *.log
 
+python/notebooks/.ipynb_checkpoints/*
+python/notebooks/.virtual_documents/*
+
 # indexing
 *.idx
 *.ilg
