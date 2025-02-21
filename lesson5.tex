@@ -3,8 +3,10 @@
 \todo{Probabilistische system entwicklung, https://www.youtube.com/watch?v=K-8F\_zDMDUI\&list=PLMrJAkhIeNNTYaOnVI3QpH7jgULnAmvPA\&index=3}
 \todo[inline]{Digital Audio als vektor, Vector scope/oscilloscope music, stereo sachen, Rotationsmatrix, Hadamardmatrix, Householdermatrix,  state space formulations, modal analyse}
 
+\citep{strang2020linear}
+
 \section{Motivation}
-Vektoren und Matrizen findet man sehr häufig in der Audiotechnischen Literatur. Wie bereits in Kapitel \ref{chap:complex} beschrieben, sind komplexe Zahlen allgegenwärtig und deren Interpretation als Vektor bedeutsam und praktisch. Andererseits kann zB. ein Stereosignal als Vektor aufgefasst werden: Zu jedem Zeitpunkt hat es 2 Zahlen, diese können als Vektor im 2-dimensionalen Raum aufgefasst werden, was wiederum diverse Operationen nahelegt. Ebenso scheint es spätestens an diesem Punkt naheliegend ein $n$-Kanal Signal als Vektor mit $n$ Einträgen zu verstehen und womöglich hieraus Schlüsse ziehen zu dürfen. Wenn es um verräumlichung von Signalen (zB. Ambisonics) geht und daher Positionen im Dreidimensionalen Raum ($\mathbb{R}^3$) benötigt werden ist klar, dass wir diese mittels Vektoren beschreiben können. Aber auch wenn es um Direktionalität von Lautsprechern oder Mikrophonen geht werden letztlich 2 bis 3 Dimensionale Felder beschrieben und auch hier kommen Vektoren zum Einsatz. Es sei aber an dieser Stelle betont dass Vektoren und Matrizen nicht ausschließlich für Audioanwendungen im Dreidimensionalen Raum zum Einsatz kommen. Rotations- Hadamard- und Householdermatrizen werden für Hall-Algorithmen und Resonatoren verwendet, Filtersysteme können über Zustandsraumdarstellungen via Vektoren und Matrizen beschrieben werden und vieles mehr.       
+Vektoren und Matrizen findet man sehr häufig in der Audiotechnischen Literatur. Wie bereits in Kapitel \ref{chap:complex} beschrieben, sind komplexe Zahlen allgegenwärtig und deren Interpretation als Vektor bedeutsam und praktisch. Andererseits kann zB. ein Stereosignal als Vektor aufgefasst werden: Zu jedem Zeitpunkt hat es 2 Zahlen, diese können als Vektor im 2-dimensionalen Raum aufgefasst werden, was wiederum diverse Operationen nahelegt. Ebenso scheint es spätestens an diesem Punkt naheliegend ein $n$-Kanal Signal als Vektor mit $n$ Einträgen zu verstehen und womöglich hieraus Schlüsse ziehen zu dürfen. Wenn es um verräumlichung von Signalen (zB. Ambisonics) geht und daher Positionen im Dreidimensionalen Raum ($\mathbb{R}^3$) benötigt werden ist klar, dass wir diese mittels Vektoren beschreiben können. Aber auch wenn es um Direktionalität von Lautsprechern oder Mikrophonen geht werden letztlich 2 bis 3 Dimensionale Felder beschrieben und auch hier kommen Vektoren zum Einsatz. Es sei aber an dieser Stelle betont dass Vektoren und Matrizen nicht ausschließlich für Audioanwendungen im Dreidimensionalen Raum zum Einsatz kommen. Rotations- Hadamard- und Householdermatrizen \citep{PASPWEB2010}\footnote{https://ccrma.stanford.edu/~jos/pasp/Hadamard\_Matrix.html} werden für Hall-Algorithmen und Resonatoren verwendet , Filtersysteme können über Zustandsraumdarstellungen via Vektoren und Matrizen beschrieben werden \citep{bilbao2009numerical} und vieles mehr.       
 
 \section{Vektoren}
 Es wird nun einführendes über Vektoren gesagt aber recht kurz und bündig da 1. angenommen wird, dass insbesondere 2 und 3 dimensionale Vektoren zu den weniger abstrakten und aus der Schule bekannten Themen gehören und 2. Vektoren als Spezialfall von Matrizen gesehen werden können und wir unsere Aufmerksamkeit so schnell wie möglich diesen zuwenden wollen.
@@ -123,25 +125,190 @@ Python: \pythoninline{cross(a,b)}
 
 \section{Matrizen}
 
+\praxis{
+Angenommen wir wollen $4$ Audio signale, zum beispiel 4 verschiedene instrumente auf 6 verschiedene Lautsprecher schicken, unterschiedlicher Lautstärke. Wie könnet man dies Mathematisch formulieren? Man könnte zum Beispiel sagen die 4 audio signale seien ein vektor $\vec{x(t)}$, der die jeweiligen signale enthält: $\vec{x}(t) = \begin{bmatrix} x_1(t) & x_2(t) & x_3(t) & x_4(t)\end{bmatrix}$. Unsere output Signale die wir an die 6 Lautsprecher schicken nennen wir vielleicht $y_1(t), \dots, y_6(t)$. Auch diese machen wir zu einem Vektor $\vec{y}(t) = \begin{bmatrix} y_1(t) & y_2(t) & y_3(t) & y_4(t) & y_5(t) & y_6(t)\end{bmatrix}$. Nun können wir unsere Verräumlichung über eine Matrix definieren:
+
+$$ \mathbf{A}\vec{x} = \vec{y}$$
+
+Hier ist zu beachten dass es sich bei $\vec{x}$ um eine $4\times 1$ Matrix, also einen \textbf{Spaltenvektor} mit 4 Reihen handelt, und bei $\vec{y}$ ebenso um einen Spaltenvektor. Die Matrix $\mathbf{A}$ hat die Form $6 \times 4$. zb:
+
+\[
+\begin{bmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \\ 1 & 0 & 0 & 0 \\ 1 & 0 & 0 & 0 \end{bmatrix}  
+\begin{bmatrix} x_1 \\ x_2 \\ x_3 \\ x_4  \end{bmatrix}  
+=
+\begin{bmatrix} y_1 \\ y_2 \\ y_3\\ y_4\\ y_5\\ y_6\end{bmatrix}
+\]
+
+
+In diesem Beispiel haben wir beschlossen instrument $1$ auf lautsprecher $1$ zu schicken, Instrument $2$ auf Lautsprecher $2$ etc, aber Instrument $1$ auch noch auf Lautsprecher 5 und 6 zu senden. Das heisst $y_1 = x_1$, $y_2 = x_2$, $y_3 = x_3$, $y_4 = x_4$, $y_5 = x_1$, $y_6 = x_1$.
+}
+
+
+
+
+\subsection*{Ein Lineares Gleichungssystem (LGS)}
+
+\[
+\begin{aligned}
+2x + 3y &= 8 \\
+4x -  y &= 2
+\end{aligned}
+\]
+
+Dies kann in Matrixform geschrieben werden als:
+
+\[
+\begin{bmatrix} 2 & 3 \\ 4 & -1 \end{bmatrix}  
+\begin{bmatrix} x \\ y \end{bmatrix}  
+=
+\begin{bmatrix} 8 \\ 2 \end{bmatrix}
+\]
+
+\begin{python}{Lösung eines Linearen Gleichungssytems mit Python.}
+In [1]: %pylab
+In [2]: A = np.array([[2, 3], [4, -1]])
+In [3]: b = np.array([8, 2])
+In [4]: x = np.linalg.solve(A, b)
+In [5]: x
+Out[5]: array([1., 2.])
+\end{python}
+
+
+
 
 \begin{equation}
-A = \begin{bmatrix} a_{11} & a_{12} & \dots & a_{1m} \\
+\mathbf{A} = \begin{bmatrix} a_{11} & a_{12} & \dots & a_{1m} \\
                     a_{21} & a_{22} &       &  \vdots   \\
                     \vdots &        &\ddots &  \vdots \\
                     a_{n 1} & \dots & \dots & a_{n m}
  \end{bmatrix}
 \end{equation}
 
+
+
+
+\subsection{Spezielle Matrizen}
+
+\subsubsection*{Null Matrix}
+
+\subsubsection*{Einheitsmatrix}
+
+$\mathbf{E}$ in deutschen Texten, in englisch 'Identity Matrix', daher $\mathbf{I}$. 
+
+\begin{equation}
+\mathbf{I} =
+\begin{bmatrix}
+1 & 0 & 0 & \cdots & 0 \\
+0 & 1 & 0 & \cdots & 0 \\
+0 & 0 & 1 & \cdots & 0 \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+0 & 0 & 0 & \cdots & 1
+\end{bmatrix}
+\end{equation} 
+
+
+\begin{python}{Numerische $3\times 3$ Einheitsmatrix.}
+In [1]: %pylab
+In [2]: A = eye(3)
+In [3]: A
+Out[3]:
+array([[1., 0., 0.],
+       [0., 1., 0.],
+       [0., 0., 1.]])
+\end{python}
+
+% \mathbf{I} = \begin{bmatrix} 1 & 0 & \dots & 0 \\
+%                     0 & 1 & \dots &  \vdots   \\
+%                     \vdots &  \vdots  &1&  0 \\
+%                     0 & 0 & \dots & 1
+%  \end{bmatrix}
+
+\subsubsection{Diagonalmatrix}
+
+\subsubsection{Symmetrische Matrizen}
+
+$\mathbf{A} \, ist \, symmetrisch \iff für alle i,j, a_{ji} = a_{ij}$
+
+$\mathbf{A} = \mathbf{A}^T$
+
+
+
+\subsubsection{Orthogonale matrizen}
+(Rotationsmatrizen)
+
+Ist eine Matrix $\mathbf{Q}$ orthogonal dann gilt 
+$$ \mathbf{Q}^T\mathbf{Q} = \mathbf{I} $$.
+
+% Hier  https://www.youtube.com/watch?v=j8hEnyOiwhw wird folgendes behauptet:
+% $$ \mathbf{Q} \mathbf{Q}^T \neq \mathbf{I} $$.
+% Auf wikipedia steht das gegenteil.
+
 \subsection*{Matrixmultiplikation}
+
+\begin{center}
+\begin{tikzpicture}
+
+    % First matrix (A) - Governs rows
+    \matrix[matrix, 
+            nodes={draw, minimum size=1cm, anchor=center}, 
+            column sep=2mm, row sep=2mm] (A) {
+        x & x & x \\
+        x & x & x \\
+        x & x & x \\
+    };
+
+    % Second matrix (B) - Governs columns
+    \matrix[matrix, 
+            nodes={draw, minimum size=1cm, anchor=center}, 
+            column sep=2mm, row sep=2mm, right=of A] (B) {
+        x & x \\
+        x & x \\
+        x & x \\
+    };
+
+    % Resulting matrix (C)
+    \matrix[matrix, 
+            nodes={draw, minimum size=1cm, anchor=center}, 
+            column sep=2mm, row sep=2mm, right=of B] (C) {
+        x & x \\
+        x & x \\
+    };
+
+    % Multiplication sign
+    \node at ($(A.east)!0.5!(B.west)$) {$\times$};
+    \node at ($(B.east)!0.5!(C.west)$) {$=$};
+
+\end{tikzpicture}
+\end{center}
+
 \begin{equation}
 {\displaystyle c_{ik}=\sum _{j=1}^{n}a_{ij}\cdot b_{jk}}
 \end{equation}
 
-\subsection*{Einheitsmatrix}
+
 \subsection*{Transposition}
 \subsection*{Determinante}
+\todo[inline]{A Test for invertibility}
+$det \mathbf{A}$ oder auch $|\mathbf{A}|$. 
+
+\begin{itemize}
+   \item $det \mathbf{A} = 1$.
+   \item Reihen vertauschen kehrt das vorzeichen der Determinante um.
+\end{itemize}
+
+$$ \begin{vmatrix} a & b  \\
+                    c & d 
+ \end{vmatrix} = ad - bc$$
+
 \colab{https://colab.research.google.com/github/hrtlacek/matheFuerTonmeisterinnen/blob/master/python/notebooks/Determinante.ipynb}
+
+
 \subsection*{Invertierung}
+
+\subsubsection{Diagonalisierung}
+ % https://www.youtube.com/watch?v=ZSGrJBS_qtc
+
+
 \subsection*{Eigenwert und Eigenvektoren}
 \index{Eigenwert}\index{Eigenvektor}\index{Zustandsraumdarstellung}\index{State-Space}
 

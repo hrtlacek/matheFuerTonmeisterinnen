@@ -251,9 +251,47 @@ Out[6]: (2+3j)
 \end{table}
 
 
+\begin{question}
+
+Gegeben $z = 4e^{3i}$, berechne $|z|$, $\angle z$, $\Re (z)$, $\Im (z)$, $\overline{z}$. Berechne ohne python aber nutze python um deine Ergebnisse zu bestätigen.
+\end{question}
 
 
-\todo[inline]{ polynome mit reellen koeefizienten -> kompl konj oder reelle nullstellen. Division von compl zahlen durch mult mit kompl. konj., $e^z$, $ln z$, python, 3d plots of complex functions}
+\begin{answer}
+	Zunächst notieren wir auf dem Blatt Papier auf dem wir rechnen irgendwo riesig unsere Lieblingsformel: $z = e^{ix} = cos(x) + i sin(x)$.
+	Wir erweitern sie eventuell um $r$: $re^{ix} = r(cos(x) + i sin(x))$.
+	Wir wissen dass $|z|$ der Betrag der Zahl ist und können ihn ablesen aus der Angabe: $r = 4$.
+	Wir wissen weiters dass $\angle z$ das Argument (der Winkel) der Zahl ist, auch diesen können wir direkt ablesen: $\varphi = 3$.
+	$\Re (z)$, der Realteil von $z$ erschließt sich durch die Eulersche Formel: $\Re (e^{i3}) = r cos(3)$. Der Imaginärteil ebenso als $r sin(3)$.
+	Zu guter Letzt $\overline{z}$: Dies kann einfach berechnet werden indem man $\varphi$ mit $-1$ multipliziert also $\overline{z} = 4e^{-3i}$. 
+	Mittels python lässt sich all das überprüfen:
+	\begin{python}{komplexe Rechnungen in python}
+In [1]: %pylab
+In [2]: z = 4*exp(3j)
+In [3]: abs(z)
+Out[3]: 4.0
+In [4]: angle(z)
+Out[4]: 3.0
+In [5]: real(z)
+Out[5]: -3.9599699864017817
+In [6]: 4*cos(3)
+Out[6]: -3.9599699864017817
+In [7]: imag(z)
+Out[7]: 0.5644800322394689
+In [8]: 4*sin(3)
+Out[8]: 0.5644800322394689
+In [9]: conjugate(z)
+Out[9]: (-3.9599699864017817-0.5644800322394689j)
+In [10]: 4*exp(-3j)
+Out[10]: (-3.9599699864017817-0.5644800322394689j)
+
+	\end{python}
+
+
+\end{answer}
+
+
+\todo[inline]{ PoleZero plot, polynome mit reellen koeefizienten -> kompl konj oder reelle nullstellen. Division von compl zahlen durch mult mit kompl. konj., $e^z$, $ln z$, python, 3d plots of complex functions}
 
 \section{Anwendungen}\label{sec:anwendungen}
 

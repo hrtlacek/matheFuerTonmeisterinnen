@@ -266,7 +266,8 @@ Zurückgreifend auf die Definition aus Gleichung \ref{eq:rationaleFunktion} läs
 % \end{equation}
 
 \subsection{Polynomdivision}
-Polynomdivision (Engl. 'long division of polynomials' und oft kurz 'long division') ist die Division von 2 Polynomen. Siehe das folgende Beispiel:
+Polynomdivision (Engl. 'long division of polynomials' und oft kurz 'long division') ist die Division von 2 Polynomen. 
+Siehe das folgende Beispiel:
 
 \polylongdiv[style=C]{x^{3} + 5 x^{2} - 2 x - 24}{x-2}
 
@@ -278,7 +279,34 @@ $$P(x) = x^{3} + 5 x^{2} - 2 x - 24 = (x-2) \cdot (x^2 + 7x + 12)$$
 
 Was hier interessant ist, ist dass $(x-2)$ ein \emph{linearer Faktor} ist, also keine Potenzen größer 1 enthält. Es ist offensichtlich dass der Faktor $(x-2)$ $0$ wird an der Stelle $2$. Da $P(x)$ ein Produkt ua. dieses Faktors ist haben wir eine Nullstelle von $P$.
 
-\todo[inline]{Add some youtube video where this is done step by step.}
+\href{https://youtu.be/CNiS387yEOc?feature=shared&t=115}{Hier ein Beispiel in dem man Schritt für Schritt sehen kann wie dies passiert.}\footnote{https://youtu.be/CNiS387yEOc?feature=shared\&t=115}
+
+
+\begin{question}
+    Gibt es eine Möglichkeit sich selbst Polynomdivisions Beispiele zu erzeugen sodass 'angenehme' Lösungen vorliegen?
+\end{question}
+
+\begin{answer}
+Wir können einfach 2 beliebige Polynome $P_a$ und $P_b$ Multiplizieren und erhalten Polynom $P_c$. Anschließend kann man natürlich $P_c$ zum Beispiel durch $P_a$ dividieren und muss $P_b$ als Lösung erhalten. Dies ist am einfachsten via python/sympy, es besteht hier ein kleiner Vorgriff auf \ref{sec:python} :
+\begin{python}{Erzeugung einer Aufgabe zur Polynomdivision}
+In [1]: import sympy as sp
+In [2]: from sympy.abc import x, y, z
+In [3]: P_a = x**3 +2*x**2 -4
+In [4]: P_b = 4*x**3 +x**2 + 1
+In [5]: P_c = P_a*P_b
+In [6]: P_c
+Out[6]: (x**3 + 2*x**2 - 4)*(4*x**3 + x**2 + 1)
+In [7]: P_c.expand()
+Out[7]: 4*x**6 + 9*x**5 + 2*x**4 - 15*x**3 - 2*x**2 - 4
+\end{python}
+
+Nun können wir die Division zur Übung per Hand durchführen:
+
+\polylongdiv[style=C]{4 x^{6} + 9 x^{5} + 2 x^{4} - 15 x^{3} - 2 x^{2} - 4}{x^{3} + 2 x^{2} - 4}
+\end{answer}
+
+
+
 
 \subsection{Zerlegung in Linearfaktoren}\label{sec:linearfaktoren}
 

@@ -347,9 +347,9 @@ Einfache Rechenoperationen wie $+, -, \cdot, / $, haben in der Tontechnik/Signal
     \hline
     \textbf{} & \textbf{Audio Konzept} & \textbf{Plot} \\
     \hline
-    $A + B$ & $A$ und $B$ "zusammen mischen" & \input{python/plots/signale_rechenop_AplusB.pgf} \\
+    $A + B$ & $A$ und $B$ 'zusammen mischen' & \input{python/plots/signale_rechenop_AplusB.pgf} \\
     \hline
-    $A - B$ & "Mischen mit Invertierter Phase des $B$ Signals"& \input{python/plots/signale_rechenop_AminusB.pgf} \\
+    $A - B$ & 'Mischen mit Invertierter Phase des $B$ Signals'& \input{python/plots/signale_rechenop_AminusB.pgf} \\
     \hline
     $A \cdot B$ & Verstärken, Modulation & \input{python/plots/signale_rechenop_AtimesB.pgf} \\
     \hline
@@ -361,7 +361,7 @@ Einfache Rechenoperationen wie $+, -, \cdot, / $, haben in der Tontechnik/Signal
 \end{center}
 \end{table}
 
-\important{Im Bereich der Signalverarbeitung allgemein ist $A*B$ \emph{nicht} Multiplikation! $A*B$ bedeutet in unserem Fach 'Faltung', 'Convolution', siehe Faltungshall etc. Multiplikation kann $A\times B$ geschrieben werden wobei das eher bei Vektoren üblich ist. In Programmiersprachen (auch in der Signalverarbeitung, wie \texttt{C}, \texttt{Matlab}, \texttt{Python} etc) wird \texttt{*} durchaus als Multiplikation verwendet aber nicht in der Mathematischen Notation.}
+\important{Im Bereich der Signalverarbeitung allgemein ist $A*B$ \emph{nicht} Multiplikation! $A*B$ bedeutet in unserem Fach 'Faltung', 'Convolution', siehe Faltungshall etc. Multiplikation kann $A\times B$ geschrieben werden wobei das eher bei Vektoren üblich ist. In Programmiersprachen (auch in der Signalverarbeitung, wie \texttt{C}, \texttt{Matlab}, \texttt{Python} etc) wird \texttt{*} durchaus als Multiplikation verwendet aber nicht in der mathematischen Notation.}
 
 
 \subsection{Modulo}
@@ -371,7 +371,7 @@ Die \emph{Modulo} Operation ist eine Division zweier Zahlen, wobei das Resultat 
 In vielen Programmiersprachen(Python, C, Java) wir die Modulo Operation als \texttt{\%} dargestellt, zB \texttt{14 \% 12}. Die Operation ist hier erwähnenswert da sie extrem nützlich ist aber oft in klassischen Mathematik Büchern keinen großen Stellenwert hat. \\
 \textbf{Der Modulo kann verwendet werden um aus einer Kontinuierlichen Funktion eine Periodische Funktion zu erzeugen.}
 
-Der Modulo kann verwendet werden um eine Zeit in 24 Stunden Format in 12 Stunden Format umzurechnen: $14 \, mod \, 12 = 2$. Er kann verwendet werden um einen 'Sägezahn Oszillator'\footnote{Bitte, das ist zwar richtig, sollte aber so nicht für Synthese Zwecke verwendet werden. Diese Vorgangsweise ist Problematisch im Bezug auf 'Aliasing', da diese Funktion nicht Bandlimitiert ist. Weitere Erklärungen an dieser Stelle würden zu weit führen.} zu erzeugen (siehe Abb. \ref{fig:modulo}), er kann verwendet werden um Rhythmen zu erzeugen (Andere Unterteilungen von Zählwerken/Sequencern) zu schaffen und vieles mehr.
+Der Modulo kann verwendet werden um eine Zeit in 24 Stunden Format in 12 Stunden Format umzurechnen: $14 \, mod \, 12 = 2$. Er kann verwendet werden um einen 'Sägezahn Oszillator'\footnote{Bitte, das ist zwar richtig, sollte aber so nicht für Synthese Zwecke verwendet werden. Diese Vorgangsweise ist Problematisch im Bezug auf 'Aliasing', da diese Funktion nicht Bandlimitiert ist. Weitere Erklärungen an dieser Stelle würden zu weit führen.} zu erzeugen (siehe Abb. \ref{fig:modulo}), er kann verwendet werden um Rhythmen zu erzeugen (Andere Unterteilungen von Zählwerken/Sequencern) zu schaffen, er spielt eine zentrale Rolle bei der Generierung von Zufallszahlen (Pseudo random number generators), findet Anwendung in Xenakis' 'Sieve Theory' \citep{exarchos2011sieve}\citep{ariza2005xenakis} und vieles mehr.
 
 
 
@@ -401,7 +401,7 @@ Der Modulo kann verwendet werden um eine Zeit in 24 Stunden Format in 12 Stunden
 
 \subsection{Summe und Produkt Notation}
 
-Das große Sigma, $\Sigma$ ist eine kurzschreibweise für Summen. Wir finden dieses Zeichen oft in Blockdiagrammen um eine Addition zu verdeutlichen und manchmal sogar auf Mischpulten als Zier in der Gegend der 'Summe'/des Master Faders. Es handelt sich um eine simple Addition, also nichts was zu Irritation führen sollte. In der Praxis kann es allerdings vorkommen dass, sich vor allem bei unendlichen Summen einige Komplexität hinter so einer Summer verbirgt. Die Notation alleine sollte aber nicht abschrecken:
+Das große Sigma, $\Sigma$ ist eine kurzschreibweise für Summen. Wir finden dieses Zeichen oft in Blockdiagrammen um eine Addition zu verdeutlichen und manchmal sogar auf Mischpulten als Zier in der Gegend der 'Summe'/des Master Faders. Es handelt sich um eine simple Addition, also nichts was zu Irritation führen sollte. In der Praxis kann es allerdings vorkommen, dass sich vor allem bei unendlichen Summen einige Komplexität hinter so einer Summe verbirgt. Die Notation alleine sollte aber nicht abschrecken:
 
 \begin{equation}
 {\displaystyle \sum _{k=1}^{5}k = 1 + 2 + 3 + 4 + 5 }
