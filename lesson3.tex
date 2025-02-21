@@ -218,42 +218,11 @@ Out[6]: (2+3j)
 \end{python}
 
 
-\subsection*{Numerische Python Befehle}
-\begin{table}[H]
-    \centering
-    \begin{tabular}{|p{3cm}|p{6cm}|p{6cm}|}
-        \hline
-    \textbf{Befehl} & \textbf{Beispiel} & \textbf{Kommentar} \\ \hline
-    
-    \texttt{1j} & \texttt{z = 3+5j} & Die Zahl $i$. \\ \hline
-    \texttt{exp()} & \texttt{z = 2*exp(1j*3)} & $e^{\cdot}$, im Bsp.: $z = 2e^{3i}$. \\ \hline
-    \texttt{abs()} & \texttt{r = abs(z)} & Berechnet den Betrag von \texttt{z}. \\ \hline
-    \texttt{angle()} & \texttt{phi = angle(z)} & Berechnet das Argument von \texttt{z}. \\ \hline
-    \texttt{real()} & \texttt{a = real(z)} & Berechnet den Realteil \texttt{z}. \\ \hline
-    \texttt{imag()} & \texttt{a = imag(z)} & Berechnet den Imaginärteil \texttt{z}. \\ \hline
-
-    \end{tabular}
-\end{table}
-
-\subsection*{Symbolische Python Befehle}
-
-\begin{table}[H]
-    \centering
-    \begin{tabular}{|p{3cm}|p{6cm}|p{6cm}|}
-        \hline
-    \textbf{Befehl} & \textbf{Beispiel} & \textbf{Kommentar} \\ \hline
-    \texttt{sp.Abs()} & \texttt{r = sp.Abs(z)} & Berechnet den Betrag von \texttt{z}. \\ \hline
-    \texttt{sp.arg()} & \texttt{phi = sp.arg(z)} & Berechnet das Argument von \texttt{z}. \\ \hline
-    \texttt{sp.re()} & \texttt{a = sp.re(z)} & Berechnet den Realteil \texttt{z}. \\ \hline
-    \texttt{sp.im()} & \texttt{a = sp.im(z)} & Berechnet den Imaginärteil \texttt{z}. \\ \hline
-
-    \end{tabular}
-\end{table}
 
 
 \begin{question}
 
-Gegeben $z = 4e^{3i}$, berechne $|z|$, $\angle z$, $\Re (z)$, $\Im (z)$, $\overline{z}$. Berechne ohne python aber nutze python um deine Ergebnisse zu bestätigen.
+Gegeben $z = 4e^{3i}$, berechne $|z|$, $\angle z$, $\Re (z)$, $\Im (z)$, $\overline{z}$. Berechne ohne python aber nutze python um deine Ergebnisse zu bestätigen. Benutze die Numerischen Python Befehle in Tabelle \ref{tab:pyComNumeric}.
 \end{question}
 
 
@@ -291,6 +260,43 @@ Out[10]: (-3.9599699864017817-0.5644800322394689j)
 \end{answer}
 
 
+% \subsection*{Numerische Python Befehle}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{3cm}|p{6cm}|p{6cm}|}
+        \hline
+    \textbf{Befehl} & \textbf{Beispiel} & \textbf{Kommentar} \\ \hline
+    
+    \texttt{1j} & \texttt{z = 3+5j} & Die Zahl $i$. \\ \hline
+    \texttt{exp()} & \texttt{z = 2*exp(1j*3)} & $e^{\cdot}$, im Bsp.: $z = 2e^{3i}$. \\ \hline
+    \texttt{abs()} & \texttt{r = abs(z)} & Berechnet den Betrag von \texttt{z}. \\ \hline
+    \texttt{angle()} & \texttt{phi = angle(z)} & Berechnet das Argument von \texttt{z}. \\ \hline
+    \texttt{real()} & \texttt{a = real(z)} & Berechnet den Realteil \texttt{z}. \\ \hline
+    \texttt{imag()} & \texttt{a = imag(z)} & Berechnet den Imaginärteil \texttt{z}. \\ \hline
+
+    \end{tabular}
+    \caption{Numerische Python Befehle bezüglich komplexer Zahlen.}
+    \label{tab:pyComNumeric}
+\end{table}
+
+% \subsection*{Symbolische Python Befehle}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{3cm}|p{6cm}|p{6cm}|}
+        \hline
+    \textbf{Befehl} & \textbf{Beispiel} & \textbf{Kommentar} \\ \hline
+    \texttt{sp.Abs()} & \texttt{r = sp.Abs(z)} & Berechnet den Betrag von \texttt{z}. \\ \hline
+    \texttt{sp.arg()} & \texttt{phi = sp.arg(z)} & Berechnet das Argument von \texttt{z}. \\ \hline
+    \texttt{sp.re()} & \texttt{a = sp.re(z)} & Berechnet den Realteil \texttt{z}. \\ \hline
+    \texttt{sp.im()} & \texttt{a = sp.im(z)} & Berechnet den Imaginärteil \texttt{z}. \\ \hline
+
+    \end{tabular}
+    \caption{Symbolische Python Befehle bezüglich komplexer Zahlen.}
+    \label{tab:pyComSymb}
+\end{table}
+
+
 \todo[inline]{ PoleZero plot, polynome mit reellen koeefizienten -> kompl konj oder reelle nullstellen. Division von compl zahlen durch mult mit kompl. konj., $e^z$, $ln z$, python, 3d plots of complex functions}
 
 \section{Anwendungen}\label{sec:anwendungen}
@@ -301,9 +307,9 @@ Out[10]: (-3.9599699864017817-0.5644800322394689j)
 \begin{enumerate}
 \item Lösen Sie folgende aufgabe zunächst ohne, dann nochmal mit python. Man berechne $Re(z)$, $Im(z)$, $|z|$, $arg(z)$, $\overline{z}$, $\frac{1}{z}$, $z^2$, $\frac{z}{\overline{z}}$ für folgende komplexe Zahlen $z$: $z=1+i$, $z=-3$, $z=2e^{-i\pi/3}$. (Aufgabe 4.34 aus \cite{merziger2024repetitorium})
 
-\item Gegeben $z_1 = \alpha e^{5i}$ und $z_2 = e^{it}$ berechnen Sie (ohne und mit Python) $z_3 = z_1 \cdot z_2$. Stellen das ergebnis in \textbf{polarer Darstellung} dar. 
+\item Gegeben $z_1 = \alpha e^{5i}$ und $z_2 = e^{it}$ berechnen Sie (ohne und mit Python) $z_3 = z_1 \cdot z_2$. Stellen das Ergebnis in \textbf{polarer Darstellung} dar. 
 
-\item Berechnen Sie (ohne und mit Python) imaginärteil und realteil von: $e^i$, $e^{i\pi}$, $e^{\pi}$. Zusatzaufgabe für den Fall $z=e^{i\pi}$: Schreiben sie auf: "Eulersche Darstellung $=$ polare Darstellung" und betrachten Sie somit eine der 'schönsten' Formeln der Mathematik.
+\item Berechnen Sie (ohne und mit Python) Imaginärteil und Realteil von: $e^i$, $e^{i\pi}$, $e^{\pi}$. Zusatzaufgabe für den Fall $z=e^{i\pi}$: Schreiben sie auf: 'Eulersche Darstellung $=$ polare Darstellung' und betrachten Sie somit eine der 'schönsten' Formeln der Mathematik.
 
 \item Skizzieren Sie $Im(e^{-i 2\pi x})$. (ohne und mit Python).
 

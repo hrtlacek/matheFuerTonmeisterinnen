@@ -366,13 +366,15 @@ Eine variante wäre es einfach mit verschiedenen Zahlen zu evaluieren:
 }
 
 \begin{python}{Einfache Evaluierung eines Polynoms.}
-In [1]: x = 3
-In [2]: x**3 - 4*x**2 - 7*x + 10
-Out[2]: -20
+In [1]: %pylab
+In [2]: import sympy as sp
+In [3]: x = 3
+In [4]: x**3 - 4*x**2 - 7*x + 10
+Out[4]: -20
 \end{python}
 \todo{Make lisings work inside 'examples'.}
 \example{
-	Anstatt mehrfach verschiedene Werte zu probieren kann ein sog. \texttt{array} verwendet werden um viele Zahlen gleichzeitig zu evalieren und das resultat kann in einem Graphen ('plot') angezeigt werden. Ein array mit aufsteigenden Zahlen kann erzeugt werden via \texttt{linspace()}. Zum Beispiel werden im Folgenden 11 Zahlen zwischen 0 und 5 erzeugt:
+	Anstatt mehrfach verschiedene Werte zu probieren kann ein sog. \texttt{array} verwendet werden um viele Zahlen gleichzeitig zu evaluieren und das Resultat kann in einem Graphen ('plot') angezeigt werden. Ein \texttt{array} mit aufsteigenden Zahlen kann erzeugt werden via \texttt{linspace()}. Zum Beispiel werden im Folgenden 11 Zahlen zwischen 0 und 5 erzeugt:
 }
 \begin{python}{Erzeugung eines Arrays mit aufsteigenden Zahlen.}
 In [1]: linspace(0, 5, 11)

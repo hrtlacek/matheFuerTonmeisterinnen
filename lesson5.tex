@@ -148,12 +148,32 @@ In diesem Beispiel haben wir beschlossen instrument $1$ auf lautsprecher $1$ zu 
 
 \subsection*{Ein Lineares Gleichungssystem (LGS)}
 
+Gegeben folgendes Gleichungssystem:
+
 \[
 \begin{aligned}
 2x + 3y &= 8 \\
 4x -  y &= 2
 \end{aligned}
 \]
+
+Wollen wir eine Lösung für $x$ und $y$ finden. Aus der Schule kennen wir vielleicht eine Geometrische Interpretation des Problems. Wir können beide Gleichungen für $y$ lösen und bekommen zwei neue Gleichungen. Beide beschreiben eine Linie. Die Lösung besteht in deren Schnittpunkt:
+
+\[
+\begin{aligned}
+y &= \frac{8}{3} - \frac{2 x}{3} \\
+y &= 4 x - 2 
+\end{aligned}
+\]
+
+
+\begin{figure}[h]
+    \centering
+    \input{python/plots/lgs_geom.pgf}
+    \caption{Geometrische Interpretation des Gleichungssystems.}
+    \label{fig:lgs_geom}
+\end{figure}
+
 
 Dies kann in Matrixform geschrieben werden als:
 
@@ -190,10 +210,42 @@ Out[5]: array([1., 2.])
 \subsection{Spezielle Matrizen}
 
 \subsubsection*{Null Matrix}
+Eine fett notierte 0, $\mathbf{0}$ notiert eine mit nullen gefüllte Matrix.
+\begin{equation}
+\mathbf{0} =
+\begin{bmatrix}
+0 & 0 & 0 & \cdots & 0 \\
+0 & 0 & 0 & \cdots & 0 \\
+0 & 0 & 0 & \cdots & 0 \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+0 & 0 & 0 & \cdots & 0
+\end{bmatrix}
+\end{equation} 
+
+In python können wir eine solche Matrix leicht erzeugen:
+\begin{python}{Nullmatrix in python. 2 Reihen, 3 Spalten.}
+In [1]: %pylab
+In [2]: zeros([2,3])
+Out[2]:
+array([[0., 0., 0.],
+       [0., 0., 0.]])
+\end{python}
+
+Mathematisch wirkt diese Matrix zunächst nicht wahnsinnig hilfreich, in Python kommt dies aber sehr oft vor. Beispielsweise wenn wir einfach einen Array initialisieren wollen um ihn anschließend in einer \texttt{for}-Schleife zu befüllen. 
+
+\begin{python}{Array initialisieren und via \texttt{for}-Schleife befüllen.}
+In [1]: a = zeros(10)
+In [2]: for i in range(10):
+   ...:     a[i] = sin(i)
+In [3]: a
+Out[3]:
+array([ 0.        ,  0.84147098,  0.90929743,  0.14112001, -0.7568025 ,
+       -0.95892427, -0.2794155 ,  0.6569866 ,  0.98935825,  0.41211849])
+\end{python}
 
 \subsubsection*{Einheitsmatrix}
 
-$\mathbf{E}$ in deutschen Texten, in englisch 'Identity Matrix', daher $\mathbf{I}$. 
+$\mathbf{E}$ in deutschen Texten, in englisch 'Identity Matrix', daher $\mathbf{I}$. Dieser Text hat sich für $\mathbf{I}$ entschieden.
 
 \begin{equation}
 \mathbf{I} =
