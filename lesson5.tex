@@ -110,10 +110,46 @@ In [10]: sf.write('ringmodTest.wav', c, sr)
 \index{Skalarprodukt}
 
 Auch 'inneres Produkt' oder 'Punktprodukt', engl. 'Dot product'. Ergibt im fall von Vektoren einen Skalar aber eigentlich ein Spezialfall der Matrixmultiplikation!
-$$\vec{a}\cdot \vec{b} = |\vec{a}|\cdot |\vec{b}|\cdot cos(\alpha) = a_x b_x + a_y b_y$$
+$$\vec{a}\cdot \vec{b} = |\vec{a}|\cdot |\vec{b}|\cdot cos \sphericalangle ({\vec {a}},{\vec {b}}) = a_1 b_1 + a_2 b_2 + \dots +a_n b_n = \sum_{i=1}^N a_ib_i$$
 Siehe \citep[p.~45]{Westermmann2008}  für Herleitung.
 
+Der Teil $|\vec{a}|\cdot |\vec{b}|\cdot cos \sphericalangle ({\vec {a}},{\vec {b}})$ mag weniger intuitiv sein als die summe der Produkte, mag auch weniger Praktisch sein in der Anwendung. Aus diesem Teil ergibt sich aber eine entscheidende Eigenschaft des Skalarprodukts: \emph{Es ist 0 wenn die Vektoren Senkrecht aufeinander stehen.}
+
 Python: \pythoninline{dot(a,b)}
+
+\begin{python}{Skalarprodukt in Python}
+In [1]: %pylab
+In [2]: a = array([2,3,4])
+In [3]: b = array([5,6,7])
+In [4]: 2*5+3*6+4*7
+Out[4]: 56
+In [5]: dot(a,b)
+Out[5]: 56
+\end{python}
+
+\praxis{
+    Hat all dies irgendeine Relevanz in der Audio-Verarbeitung?
+    Eine einfache Bezugnahme kann hergestellt werden indem wir uns verdeutlichen dass die Energie eines zeitdiskreten Signals \citep{christensen2019introduction} folgendermaßen berechnet werden kann:
+    $$ E = \sum_{n=0}^{N-1} |x[n]| ^2$$
+    \index{Energie}
+    Also wir nehmen den Betrag von allen Elementen\footnote{Man mag sich fragen wozu man den Betrag nimmt um anschließend zu quadrieren. Nach dem quadrieren kann doch ohnehin kein negatives Vorzeichen mehr erscheinen. Diese Definition lässt jedoch auch komplexe Signale zu!}, quadrieren sie alle und summieren sie. Dies ist im Falle eines Realwertigen Signals das selbe wie das Skalare Produkt des Vektors mit sich selbst ($aa = a^2$). \index{RMS}\index{Quadratisches Mittel} Die Formel kann ein wenig modifiziert werden um uns den 'Root Mean Squared' (RMS, das Quadratische Mittel) zu berechnen:
+    $$ RMS = \sqrt{\frac{1}{N}\sum^N_{i=1} x_i^2}$$
+    \index{Korrelation}
+    Eine Weiteres Beispiel aus der Praxis ist in Abbildung \ref{fig:dotProdCorr} veranschaulicht. Die in den Titeln der Plots ersichtlichen Skalaren Produkte legen nahe dass hier vielleicht ein Normalisierungsfaktor fehlt um den Korrelationsgrad zu errechnen.
+    Abbildung \ref{fig:dotProdCorr} wurde durch dieses Notebook erstellt: \colab{https://colab.research.google.com/github/hrtlacek/matheFuerTonmeisterinnen/blob/master/python/notebooks/dotProduct.ipynb}.
+
+\begin{figure}[H]
+    \centering
+    \input{python/plots/dotProd.pgf}
+    \caption{Das Skalare Produkt unterschiedlicher Signale.}
+    \label{fig:dotProdCorr}
+\end{figure}
+
+
+}
+
+
+
 
 \subsection*{Kreuzprodukt}
 \index{Kreuzprodukt}
@@ -126,11 +162,11 @@ Python: \pythoninline{cross(a,b)}
 \section{Matrizen}
 
 \praxis{
-Angenommen wir wollen $4$ Audio signale, zum beispiel 4 verschiedene instrumente auf 6 verschiedene Lautsprecher schicken, unterschiedlicher Lautstärke. Wie könnet man dies Mathematisch formulieren? Man könnte zum Beispiel sagen die 4 audio signale seien ein vektor $\vec{x(t)}$, der die jeweiligen signale enthält: $\vec{x}(t) = \begin{bmatrix} x_1(t) & x_2(t) & x_3(t) & x_4(t)\end{bmatrix}$. Unsere output Signale die wir an die 6 Lautsprecher schicken nennen wir vielleicht $y_1(t), \dots, y_6(t)$. Auch diese machen wir zu einem Vektor $\vec{y}(t) = \begin{bmatrix} y_1(t) & y_2(t) & y_3(t) & y_4(t) & y_5(t) & y_6(t)\end{bmatrix}$. Nun können wir unsere Verräumlichung über eine Matrix definieren:
+Angenommen wir wollen $4$ Audio Signale, zum Beispiel 4 verschiedene Instrumente auf 6 verschiedene Lautsprecher schicken, unterschiedlicher Lautstärke. Wie könnte man dies Mathematisch formulieren? Man könnte zum Beispiel sagen die 4 Audio Signale seien ein Vektor $\vec{x(t)}$, der die jeweiligen Signale enthält: $\vec{x}(t) = \begin{bmatrix} x_1(t) & x_2(t) & x_3(t) & x_4(t)\end{bmatrix}$. Unsere Output Signale die wir an die 6 Lautsprecher schicken nennen wir vielleicht $y_1(t), \dots, y_6(t)$. Auch diese machen wir zu einem Vektor $\vec{y}(t) = \begin{bmatrix} y_1(t) & y_2(t) & y_3(t) & y_4(t) & y_5(t) & y_6(t)\end{bmatrix}$. Nun können wir unsere Verräumlichung über eine Matrix definieren:
 
 $$ \mathbf{A}\vec{x} = \vec{y}$$
 
-Hier ist zu beachten dass es sich bei $\vec{x}$ um eine $4\times 1$ Matrix, also einen \textbf{Spaltenvektor} mit 4 Reihen handelt, und bei $\vec{y}$ ebenso um einen Spaltenvektor. Die Matrix $\mathbf{A}$ hat die Form $6 \times 4$. zb:
+Hier ist zu beachten dass es sich bei $\vec{x}$ um eine $4\times 1$ Matrix, also einen \textbf{Spaltenvektor} mit 4 Reihen handelt, und bei $\vec{y}$ ebenso um einen Spaltenvektor. Die Matrix $\mathbf{A}$ hat die Form $6 \times 4$. zB:
 
 \[
 \begin{bmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \\ 1 & 0 & 0 & 0 \\ 1 & 0 & 0 & 0 \end{bmatrix}  
@@ -140,7 +176,7 @@ Hier ist zu beachten dass es sich bei $\vec{x}$ um eine $4\times 1$ Matrix, also
 \]
 
 
-In diesem Beispiel haben wir beschlossen instrument $1$ auf lautsprecher $1$ zu schicken, Instrument $2$ auf Lautsprecher $2$ etc, aber Instrument $1$ auch noch auf Lautsprecher 5 und 6 zu senden. Das heisst $y_1 = x_1$, $y_2 = x_2$, $y_3 = x_3$, $y_4 = x_4$, $y_5 = x_1$, $y_6 = x_1$.
+In diesem Beispiel haben wir beschlossen Instrument $1$ auf Lautsprecher $1$ zu schicken, Instrument $2$ auf Lautsprecher $2$ etc, aber Instrument $1$ auch noch auf Lautsprecher 5 und 6 zu senden. Das heißt: $y_1 = x_1$, $y_2 = x_2$, $y_3 = x_3$, $y_4 = x_4$, $y_5 = x_1$, $y_6 = x_1$.
 }
 
 
@@ -157,6 +193,7 @@ Gegeben folgendes Gleichungssystem:
 \end{aligned}
 \]
 
+\subsubsection{Geometrische Interpretation: Zeileninterpretation}
 Wollen wir eine Lösung für $x$ und $y$ finden. Aus der Schule kennen wir vielleicht eine Geometrische Interpretation des Problems. Wir können beide Gleichungen für $y$ lösen und bekommen zwei neue Gleichungen. Beide beschreiben eine Linie. Die Lösung besteht in deren Schnittpunkt:
 
 \[
@@ -167,12 +204,38 @@ y &= 4 x - 2
 \]
 
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \input{python/plots/lgs_geom.pgf}
     \caption{Geometrische Interpretation des Gleichungssystems.}
     \label{fig:lgs_geom}
 \end{figure}
+
+Obiger Plot und Lösungen berechnet mit diesem Notebook: \colab{https://colab.research.google.com/github/hrtlacek/matheFuerTonmeisterinnen/blob/master/python/notebooks/lgs\_geo.ipynb}.
+
+
+\subsubsection{Geometrische Interpretation: 'Spalteninterpretation'}
+Wir können das obige System umschreiben zu:
+$$
+x \color{codeRed} \begin{bmatrix} 2 \\ 4 \end{bmatrix}  
+ \color{black} +  y \color{codeGreen} \begin{bmatrix} 3 \\ -1 \end{bmatrix}  
+\color{black} =
+\color{codeBlue} \begin{bmatrix} 8 \\ 2 \end{bmatrix} $$
+
+Die Frage wird dann zu: 'Wie viel des Vektors $\begin{bmatrix} 2 \\ 4 \end{bmatrix}$ und wie viel des Vektors $\begin{bmatrix} 3 \\ -1 \end{bmatrix}$ muss ich nehmen um den Vektor $\begin{bmatrix} 8 \\ 2 \end{bmatrix}$ zu erhalten?'. Wir kennen die Antwort schon: 1 mal den ersten und zwei mal den zweiten. Dies ist verdeutlicht in Abbildung \ref{fig:lgs_geom_col}. 
+
+
+
+\begin{figure}[H]
+    \centering
+    \input{python/plots/lgsGeomColumn.pgf}
+    \caption{Geometrische Interpretation des Gleichungssystems: Linearkombination der Spalten.}
+    \label{fig:lgs_geom_col}
+\end{figure}
+
+Es handelt sich also um eine \emph{Linearkombination der Spalten} der Matrix: $$\mathbf{A} = \begin{bmatrix} 2 & 3 \\ 4 & -1 \end{bmatrix}$$
+
+\subsubsection{LGS in Matrizenschreibweise}
 
 
 Dies kann in Matrixform geschrieben werden als:
@@ -184,7 +247,13 @@ Dies kann in Matrixform geschrieben werden als:
 \begin{bmatrix} 8 \\ 2 \end{bmatrix}
 \]
 
-\begin{python}{Lösung eines Linearen Gleichungssytems mit Python.}
+
+\important{Die Situation des Gleichungssystems oben kann allgemeiner als $$\mathbf{A}\vec{x} = \vec{b}$$ zusammengefasst werden. Und das wiederum kann konzeptualisiert werden als Linearkombination der Spalten in $\mathbf{A}$ mit den Faktoren in $\vec{x}$ mit dem Ergebnis $\vec{b}$.
+}
+
+
+
+\begin{python}{Lösung eines Linearen Gleichungssystems mit Python.}
 In [1]: %pylab
 In [2]: A = np.array([[2, 3], [4, -1]])
 In [3]: b = np.array([8, 2])
@@ -231,7 +300,7 @@ array([[0., 0., 0.],
        [0., 0., 0.]])
 \end{python}
 
-Mathematisch wirkt diese Matrix zunächst nicht wahnsinnig hilfreich, in Python kommt dies aber sehr oft vor. Beispielsweise wenn wir einfach einen Array initialisieren wollen um ihn anschließend in einer \texttt{for}-Schleife zu befüllen. 
+Mathematisch wirkt diese Matrix zunächst nicht wahnsinnig hilfreich, in Python kommt dies aber sehr oft vor. Beispielsweise wenn wir einfach einen Array initialisieren wollen um ihn anschließend in einer \texttt{for}-Schleife zu befüllen. \footnote{Das angeführte Beispiel ist ein wenig konstruiert. Wir wissen, wir können das hier erzielte Ergebnis einfacher erreichen: \pythoninline{sin(arange(10))}. Die Struktur des Beispiels wird hilfreicher wenn wir zum Beispiel Filter berechnen oder dynamische Systeme simulieren, siehe Abschnitt \ref{sub:dynamische_systeme}.}
 
 \begin{python}{Array initialisieren und via \texttt{for}-Schleife befüllen.}
 In [1]: a = zeros(10)
@@ -365,6 +434,9 @@ $$ \begin{vmatrix} a & b  \\
 \index{Eigenwert}\index{Eigenvektor}\index{Zustandsraumdarstellung}\index{State-Space}
 
 \praxis{Eigenwerte der $A$ Matrix in der Zustandsraumdarstellung (engl. 'State-Space') von Systemen sind die Pole des Systems. Eigenvektoren bei der Modalanalyse können Modenformen (die eigentliche Bewegung eines Systems zB.) darstellen und in Eigenwerten sind die entsprechenden Frequenzen ($\Im(\lambda)$) und die Stabilität ($\Re(\lambda)$) enthalten. Eigenvektoren von Matrizen die für Probabilistische Modellierung (siehe Markov Modelle) können Stationäre Wahrscheinlichkeits-Vektoren sein.}
+
+
+\subsection*{Dynamische Systeme}\label{sub:dynamische_systeme}
 
 \section{Aufgaben}
 \begin{enumerate}
