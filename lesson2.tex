@@ -1,5 +1,5 @@
 %!TEX root = main.tex
-\chapter{Wichtige Funktionen, Polynome, Python}
+\chapter{Wichtige Funktionen, Polynome, Python}\label{cha:funktionen_polynome_python}
 
 % \section{Wiederholung}
 
@@ -352,7 +352,7 @@ Oft wollen wir \texttt{python} einfach als 'Taschenrechner' verwenden. Da für \
 %pylab
 import sympy as sp
 \end{python}
-Hier werden in Zeile \texttt{1} durch \texttt{\%pylab} 2 Pakete importiert: \texttt{numpy} und \texttt{matplotlib}\footnote{\texttt{numpy} ist das gängigste Paket für numerische Operationen im allgemeinen und speziell auf arrays. \texttt{matplotlib} ist zuständig für das Anzeigen von plots.}. In Zeile \texttt{2} wird \texttt{sympy} importiert und zwar unter dem kürzel \texttt{sp}\footnote{Wir könnten statt \texttt{sp} auch \texttt{hans} verwenden. \texttt{sp} ist sehr verbreitet und wirkt übersichtlich.}. Das kürzel erlaubt uns funktionen in \texttt{sympy} durch dieses zu verwenden, z.B..: \texttt{sp.roots()}. \\
+Hier werden in Zeile \texttt{1} durch \texttt{\%pylab} 2 Pakete importiert: \texttt{numpy} und \texttt{matplotlib}\footnote{\texttt{numpy} ist das gängigste Paket für numerische Operationen im allgemeinen und speziell auf arrays. \texttt{matplotlib} ist zuständig für das Anzeigen von plots.}. In Zeile \texttt{2} wird \texttt{sympy} importiert und zwar unter dem kürzel \texttt{sp}\footnote{Wir könnten statt \texttt{sp} auch \texttt{hans} verwenden. \texttt{sp} ist sehr verbreitet und wirkt übersichtlich.}. Das kürzel erlaubt uns funktionen in \texttt{sympy} durch dieses zu verwenden, z.B..: \texttt{sp.roots()}. \footnote{Wenn wir \texttt{\%pylab} ausführen bekommen wir typischerweise eine sog. Deprecation - Warnung. Das heisst es wir werden gewarnt dass dieser import veraltet und in zukunft nicht unterstützt wird. Zusätzlich ist zu sagen dass diese Art pakete zu importieren zwar komfortabel ist jedoch für grössere Projekte \textbf{nicht ratsam} ist. In ernsthafteren Projekten würden wir \texttt{import numpy as np} verwenden um spezifisch \texttt{numpy} funktionen und module anpsrechen zu können. } \\
 
 
 \subsection{Numerische Berechnug vs Symbolische Bearbeitung}
