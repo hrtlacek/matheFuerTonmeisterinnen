@@ -8,7 +8,7 @@
 % \begin{multicols}{2}
 
 \section{Motivation}
-Vektoren und Matrizen findet man sehr häufig in der Audiotechnischen Literatur. Wie bereits in Kapitel \ref{chap:complex} beschrieben, sind komplexe Zahlen allgegenwärtig und deren Interpretation als Vektor bedeutsam und praktisch. Andererseits kann zB. ein Stereosignal als Vektor aufgefasst werden: Zu jedem Zeitpunkt hat es 2 Zahlen, diese können als Vektor im 2-dimensionalen Raum aufgefasst werden, was wiederum diverse Operationen nahelegt. Ebenso scheint es spätestens an diesem Punkt naheliegend ein $n$-Kanal Signal als Vektor mit $n$ Einträgen zu verstehen und womöglich hieraus Schlüsse ziehen zu dürfen. Wenn es um verräumlichung von Signalen (zB. Ambisonics) geht und daher Positionen im Dreidimensionalen Raum ($\mathbb{R}^3$) benötigt werden ist klar, dass wir diese mittels Vektoren beschreiben können. Aber auch wenn es um Direktionalität von Lautsprechern oder Mikrophonen geht werden letztlich 2 bis 3 Dimensionale Felder beschrieben und auch hier kommen Vektoren zum Einsatz. Es sei aber an dieser Stelle betont dass Vektoren und Matrizen nicht ausschließlich für Audioanwendungen im Dreidimensionalen Raum zum Einsatz kommen. Rotations- Hadamard- und Householdermatrizen \citep{PASPWEB2010}\footnote{https://ccrma.stanford.edu/~jos/pasp/Hadamard\_Matrix.html} werden für Hall-Algorithmen und Resonatoren verwendet , Filtersysteme können über Zustandsraumdarstellungen via Vektoren und Matrizen beschrieben werden \citep{bilbao2009numerical} und vieles mehr.       
+Vektoren und Matrizen findet man sehr häufig in der Audiotechnischen Literatur. Wie bereits in Kapitel \ref{chap:complex} beschrieben, sind komplexe Zahlen allgegenwärtig und deren Interpretation als Vektor bedeutsam und praktisch. Andererseits kann zB. ein Stereosignal als Vektor aufgefasst werden: Zu jedem Zeitpunkt 'hat' es 2 Zahlen, diese können als Vektor im 2-dimensionalen Raum aufgefasst werden, was wiederum diverse Operationen nahelegt. Ebenso scheint es spätestens an diesem Punkt naheliegend ein $n$-Kanal Signal als Vektor mit $n$ Einträgen zu verstehen und womöglich hieraus Schlüsse ziehen zu dürfen. Wenn es um Verräumlichung von Signalen (zB. Ambisonics) geht und daher Positionen im Dreidimensionalen Raum ($\mathbb{R}^3$) benötigt werden ist klar, dass wir diese mittels Vektoren beschreiben können. Aber auch wenn es um Direktionalität von Lautsprechern oder Mikrophonen geht werden letztlich 2 bis 3 Dimensionale Felder beschrieben und auch hier kommen Vektoren zum Einsatz. Es sei aber an dieser Stelle betont dass Vektoren und Matrizen nicht ausschließlich für Audioanwendungen im Dreidimensionalen Raum zum Einsatz kommen. Rotations- Hadamard- und Householdermatrizen \citep{PASPWEB2010}\footnote{https://ccrma.stanford.edu/~jos/pasp/Hadamard\_Matrix.html} werden für Hall-Algorithmen und Resonatoren verwendet , Filtersysteme können über Zustandsraumdarstellungen via Vektoren und Matrizen beschrieben werden \citep{bilbao2009numerical} und vieles mehr.       
 
 \section{Vektoren}
 Es wird nun einführendes über Vektoren gesagt aber recht kurz und bündig da 1. angenommen wird, dass insbesondere 2 und 3 dimensionale Vektoren zu den weniger abstrakten und aus der Schule bekannten Themen gehören und 2. Vektoren als Spezialfall von Matrizen gesehen werden können und wir unsere Aufmerksamkeit so schnell wie möglich diesen zuwenden wollen.
@@ -69,7 +69,7 @@ In [4]: c = array([[8, 9, 10]]).T # Matrix, 1 Spaltenvektor
 Auch Elementweises oder Komponentenweises Produkt. Einfache elementweise Multiplikation.
 $$ \vec{a}\circ \vec{b} = \begin{bmatrix}a_1b_1 & a_2b_2 & \dots & a_n b_n\end{bmatrix}$$ 
 
-Leider wird üblicherweise die selbe Notation benutzt um die Verkettung von Funktionen zu beschreiben: $(f \circ g)(x) = f(g(x))$. Welche Operation nun gemeint ist, erschließt sich typischerweise aus dem Kontext. Beide Notationen kommen ohnehin nicht wahnsinnig oft vor.
+Leider wird üblicherweise die selbe Notation benutzt um die Verkettung von Funktionen zu beschreiben: $(f \circ g)(x) = f(g(x))$. Welche Operation nun gemeint ist, erschließt sich typischerweise aus dem Kontext. Beide Notationen kommen in unserem Kontext ohnehin nicht wahnsinnig oft vor.
 
 In Python\footnote{Hier ist ein wichtiger unterschied zu \texttt{MATLAB} Code da dort punktweise Multiplikation mit \texttt{.*} ausgeführt wird.} kann elementweise Multiplikation durch einfache Multiplikation ausgeführt werden: \pythoninline{c = a*b}.
 
@@ -142,6 +142,8 @@ Out[5]: 56
     Eine Weiteres Beispiel aus der Praxis ist in Abbildung \ref{fig:dotProdCorr} veranschaulicht. Die in den Titeln der Plots ersichtlichen Skalaren Produkte legen nahe dass hier vielleicht ein Normalisierungsfaktor fehlt um den Korrelationsgrad zu errechnen.
     Abbildung \ref{fig:dotProdCorr} wurde durch dieses Notebook erstellt: \colab{https://colab.research.google.com/github/hrtlacek/matheFuerTonmeisterinnen/blob/master/python/notebooks/dotProduct.ipynb}.
 
+
+
 \begin{figure}[H]
     \centering
     \input{python/plots/dotProd.pgf}
@@ -196,6 +198,8 @@ Hier ist zu beachten dass es sich bei $\vec{x}$ um eine $4\times 1$ Matrix, also
 
 
 In diesem Beispiel haben wir beschlossen Instrument $1$ auf Lautsprecher $1$ zu schicken, Instrument $2$ auf Lautsprecher $2$ etc, aber Instrument $1$ auch noch auf Lautsprecher 5 und 6 zu senden. Das heißt: $y_1 = x_1$, $y_2 = x_2$, $y_3 = x_3$, $y_4 = x_4$, $y_5 = x_1$, $y_6 = x_1$.
+
+Ein colab notebook das dies in python demonstriert kann hier gefunden werden: \colab{https://colab.research.google.com/github/hrtlacek/matheFuerTonmeisterinnen/blob/master/python/notebooks/spatialization\_matrix.ipynb}
 }
 
 
@@ -371,6 +375,44 @@ $\mathbf{A} = \mathbf{A}^T$
 
 Ist eine Matrix $\mathbf{Q}$ orthogonal dann gilt 
 $$ \mathbf{Q}^T\mathbf{Q} = \mathbf{I} $$.
+
+
+In Abbildung \ref{fig:rotMat} wurden zufälloig gestreute Punkte um $20^\circ$ \emph{um den Ursprung} gedreht. In diesem Notebook kann dies nachvollzogen werden: 
+\colab{https://colab.research.google.com/github/hrtlacek/matheFuerTonmeisterinnen/blob/master/python/notebooks/rotationMatrix.ipynb}
+
+Die geschah mit der Rotationsmatrix:
+
+
+\begin{equation}
+    {\displaystyle \mathbf{A}={\begin{bmatrix}\cos \theta &-\sin \theta \\\sin \theta &\cos \theta \end{bmatrix}}}
+\end{equation}
+
+Wobei $$\theta = 2\cdot \pi \cdot W / 360$$ und $W$ der Winkel in Grad.
+
+\begin{python}{Orthogonalität einer Rotationsmatrix}
+deg = 20
+θ = 2*π*deg/360 
+A = array([[cos(θ), -sin(θ)],
+           [sin(θ), cos(θ)]])
+#check for orthogonality:
+A.T@A
+Out[1]: array([[1.00000000e+00, 2.22218033e-17],
+       [2.22218033e-17, 1.00000000e+00]])
+
+\end{python}
+
+
+
+\begin{figure}[H]
+    \centering
+    \input{python/plots/rotMat.pgf}
+    \caption{Anwendung einer Rotationsmatrix auf zufällig gestreute Punkte.}
+    \label{fig:rotMat}
+\end{figure}
+
+
+
+
 
 % Hier  https://www.youtube.com/watch?v=j8hEnyOiwhw wird folgendes behauptet:
 % $$ \mathbf{Q} \mathbf{Q}^T \neq \mathbf{I} $$.
