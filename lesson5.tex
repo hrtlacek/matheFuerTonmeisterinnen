@@ -400,7 +400,11 @@ array([[1, 0, 0, 0],
    \item Quadratisch
    \item Eigenwerte sind in der Diagonale abzulesen
    \item Effizienter invertierbar
+   \item Skaliert Vektorräume.
+   \item Die Determinante ist das Produkt der Einträge in der Diagonale.
 \end{itemize}
+
+
 
 
 Beliebige Matrizen können unter gewissen Bedingungen \emph{diagonalisiert} werden. Das heißt es kann eine sog. \emph{ähnliche} Matrix gefunden werden die diagonal ist.
@@ -422,6 +426,26 @@ Out[22]:
 ⎢           ⎥
 ⎣0   0  0  5⎦
 \end{python}
+
+Alternativ können die eigenwerte berechnet werden via \texttt{eig()} und daraus eine diagonalmatrix gemacht werden:
+\begin{python}{diagonalisierung via \texttt{eig()}}
+import sympy as sp  
+M = sp.Matrix([[3, -2,  4, -2], 
+               [5,  3, -3, -2], 
+               [5, -2,  2, -2], 
+               [5, -2, -3,  3]]) 
+In [21]: _,D = M.diagonalize()
+In [22]: D
+Out[22]:
+⎡-2  0  0  0⎤
+⎢           ⎥
+⎢0   3  0  0⎥
+⎢           ⎥
+⎢0   0  5  0⎥
+⎢           ⎥
+⎣0   0  0  5⎦
+\end{python}
+
 
 \subsubsection{Symmetrische Matrizen}
 
