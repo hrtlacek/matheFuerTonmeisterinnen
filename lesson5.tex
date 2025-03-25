@@ -216,8 +216,24 @@ Gegeben folgendes Gleichungssystem:
 \end{aligned}
 \]
 
+\subsubsection{Versuch einer Algebraischen Lösung via Sympy}
+Bevor wir den Zusammenhang mit Vektoren und Matrizen erkunden sei darauf hingewiesen, dass wir \emph{meistens}\footnote{siehe: \href{https://docs.sympy.org/latest/guides/solving/solve-system-of-equations-algebraically.html}{https://docs.sympy.org/latest/guides/solving/solve-system-of-equations-algebraically.html}} das System via \texttt{sympy} lösen können: 
+\begin{python}{Algebraisches Lösen eines Gleichungssytems.}
+In [1]: import sympy as sp
+In [2]: from sympy.abc import x,y,z,t
+In [3]: sp.init_printing()
+In [4]: g1 = sp.Eq(2*x + 3*y, 8)
+In [5]: g2 = sp.Eq(4*x - y, 2)
+In [6]: g1
+Out[6]: 2⋅x + 3⋅y = 8
+In [7]: g2
+Out[7]: 4⋅x - y = 2
+In [8]: sp.solve([g1, g2], [x,y])
+Out[8]: {x: 1, y: 2}
+\end{python}
+
 \subsubsection{Geometrische Interpretation: Zeileninterpretation}
-Wollen wir eine Lösung für $x$ und $y$ finden. Aus der Schule kennen wir vielleicht eine Geometrische Interpretation des Problems. Wir können beide Gleichungen für $y$ lösen und bekommen zwei neue Gleichungen. Beide beschreiben eine Linie. Die Lösung besteht in deren Schnittpunkt:
+ Wir wollen eine Lösung für $x$ und $y$ finden. Aus der Schule kennen wir vielleicht eine geometrische Interpretation des Problems. Wir können beide Gleichungen für $y$ lösen und bekommen zwei neue Gleichungen. Beide beschreiben eine Linie. Die Lösung besteht in deren Schnittpunkt:
 
 \[
 \begin{aligned}
@@ -259,23 +275,7 @@ Die Frage wird dann zu: 'Wie viel des Vektors $\begin{bmatrix} 2 \\ 4 \end{bmatr
 Es handelt sich also um eine \emph{Linearkombination der Spalten} der Matrix: $$\mathbf{A} = \begin{bmatrix} 2 & 3 \\ 4 & -1 \end{bmatrix}$$
 
 
-\subsubsection{Versuch einer Algebraischen Lösung via sympy}
 
-\begin{python}{Lösen eines Gleichungssytems.}
-In [1]: import sympy as sp
-In [2]: from sympy.abc import x,y,z,t
-In [3]: sp.init_printing()
-In [4]: g1 = sp.Eq(2*x + 3*y, 8)
-In [5]: g2 = sp.Eq(4*x - y, 2)
-In [6]: g1
-Out[6]: Eq(2*x + 3*y, 8)
-In [7]: g1
-Out[7]: 2⋅x + 3⋅y = 8
-In [8]: g2
-Out[8]: 4⋅x - y = 2
-In [9]: sp.solve([g1, g2], [x,y])
-Out[9]: {x: 1, y: 2}
-\end{python}
 
 
 \subsubsection{LGS in Matrizenschreibweise}
@@ -296,7 +296,7 @@ Dies kann in Matrixform geschrieben werden als:
 
 
 
-\begin{python}{Lösung eines Linearen Gleichungssystems mit Python.}
+\begin{python}{Numerische Lösung eines Linearen Gleichungssystems mit Python.}
 In [1]: %pylab
 In [2]: A = np.array([[2, 3], [4, -1]])
 In [3]: b = np.array([8, 2])
@@ -381,6 +381,47 @@ array([[1., 0., 0.],
 %  \end{bmatrix}
 
 \subsubsection{Diagonalmatrix}
+Die Einheitsmatrix ist ein Spezialfall einer Diagonalmatrix:
+% \begin{equation}
+ $$ \mathbf{D}=\operatorname {diag} (d_{1},d_{2},\dotsc ,d_{n}):={\begin{bmatrix}d_{1}&0&\cdots &0\\0&d_{2}&\ddots &\vdots \\\vdots &\ddots &\ddots &0\\0&\cdots &0&d_{n}\end{bmatrix}} $$
+
+% \end{equation}
+
+\begin{python}{Erstellung einer Diagonalmatrix in Python.}
+In [1]: diag([1,2,3,4])
+Out[1]:
+array([[1, 0, 0, 0],
+       [0, 2, 0, 0],
+       [0, 0, 3, 0],
+       [0, 0, 0, 4]])
+\end{python}
+
+\begin{itemize}
+   \item Quadratisch
+   \item Eigenwerte sind in der Diagonale abzulesen
+   \item Effizienter invertierbar
+\end{itemize}
+
+
+Beliebige Matrizen können unter gewissen Bedingungen \emph{diagonalisiert} werden. Das heißt es kann eine sog. \emph{ähnliche} Matrix gefunden werden die diagonal ist.
+\todo[inline]{Kommentar zu oder Definition von 'ähnlich'}
+\begin{python}{diagonalisierung}
+import sympy as sp  
+M = sp.Matrix([[3, -2,  4, -2], 
+               [5,  3, -3, -2], 
+               [5, -2,  2, -2], 
+               [5, -2, -3,  3]]) 
+In [21]: _,D = M.diagonalize()
+In [22]: D
+Out[22]:
+⎡-2  0  0  0⎤
+⎢           ⎥
+⎢0   3  0  0⎥
+⎢           ⎥
+⎢0   0  5  0⎥
+⎢           ⎥
+⎣0   0  0  5⎦
+\end{python}
 
 \subsubsection{Symmetrische Matrizen}
 
