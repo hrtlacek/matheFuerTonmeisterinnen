@@ -254,6 +254,26 @@ Die Frage wird dann zu: 'Wie viel des Vektors $\begin{bmatrix} 2 \\ 4 \end{bmatr
 
 Es handelt sich also um eine \emph{Linearkombination der Spalten} der Matrix: $$\mathbf{A} = \begin{bmatrix} 2 & 3 \\ 4 & -1 \end{bmatrix}$$
 
+
+\subsubsection{Versuch einer Algebraischen Lösung via sympy}
+
+\begin{python}{Lösen eines Gleichungssytems.}
+In [1]: import sympy as sp
+In [2]: from sympy.abc import x,y,z,t
+In [3]: sp.init_printing()
+In [4]: g1 = sp.Eq(2*x + 3*y, 8)
+In [5]: g2 = sp.Eq(4*x - y, 2)
+In [6]: g1
+Out[6]: Eq(2*x + 3*y, 8)
+In [7]: g1
+Out[7]: 2⋅x + 3⋅y = 8
+In [8]: g2
+Out[8]: 4⋅x - y = 2
+In [9]: sp.solve([g1, g2], [x,y])
+Out[9]: {x: 1, y: 2}
+\end{python}
+
+
 \subsubsection{LGS in Matrizenschreibweise}
 
 
