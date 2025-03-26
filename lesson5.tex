@@ -159,6 +159,7 @@ Out[5]: 56
 
 \subsection*{Kreuzprodukt}
 \index{Kreuzprodukt}
+\todo[inline]{TODO}
 Auch 'Vektorprodukt'. 
 $$ \vec{c} = \vec{a} \times \vec{b}$$
 Nur in $\mathbb{R}^3$ definiert!
@@ -455,14 +456,14 @@ $\mathbf{A} = \mathbf{A}^T$
 
 
 
-\subsubsection{Orthogonale matrizen}
+\subsubsection{Orthogonale Matrizen}
 (Rotationsmatrizen)
 
 Ist eine Matrix $\mathbf{Q}$ orthogonal dann gilt 
 $$ \mathbf{Q}^T\mathbf{Q} = \mathbf{I} $$.
 
 
-In Abbildung \ref{fig:rotMat} wurden zufälloig gestreute Punkte um $20^\circ$ \emph{um den Ursprung} gedreht. In diesem Notebook kann dies nachvollzogen werden: 
+In Abbildung \ref{fig:rotMat} wurden zufällig gestreute Punkte um $20^\circ$ \emph{um den Ursprung} gedreht. In diesem Notebook kann dies nachvollzogen werden: 
 \colab{https://colab.research.google.com/github/hrtlacek/matheFuerTonmeisterinnen/blob/master/python/notebooks/rotationMatrix.ipynb}
 
 Die geschah mit der Rotationsmatrix:
@@ -503,47 +504,263 @@ Out[1]: array([[1.00000000e+00, 2.22218033e-17],
 % $$ \mathbf{Q} \mathbf{Q}^T \neq \mathbf{I} $$.
 % Auf wikipedia steht das gegenteil.
 
-\subsection*{Matrixmultiplikation}
+\subsection*{Matrizenmultiplikation}
 
-\begin{center}
+
+Matrizenmultiplikation ist \emph{nicht kommutativ}(!). Das heißt allgemein gilt:
+\begin{equation}
+    \mathbf{AB} \neq \mathbf{BA}
+\end{equation}
+
+Es ist auch nicht die beliebige Multiplikation zweier Matrizen möglich. Bei der Multiplikation von zwei Matrizen $\mathbf{A}$ und $\mathbf{B}$ also $\mathbf{AB}$ hat das Resultat die Anzahl an Reihen wie $\mathbf{A}$ und die Anzahl an Spalten wie $\mathbf{B}$. 
+
+Bei der Multiplikation von $\mathbf{AB}$ müssen die jeweils anderen Dimensionen übereinstimmen, das heißt die Anzahl der Spalten von $\mathbf{A}$ muss gleich der Anzahl von Reihen von $\mathbf{B}$ sein. Siehe Abbildung \ref{fig:matrixMultDims}.
+
+
+\begin{figure}[H]
+\centering
 \begin{tikzpicture}
 
-    % First matrix (A) - Governs rows
-    \matrix[matrix, 
-            nodes={draw, minimum size=1cm, anchor=center}, 
-            column sep=2mm, row sep=2mm] (A) {
-        x & x & x \\
-        x & x & x \\
-        x & x & x \\
-    };
 
-    % Second matrix (B) - Governs columns
-    \matrix[matrix, 
-            nodes={draw, minimum size=1cm, anchor=center}, 
-            column sep=2mm, row sep=2mm, right=of A] (B) {
-        x & x \\
-        x & x \\
-        x & x \\
-    };
+\matrix [draw=codeRed,column sep=0.5cm, 
+    nodes={draw=black, minimum size=0.5cm, anchor=center},column sep=-\pgflinewidth, row sep=-\pgflinewidth](A)
+  {
+    \node {}; & \node{}; & \node {}; \\
+    \node {}; & \node{}; & \node {}; \\
+    \node {}; & \node{}; & \node {}; \\
+    \node {}; & \node{}; & \node {}; \\
+    \node {}; & \node{}; & \node {}; \\
+  };
 
-    % Resulting matrix (C)
-    \matrix[matrix, 
-            nodes={draw, minimum size=1cm, anchor=center}, 
-            column sep=2mm, row sep=2mm, right=of B] (C) {
-        x & x \\
-        x & x \\
-    };
+\matrix [draw=codeBlue,column sep=0.5cm, 
+    nodes={draw=black, minimum size=0.5cm, anchor=center},column sep=-\pgflinewidth, row sep=-\pgflinewidth, right=1cm of A](B)
+  {
+    \node {}; & \node{}; & \node {}; & \node {};\\
+    \node {}; & \node{}; & \node {}; & \node {}; \\
+    \node {}; & \node{}; & \node {}; & \node {}; \\
+  };
+
+
+\matrix [draw=codeGreen,column sep=0.5cm, 
+    nodes={draw=black, minimum size=0.5cm, anchor=center},column sep=-\pgflinewidth, row sep=-\pgflinewidth, right=1cm of B](C)
+  {
+    \node {}; & \node{}; & \node {}; & \node {}; \\
+    \node {}; & \node{}; & \node {}; & \node {}; \\
+    \node {}; & \node{}; & \node {}; & \node {}; \\
+    \node {}; & \node{}; & \node {}; & \node {}; \\
+    \node {}; & \node{}; & \node {}; & \node {}; \\
+  };
 
     % Multiplication sign
-    \node at ($(A.east)!0.5!(B.west)$) {$\times$};
+    \node at ($(A.east)!0.5!(B.west)$) {$\cdot$};
     \node at ($(B.east)!0.5!(C.west)$) {$=$};
 
+
 \end{tikzpicture}
-\end{center}
+\caption{Visualisierung der Matrizenmultiplikation}
+    \label{fig:matrixMultDims}
+\end{figure}
+
+Die multiplikation zweier Matrizen ist formal definiert als:
 
 \begin{equation}
 {\displaystyle c_{ik}=\sum _{j=1}^{n}a_{ij}\cdot b_{jk}}
 \end{equation}
+
+
+\subsubsection{Beispiel}
+
+Wir wollen Matrizen $\mathbf{A}$ und $\mathbf{B}$ multiplizieren und damit $\mathbf{C}$ berechnen:
+
+\begin{equation}
+\mathbf{AB}  = \mathbf{C}
+\end{equation}
+
+\begin{equation}
+\mathbf{A}  = \left[\begin{matrix}1 & 2 & 3 \\ 4 & 5 & 6\end{matrix}\right]
+\end{equation}
+
+\begin{equation}
+\mathbf{B}  = \left[\begin{matrix}1 & 2\\3 & 4\\5 & 6\end{matrix}\right]
+\end{equation}
+
+
+$\mathbf{A}$ ist eine $2 \times 3$ Matrix, $\mathbf{A}$ ist eine $3 \times 2$ Matrix. $\mathbf{A}$ bestimmt die Anzahl der Reihen von $\mathbf{C}$ und $\mathbf{B}$ die Anzahl der Spalten. $\mathbf{C}$ ist somit eine $2 \times 2$ Matrix.
+
+
+
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+
+
+\matrix [draw=codeRed,column sep=0.5cm, 
+    nodes={draw=black, minimum size=0.5cm, anchor=center},column sep=-\pgflinewidth, row sep=-\pgflinewidth](A)
+  {
+    \node {1}; & \node{2}; & \node {3}; \\
+    \node {4}; & \node{5}; & \node {6}; \\
+  };
+
+\matrix [draw=codeBlue,column sep=0.5cm, 
+    nodes={draw=black, minimum size=0.5cm, anchor=center},column sep=-\pgflinewidth, row sep=-\pgflinewidth, right=1cm of A](B)
+  {
+    \node {1}; & \node{2}; \\
+    \node {3}; & \node{4}; \\
+    \node {5}; & \node{6}; \\
+  };
+
+
+\matrix [draw=codeGreen,column sep=0.5cm, 
+    nodes={draw=black, minimum size=0.5cm, anchor=center},column sep=-\pgflinewidth, row sep=-\pgflinewidth, right=1cm of B](C)
+  {
+    \node {$c_{11}$}; & \node{$c_{12}$}; \\
+    \node {$c_{21}$}; & \node{$c_{22}$}; \\
+  };
+
+    % Multiplication sign
+    \node at ($(A.east)!0.5!(B.west)$) {$\cdot$};
+    \node at ($(B.east)!0.5!(C.west)$) {$=$};
+
+
+\end{tikzpicture}
+\caption{Visualisierung der Matrizenmultiplikation}
+    \label{fig:matrixMultExample}
+\end{figure}
+
+
+
+
+Um $c_{11}$ also den Wert in der ersten Reihe und ersten SPalte zu berechnen multiplizieren wir die erste Reihe von A mit der ersten Spalte von B und bilden die Summe. Wir bilden sozusagen das \emph{Skalarprodukt} des Vektors in Reihe 1 von $\mathbf{A}$ mit dem Vektor in Spalte 1 von $\mathbf{B}$:
+
+\begin{equation}
+    c_{11} = 1 \cdot 1 + 2 \cdot 3 + 3 \cdot 5 = 22
+\end{equation}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+
+
+\matrix [draw=codeRed,column sep=0.5cm, 
+    nodes={draw=black, minimum size=0.5cm, anchor=center},column sep=-\pgflinewidth, row sep=-\pgflinewidth](A)
+  {
+    \node[fill=codeRed] {1}; & \node[fill=codeRed]{2}; & \node[fill=codeRed] {3}; \\
+    \node {4}; & \node{5}; & \node {6}; \\
+  };
+
+\matrix [draw=codeBlue,column sep=0.5cm, 
+    nodes={draw=black, minimum size=0.5cm, anchor=center},column sep=-\pgflinewidth, row sep=-\pgflinewidth, right=1cm of A](B)
+  {
+    \node[fill=codeBlue] {1}; & \node{2}; \\
+    \node[fill=codeBlue] {3}; & \node{4}; \\
+    \node[fill=codeBlue] {5}; & \node{6}; \\
+  };
+
+
+\matrix [draw=codeGreen,column sep=0.5cm, 
+    nodes={draw=black, minimum size=0.5cm, anchor=center},column sep=-\pgflinewidth, row sep=-\pgflinewidth, right=1cm of B](C)
+  {
+    \node [fill=codeGreen]{22}; & \node{}; \\
+    \node {}; & \node{}; \\
+  };
+
+    % Multiplication sign
+    \node at ($(A.east)!0.5!(B.west)$) {$\cdot$};
+    \node at ($(B.east)!0.5!(C.west)$) {$=$};
+
+
+\end{tikzpicture}
+\caption{Visualisierung der Matrizenmultiplikation}
+    \label{fig:matrixMultColored}
+\end{figure}
+
+Das selbe passiert mit allen anderen Einträgen der Matrix $\mathbf{C}$, hier noch $c_{22}$ berechnet:
+
+\begin{equation}
+    c_{22} = 4 \cdot 2 + 5 \cdot 4 + 6 \cdot 6 = 64
+\end{equation}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+
+
+\matrix [draw=codeRed,column sep=0.5cm, 
+    nodes={draw=black, minimum size=0.5cm, anchor=center},column sep=-\pgflinewidth, row sep=-\pgflinewidth](A)
+  {
+    \node {1}; & \node{2}; & \node {3}; \\
+    \node[fill=codeRed] {4}; & \node[fill=codeRed]{5}; & \node[fill=codeRed] {6}; \\
+  };
+
+\matrix [draw=codeBlue,column sep=0.5cm, 
+    nodes={draw=black, minimum size=0.5cm, anchor=center},column sep=-\pgflinewidth, row sep=-\pgflinewidth, right=1cm of A](B)
+  {
+    \node{1}; & \node[fill=codeBlue]{2}; \\
+    \node{3}; & \node[fill=codeBlue]{4}; \\
+    \node{5}; & \node[fill=codeBlue]{6}; \\
+  };
+
+
+\matrix [draw=codeGreen,column sep=0.5cm, 
+    nodes={draw=black, minimum size=0.5cm, anchor=center},column sep=-\pgflinewidth, row sep=-\pgflinewidth, right=1cm of B](C)
+  {
+    \node {22}; & \node{}; \\
+    \node {}; & \node[fill=codeGreen]{64}; \\
+  };
+
+    % Multiplication sign
+    \node at ($(A.east)!0.5!(B.west)$) {$\cdot$};
+    \node at ($(B.east)!0.5!(C.west)$) {$=$};
+
+
+\end{tikzpicture}
+\caption{Visualisierung der Matrizenmultiplikation}
+    \label{fig:matrixMultColored}
+\end{figure}
+
+
+
+Wenn wir das alles durchgespielt haben kommen wir letztlich zu unserem Ergebnis
+\begin{equation}
+\mathbf{C} = \left[\begin{matrix}22 & 28\\49 & 64\end{matrix}\right]
+\end{equation}
+
+
+Selbstverständlich können wir all das in Python erledigen:
+
+\begin{python}{Matrizenmultiplikation in Python.}
+In [1]: %pylab
+In [2]: import sympy as sp
+In [3]: sp.init_printing()
+In [4]: A = array([[1,2,3],
+   ...:             [4,5,6]])
+In [5]: B = array([[1,2],
+   ...: [3,4],
+   ...: [5,6]])
+In [6]: C = A@B
+In [7]: sp.Matrix(C) # nur zur huebschen anzeige in dem Fall.
+Out[7]:
+⎡22  28⎤
+⎢      ⎥
+⎣49  64⎦
+In [8]: C #nicht so huebsche Anzeige.
+Out[8]:
+array([[22, 28],
+       [49, 64]])
+\end{python}
+
+Weiters können wir uns davon überzeugen dass die Matrixmultiplikation eben nicht kommutativ ist:
+\begin{python}{Demonstration der nicht-Kommutativität der Matrizenmultiplikation.}
+In [9]: D = B@A
+In [10]: sp.Matrix(D)
+Out[10]:
+⎡9   12  15⎤
+⎢          ⎥
+⎢19  26  33⎥
+⎢          ⎥
+⎣29  40  51⎦
+\end{python}
 
 
 \subsection*{Transposition}

@@ -331,8 +331,9 @@
 \newcommand{\example}[1]{%
     \begin{tcolorbox}[colback=lightBg, colframe=codeBlack, title=\color{codeGreen}{\ding{47}}, 
                       sharp corners=south, boxrule=0.5mm, left=0mm, right=0mm, top=0mm, bottom=0mm, 
-                      breakable, enhanced]%
-        #1
+                      breakable, enhanced, before upper={\noindent}]%
+                        #1
+        
     \end{tcolorbox}%
 }
 
