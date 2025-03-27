@@ -314,6 +314,8 @@ Out[5]: array([1., 2.])
 
 
 \subsection{Spezielle Matrizen}
+\todo[inline]{householder, hadamard, conference}
+ 
 
 \subsubsection*{Null Matrix}
 Eine fett notierte 0, $\mathbf{0}$ notiert eine mit nullen gefüllte Matrix.
@@ -387,7 +389,7 @@ Die Einheitsmatrix ist ein Spezialfall einer Diagonalmatrix:
  $$ \mathbf{D}=\operatorname {diag} (d_{1},d_{2},\dotsc ,d_{n}):={\begin{bmatrix}d_{1}&0&\cdots &0\\0&d_{2}&\ddots &\vdots \\\vdots &\ddots &\ddots &0\\0&\cdots &0&d_{n}\end{bmatrix}} $$
 
 % \end{equation}
-
+\todo[inline]{skalierungs matrix.}
 \begin{python}{Erstellung einer Diagonalmatrix in Python.}
 In [1]: diag([1,2,3,4])
 Out[1]:
@@ -429,6 +431,7 @@ Out[22]:
 \end{python}
 
 Alternativ können die eigenwerte berechnet werden via \texttt{eig()} und daraus eine diagonalmatrix gemacht werden:
+\todo[inline]{WRONG CODE BELOW.}
 \begin{python}{diagonalisierung via \texttt{eig()}}
 import sympy as sp  
 M = sp.Matrix([[3, -2,  4, -2], 
