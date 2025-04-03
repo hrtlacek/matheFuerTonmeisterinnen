@@ -159,12 +159,29 @@ Out[5]: 56
 
 \subsection*{Kreuzprodukt}
 \index{Kreuzprodukt}
+
+
+
 \todo[inline]{TODO}
 Auch 'Vektorprodukt'. 
 $$ \vec{c} = \vec{a} \times \vec{b}$$
 Nur in $\mathbb{R}^3$ definiert!
 
+
+\begin{equation}
+{\displaystyle {\vec {a}}\times {\vec {b}}={\begin{pmatrix}a_{1}\\a_{2}\\a_{3}\end{pmatrix}}\times {\begin{pmatrix}b_{1}\\b_{2}\\b_{3}\end{pmatrix}}={\begin{pmatrix}a_{2}b_{3}-a_{3}b_{2}\\a_{3}b_{1}-a_{1}b_{3}\\a_{1}b_{2}-a_{2}b_{1}\end{pmatrix}}\,.}
+\end{equation}
+
 Python: \pythoninline{cross(a,b)}
+\begin{python}{Demonstration des Kreuzprodukts}
+In [1]: %pylab
+In [2]: a = array([1,0,0])
+In [3]: b = array([0,1,0])
+In [4]: cross(a,b)
+Out[4]: array([0, 0, 1])
+\end{python}
+
+
 
 \section{Matrizen}
 
