@@ -469,18 +469,26 @@ Out[22]:
 
 
 \subsubsection{Symmetrische Matrizen}
-
-$\mathbf{A} \, ist \, symmetrisch \iff für alle i,j, a_{ji} = a_{ij}$
+\index{Symmetrische Matrix}
+$\mathbf{A} \, ist \, symmetrisch \iff \text{für alle } i,j, a_{ji} = a_{ij}$
 
 $\mathbf{A} = \mathbf{A}^T$
 
 
 
 \subsubsection{Orthogonale Matrizen}
-(Rotationsmatrizen)
+\index{Orthogonale Matrix}
+\index{Hall}
+\index{Drehmatrix}
 
 Ist eine Matrix $\mathbf{Q}$ orthogonal dann gilt 
 $$ \mathbf{Q}^T\mathbf{Q} = \mathbf{I} $$.
+
+Ausserdem gilt
+$$ \mathbf{Q}^T = \mathbf{Q}^{-1} $$.
+
+
+Sogenannte \emph{Drehmatrizen} oder auch Rotationsmatrizen sind orthogonale Matrizen. In der Literatur könten wir beispielweise in \citep{puckette2011infuriating} auf die Verwendung einer solchen Matrix stossen beim Entwurf eines Hall Algorithmus. 
 
 
 In Abbildung \ref{fig:rotMat} wurden zufällig gestreute Punkte um $20^\circ$ \emph{um den Ursprung} gedreht. In diesem Notebook kann dies nachvollzogen werden: 
@@ -519,13 +527,27 @@ Out[1]: array([[1.00000000e+00, 2.22218033e-17],
 
 
 
-
 % Hier  https://www.youtube.com/watch?v=j8hEnyOiwhw wird folgendes behauptet:
 % $$ \mathbf{Q} \mathbf{Q}^T \neq \mathbf{I} $$.
 % Auf wikipedia steht das gegenteil.
 
-\subsection*{Matrizenmultiplikation}
+\subsection{Spezifisch Interssante Matrizen in der Signalverarbeitung}
 
+\subsubsection*{Conference Matrix}
+\todo[inline]{todo.}
+\subsubsection*{Householder Matrix}
+\todo[inline]{todo.}
+\subsubsection*{Haddamard Matrix}
+\todo[inline]{todo.}
+\subsubsection*{Toeplitz Matrix}\label{subsub:toeplitz}
+\index{Toeplitz}
+\todo[inline]{todo.}
+Siehe Convolution/Faltung.
+
+\colab{https://colab.research.google.com/github/hrtlacek/matheFuerTonmeisterinnen/blob/master/python/notebooks/invertableMatrix.ipynb}
+
+\subsection*{Matrizenmultiplikation}
+\index{Matrizenmultiplikation}
 
 Matrizenmultiplikation ist \emph{nicht kommutativ}(!). Das heißt allgemein gilt:
 \begin{equation}
@@ -601,7 +623,7 @@ Wir wollen Matrizen $\mathbf{A}$ und $\mathbf{B}$ multiplizieren und damit $\mat
 \end{equation}
 
 \begin{equation}
-\mathbf{B}  = \left[\begin{matrix}1 & 2\\3 & 4\\5 & 6\end{matrix}\right]
+\mathbf{B}  = \left[ \begin{matrix}1 & 2\\3 & 4\\5 & 6 \end{matrix} \right]
 \end{equation}
 
 
@@ -782,37 +804,140 @@ Out[10]:
 ⎣29  40  51⎦
 \end{python}
 
-
 \subsection*{Transposition}
-\subsection*{Determinante}
-\todo[inline]{A Test for invertibility}
-$det \mathbf{A}$ oder auch $|\mathbf{A}|$. 
 
-\begin{itemize}
-   \item $det \mathbf{A} = 1$.
-   \item Reihen vertauschen kehrt das vorzeichen der Determinante um.
-\end{itemize}
+Transposition \emph{vertauscht Reihen und Spalten einer Matrix}. Notiert durch $\mathbf{A}^{T}$ ist hier die transponierte von $\mathbf{A}$ becshrieben.
 
-$$ \begin{vmatrix} a & b  \\
-                    c & d 
- \end{vmatrix} = ad - bc$$
+In \texttt{python} önnen wir dies einfach durch \pythoninline{A.T} erreichen:
 
-\colab{https://colab.research.google.com/github/hrtlacek/matheFuerTonmeisterinnen/blob/master/python/notebooks/Determinante.ipynb}
+\begin{python}{TRansponieren in python}
+In [1]: A = tril(ones([3,3]))
+In [2]: A
+Out[2]:
+array([[1., 0., 0.],
+       [1., 1., 0.],
+       [1., 1., 1.]])
+
+In [3]: A.T
+Out[3]:
+array([[1., 1., 1.],
+       [0., 1., 1.],
+       [0., 0., 1.]])
+\end{python}
+
 
 
 \subsection*{Invertierung}
 
+
+
+\index{Reguläre Matrix}
+Gegeben Matrix $\mathbf{A}$ kann eine \emph{invertierte} Matrix $\mathbf{B} = \mathbf{A}^{-1}$ gebunden werden dann gilt:
+\begin{equation}
+\mathbf {AB} =\mathbf {BA} =\mathbf {I}
+\end{equation}
+
+Kann eine solche Matrix $\mathbf{B}$ gefunden werden nennt man $\mathbf{A}$ auch \emph{reguläre}, \emph{invertierbare} oder \emph{nichtsinguläre} Matrix.
+Eine Matrix die nicht invertierbar ist heißt\emph{singulär}. Dies ist auch die Fehlermeldung in Python die wir bekommen wenn wir versuchen eine nicht invertierbvare Matrix zu invertieren.
+
+Reguläre Matrizen beschreiben somit \emph{bijektive} Abbildungen, ihre auswirkung kann stets 'rückgängig' gemacht werden durch Multiplikation mit der Inversen Matrix.
+Siehe colab beispiel in \ref{subsub:toeplitz}.
+
+\begin{python}{Invertierung und anwendung}
+In [1]: A = random.random([3,3])
+In [2]: B = linalg.inv(A)
+In [3]: x = array([1.0, 2.0, 3.0])
+In [4]: y = A@x
+In [5]: y
+Out[5]: array([1.6555596 , 2.68115068, 1.71271817])
+In [6]: x_recovered = B@y
+In [7]: x_recovered
+Out[7]: array([1., 2., 3.])
+\end{python}
+
+
+
+\subsection*{Determinante}\label{sub:determinant}
+\index{Determinante}
+Die determinante hat mehrere interessante EIgenschaften. 
+
+% \todo[inline]{A Test for invertibility}
+$det (\mathbf{A})$ oder auch $|\mathbf{A}|$. 
+
+\begin{itemize}
+    \item Sie ist ein Test für Invertierbarkeit: $det(\mathbf{A})=0$ wenn $\mathbf{A}$ singulär.
+    \item $det (\mathbf{I}) = 1$.
+    \item Besteht eine Reihe oder Spalte aus Nullen, ist die Determinante 0.
+    \item Sind zwei Spalten (Zeilen) gleich, ist die Determinante 0.
+    \item Reihen vertauschen kehrt das vorzeichen der Determinante um.
+\end{itemize}
+
+\begin{python}{Determinante ist 0 wenn eine Matrix nicht invertierbar (Singulär) ist.}
+In [1]: A = array([
+    ...: [0,1,2],
+    ...: [0,1,2],
+    ...: [2,3,4]])
+In [2]: det(A)
+Out[2]: 0.0
+In [3]: linalg.inv(A)
+(........ vieles gekuerzt, Fehlermerdung.......)
+LinAlgError: Singular matrix
+\end{python}
+
+Berechnung der Determinante einer $2 \times 2 $ Matrix:
+
+$$ \begin{vmatrix} a & b  \\
+                    c & d 
+
+ \end{vmatrix} = ad - bc$$
+
+Die Determinante hat eine Graphische Interpretation! SIehe folgendes Notebook!
+
+\colab{https://colab.research.google.com/github/hrtlacek/matheFuerTonmeisterinnen/blob/master/python/notebooks/Determinante.ipynb}
+
+
+
 \subsubsection{Diagonalisierung}
  % https://www.youtube.com/watch?v=ZSGrJBS_qtc
-
+\todo[inline]{todo}
 
 \subsection*{Eigenwert und Eigenvektoren}
 \index{Eigenwert}\index{Eigenvektor}\index{Zustandsraumdarstellung}\index{State-Space}
 
+
+
 \praxis{Eigenwerte der $A$ Matrix in der Zustandsraumdarstellung (engl. 'State-Space') von Systemen sind die Pole des Systems. Eigenvektoren bei der Modalanalyse können Modenformen (die eigentliche Bewegung eines Systems zB.) darstellen und in Eigenwerten sind die entsprechenden Frequenzen ($\Im(\lambda)$) und die Stabilität ($\Re(\lambda)$) enthalten. Eigenvektoren von Matrizen die für Probabilistische Modellierung (siehe Markov Modelle) können Stationäre Wahrscheinlichkeits-Vektoren sein.}
 
+\important{
+
+\begin{equation}\label{eq:eig}
+\mathbf{A}\vec{x} = \lambda \vec{x}
+\end{equation}
+Bei gegebener Matrix $\mathbf{A}$, können wir obige Gleichung Lösen? $\vec{x}$ ist hier ein Vektor und $\lambda$ eine Konstante, ein skalar, eine einfache Zahl.
+Es stellt sich heraus dass Gleichung \ref{eq:eig} typischerweise mehrere Lösungen hat. Bei genauer Betrachtung stellen wir fest, dass sie Folgendes sagt:
+
+Gegeben Matrix $\mathbf{A}$, kann ich einenVektor finden der, wenn ich ihn mit $\mathbf{A}$ multipliziere nur seine \emph{Länge}, also seinen Betrag (und ggf. sein Vorzeichen) ändert? Seine Richtung darf er nicht verändern. Die Längenänderung wäre hier der Faktor $\lambda$. Sollte ich ein solches \emph{Paar} finden habe ich einen sogenannten \emph{Eigenvektor} $x$ und den dazugehörigen \emph{Eigenwert} $\lambda$ der Matrix $\mathbf{A}$ entdeckt. 
+
+}
+
+In Python ist zu beachten dass das Resultat von \pythoninline{eig()} uns sowohl Eigenwerte als auch Eigenvektoren liefert. Zudem sind die Eigenvektoren in den \emph{Reihen} des Resultats zu finden (nicht in den Spalten, dies kann zu Fehlern führen).
+\begin{python}{Eigenwerte in Python}
+In [1]: A = random.random([2,2])
+In [2]: λs, xs = eig(A)
+In [3]: λs
+Out[3]: array([0.02371118, 1.04298258]) #<- Eigenwerte
+In [4]: xs
+Out[4]:
+array([[-0.99404935, -0.57711446], #<- dies ist ein Eigenvektor. 
+       [ 0.10893069, -0.81666327]]) #<- der zweite Eigenvektor
+In [5]: A@xs[:,0]
+Out[5]: array([-0.02357008,  0.00258287])
+In [6]: xs[:,0]*λs[0]
+Out[6]: array([-0.02357008,  0.00258287])
+\end{python}
 
 \subsection*{Dynamische Systeme}\label{sub:dynamische_systeme}
+\todo[inline]{TODO.}
 
 \section{Aufgaben}
 \begin{enumerate}
