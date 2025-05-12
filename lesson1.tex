@@ -667,6 +667,25 @@ $$L = 20 \cdot log_{10}(x)$$
 \end{figure}
 
 
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{3.5cm}|l|l|l|p{3.5cm}|}
+\hline
+\textbf{dB Einheit} & \textbf{Formel} & \textbf{Referenzwert} & \textbf{Verwendungszweck} \\
+\hline
+$\text{dB}_{FS}$ & $20 \log_{10}(u/u_0)$ & 1 & 'FullScale', Digitale Audiopegel \\
+$\text{dB}_{SPL}$  & $20 \log_{10}(p/p_0)$ & $20 \, \mu\text{Pa} = 2\cdot 10^{-5} \text{Pa}$ & Schalldruck in Luft (akustisch) \\
+$\text{dB}$ (z.T. $\text{dB}_{SWL}$) & $10 \log_{10}(P/P_{0})$ & $ 1pW = 10^{-12} W$ & Schallleistung \\
+$\text{dB}$ (z.T. $\text{dB}_{SIL}$)& $10 \log_{10}(I/I_{0})$ & $ 1pW/m^2 = 10^{-12} W/m^2$ & Schallintensitätspegel \\
+dBV & $20 \log_{10}(V/V_0)$ & 1 V & Audiopegel im Heimbereich \\
+dBu & $20 \log_{10}(V/V_0)$ & 0.775 V  & Audiopegel im Studiobereich \\
+dBW & $10 \log_{10}(P/P_0)$ & 1 W  & (Elektrische) Leistung relativ zu 1 Watt \\
+% dBm & $10 \log_{10}(P/1\,\text{mW})$ & 1 mW  & Signalstärke in HF-/Audiotechnik \\
+\hline
+\end{tabular}
+\caption{Gebräuchliche Dezibel Einheiten und ihre Referenzwerte.}
+\end{table}
+
 \begin{figure}[h!]
     \centering
     \input{img/time_lin.pgf}
