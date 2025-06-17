@@ -1,12 +1,243 @@
 %!TEX root = main.tex
 \chapter{Diskrete Mathematik \& Reihen}
+\todo[inline]{Taylor Reihe, Fourier Reihe, z transform, faltung, newton-raphson
+Kreutzkorrelation, autokorellation}
 
-Taylor Reihe, Fourier Reihe, z transform, faltung, newton-raphson
-Kreutzkorrelation, autokorellation
-% %!TEX root = main.tex
-% \chapter{Lineare Algebra, Vektoren und Matrizen}
-% \todo{Probabilistische system entwicklung, https://www.youtube.com/watch?v=K-8F\_zDMDUI\&list=PLMrJAkhIeNNTYaOnVI3QpH7jgULnAmvPA\&index=3}
-% \todo[inline]{Digital Audio als vektor, Vector scope, stereo sachen, Rotationsmatrix, Hadamardmatrix, Householdermatrix,  state space formulations, modal analyse}
+\section{Differenezengleichungen}
+\todo[inline]{TODO}
+
+
+
+\section{Fourier Reihe}
+\todo[inline]{TODO}
+
+\section{Taylor Reihe}
+\todo[inline]{TODO}
+
+\section{Faltung}
+\todo[inline]{TODO}
+
+\section{Z-Transformation}
+\todo[inline]{TODO}
+
+\section{Fourier Transformation}
+
+\todo[inline]{TODO}
+\index{Fourier Transformation}
+Die \emph{Fourier Transformation} (FT) erlaubt uns einen Wechsel zwischen Koordinatensystemen, zwischen Domänen. Sie ordnet einer Funktion der Zeit, $x(t)$ eine Funktion der Frequenz $X(f)$\footnote{Da hier ein integral im Spiel ist, wird per Konvention das $x$ im Anschluss groß geschrieben} zu:
+
+\begin{equation}
+x(t) {\stackrel {\mathcal {F}}{\longrightarrow }} X(f)
+\end{equation}
+ 
+Die \emph{inverse Fourier Transformation} erlabt uns den Weg in die andere Richtung:
+
+\begin{equation}
+X(f) {\stackrel {\mathcal {F}^{-1}}{\longrightarrow }} x(t)
+\end{equation}
+
+
+% \section{Konzept}
+% Die Fourier-Transformation ist eine Methode, um zwischen verschiedenen Bereichen zu wechseln. Was bedeutet das? Man kann sich das so vorstellen, dass man eine Information in eine andere Darstellung überführt, ohne Informationsverlust. Ein Beispiel:\\
+% Wenn ich dir sage, wir treffen uns in der \textit{Matthias Corvinus-Straße 15, 3100 St. Pölten}, ist das diesesublbe Information wie GPS-Koordinaten 48.2138731, 15.6320195. Gleiche Information in anderem Format, anderem \textit{Bereich}.\\
+% Diese zwei Formate haben unterschiedliche Vor-sub und Nachteile. Zum Beispiel: Wüsstest du bei den GPS-Koordinaten, ob der Ort überhaupt in Österreich liegt? Wahrscheinlich nicht. Andererseits: In welche Richtung (Norden, Süden, Osten, Westen) muss ich von der FH zum Hauptbahnhof gehen? Einfach in GPS: Der Hauptbahnhof liegt bei 48.20850,15.62515. Beide Zahlen sind kleiner, also südwestlich. Nicht so leicht zu sehen, wenn ich dir einfach sage: Bahnhofplatz 1, 3100 St. Pölten.\\
+% Der Punkt ist: Je nachdem, was wir wollen, bieten verschiedene Repräsentationen verschiedene Möglichkeiten und Einsichten.
+
+% \begin{figure}[H]
+% 	\centering
+% 	\includegraphics[width=\textwidth]{img/vase.jpg}
+% 	\caption[illusion]
+% 	{Je nachdem, wie man etwas betrachtet, ergeben sich unterschiedliche Möglichkeiten und Einsichten.}
+% 	\label{fig:vase}
+% \end{figure}
+
+% Im Fall der Fourier-Transformation wollen wir in den Spektralbereich wechseln. Wir wollen das, weil wir dadurch sofort erkennen könnten, ob bei einer bestimmten Frequenz viel Energie vorhanden ist. Merkwürdigerweise ist das bei Licht ganz einfach, man nehme ein Prisma:
+
+% \begin{figure}[H]
+% 	\centering
+% 	\includegraphics[width=\textwidth]{img/Prism.jpg}
+% 	\caption[prism]
+% 	{Ein Prisma zerlegt Licht in seine spektralen Bestandteile und führt im Grunde etwas Ähnliches wie eine Fourier-Transformation durch.}
+% 	\label{fig:prism}
+% \end{figure}
+
+Wie funktioniert dieser Wechsel zwischen den Bereichen? Zunächst die Definition der Fourier Transformation:
+\important{
+\begin{equation}
+	X(f)= \mathcal{F} \{x(t)\} = \int_{-\infty}^\infty \! x(t) e^{-i2\pi ft} \, \mathrm{d}t
+	\label{ft}
+\end{equation}
+}
+Bevor wir untersuchen was genau hier passiert: $t$ ist die Zeit in Sekunden, $f$ eine Frequenz in Hz, $e$ die Eulersche Zahl (siehe Abschnitt \ref{sec:eulerscheZahl} \& \ref{sec:eulersche_darstellung}), $i$ die imaginäre Einheit. $x(t)$ ist unser Zeit-Signal, $X(f)$ das Resultat.\\ 
+
+Es gibt verschiedene Ansätze zur Erklärung der Fourier-Transformation, aber folgendes mag helfen unsere Intuition zu stärken: Wir wollen wissen, "wie viel" von einer bestimmten Frequenz in einem Signal $x(t)$ enthalten ist. Die FT ist die Antwort auf genau diese Frage. \\
+
+Stellen wir uns vor wir stünden vor einem vielleicht vergleichbarem Problem: Wir fragen uns: Wenn wir 100 Euro in 20er zu teilen - wie viele 20 Euro Scheine entsprechen diesen 100 Euro? Wir kennen wir die Vorgangsweise: Division. \\
+Können wir also einfach ein Zeitsignal durch eine Sinuswelle dividieren, um herauszufinden, wie viel davon enthalten ist? In gewissem Sinne ja. \\
+
+Sehen wir uns dazu Gleichung \ref{ft} an. Wir haben ein Eingangssignal $x(t)$ im Zeitbereich. Heraus kommt ein Signal $X(f)$ im Frequenzbereich. Um zu verstehen, warum das funktioniert, erinnern wir uns an die Eulersche Formel:
+\index{Eulersche Formel}
+\begin{equation}
+	e ^{ix} = cos(x)+i \cdot sin(x)
+\end{equation}
+
+Die Fourier-Transformation ist also ein Integral (eine kontinuierliche Summierung) über das Eingangssignal multipliziert mit Kosinus- und Sinusanteilen:
+
+\begin{equation}
+	X(f)= \mathcal{F} \{x(t)\} = \int_{-\infty}^\infty \! x(t) \cdot (cos(2\pi ft)+i \cdot sin(2\pi ft) )^{-1}  \, \mathrm{d}t
+	\label{ft2}
+\end{equation}
+
+Da ein negativer Exponent einem Kehrwert entspricht (also Division), können wir umschreiben zu:
+
+\begin{equation}
+	X(f)= \mathcal{F} \{x(t)\} = \int_{-\infty}^\infty \! \frac{x(t)} { cos(2\pi ft)+i \cdot sin(2\pi ft) }  \, \mathrm{d}t
+	\label{ft3}
+\end{equation}
+
+Man sieht also: Wir nehmen das Eingangssignal und „summieren“ für jede Frequenz $f$ über das gesamte Signal, um zu sehen, wie viel Sinus und Kosinus dieser Frequenz enthalten ist (Vergleiche außerdem mit Abbildung \ref{fig:dotProdCorr}!). 
+
+
+Die inverse Fourier Transformation ist definiert als:
+
+\important{
+\begin{equation}
+	x(t)= \mathcal{F}^{-1} \{X(f)\} = \int_{-\infty}^\infty \! X(f) e^{i2\pi ft} \, \mathrm{d}f
+	\label{ift}
+\end{equation}
+}
+
+\subsection*{Diskrete Fourier Transformation}
+
+Meistens haben wir es mit diskreten (digitalen) Signalen zu tun. Hier wird aus dem Integral eine Summe und aus Zeit- und Frequenz-variablen ($t$ und $f$) werden Indizes in Listen ($n$ und $m$). $N$ ist hier die Länge des Zeitsignals in Samples.
+
+
+% \begin{equation}
+% 	x_f(m) = \sum_{n=0}^{N-1} x(n)\cdot (cos(2 \pi \frac{n m}{N})+i \cdot sin(2 \pi \frac{n m}{N}))^{-1}
+% \end{equation}
+
+
+% Geschichte:
+% Bernoulli, Euler, Gauß, Fourier
+Die diskrete Fourier-Transformation (DFT) ist definiert als:
+\begin{equation}
+	x_f(m) = \sum_{n=0}^{N-1} x(n)\cdot e^{-i 2 \pi \frac{n m}{N} }
+	\label{eq:dft}
+\end{equation}
+
+\subsection{Implementierung}
+
+In Python könnte das folgendermaßen aussehen. Siehe Gleichung \ref{eq:dft}. Der untenstehende Code benutzt dieselben Variablennamen, um Verwirrung zu vermeiden.
+
+\begin{python}{Naive Implementierung einer DFT.}
+%pylab inline
+π = pi # pi als griech. Buchstabe.
+e = exp # get e^ Funktion
+sr = 44100. # sample rate
+N = 1024 # Laenge in Samples
+lenSec = N/sr # Laenge in Sekunden
+
+f = 1000 # Frequenz der Sinus Welle am Input
+t = arange(N)/sr # Array mit Zeitpunkten
+x = sin(t*2*π*f) # Sinus Signal als Input
+
+xf = zeros_like(x,dtype=np.complex_) # Initialisierung eines komplexen arrays fuer den output.
+
+# Eigentliche Diskrete Fourier Transformation
+for m in range(N): # loop ueber alle Frequenzen
+    for n in range(N): # loop ueber das gesamte Eingangssignal
+        xf[m] = xf[m]+x[n]*e(-1j*2*π*n*m/N)
+\end{python}
+
+Hier ein Notebook mit dem obigen code inkl. Plot:
+\colab{https://colab.research.google.com/github/hrtlacek/matheFuerTonmeisterinnen/blob/master/python/notebooks/diskreteFourierTrans\_naiv.ipynb}
+
+
+Der Code erzeugt folgendes Diagramm:
+% \begin{figure}[H]
+% 	\centering
+% 	\includegraphics[width=\textwidth]{img/pythonDFT.png}
+% 	\caption[DFT Plot]
+% 	{Diagramm erzeugt vom obigen Skript.}
+% 	\label{fig:pyfft}
+% \end{figure}
+
+\begin{figure}[H]
+    \centering
+    \input{python/plots/specNaive.pgf}
+    \caption{Magnitudenspektrum.}
+    \label{fig:specNaive}
+\end{figure}
+
+\index{FFT}
+Achtung: Der obige Code implementiert Gleichung \ref{eq:dft} direkt. Das ist \textit{sehr} langsam. In der Praxis nutzt man meist effizientere Algorithmen, wie die \emph{Fast Fourier Transform (FFT)}. In Python z.\,B. mit \texttt{numpy.fft.fft()}. 
+
+% Die FFT basiert auf dem Prinzip \textit{divide and conquer}.\\
+% Wichtig: Wenn wir ein einzelnes Frequenzsignal in die DFT einspeisen, erwarten wir einen Peak — und bekommen zwei. Das liegt daran, dass die FFT ein gespiegeltes, zweiseitiges Spektrum erzeugt. \textbf{Man kann die Hälfte des Plots ignorieren.} Warum? Digitale Signale haben ein unendlich periodisches Spektrum. Das hängt auch mit dem Phänomen Aliasing zusammen.
+
+% \video{
+% 	Im Bereich Video- und Bildverarbeitung ist die DFT weniger wichtig als die diskrete Kosinus-Transformation (DCT). Die Unterschiede:
+% 	\begin{itemize}
+% 		\item Die DCT liefert reale Werte, die DFT komplexe.
+% 		% \item Die DCT hat mehr Auflösung im Tieftonbereich.
+% 		\item Es gibt verschiedene Varianten der DCT sowie die diskrete Sinus-Transformation (DST).
+% 		\item Die DCT konzentriert die Energie stärker in den niedrigen Frequenzen und eignet sich daher gut für verlustbehaftete Kompression.
+% 	\end{itemize}
+% 	Mehr dazu z.\,B. hier: \href{https://www.youtube.com/watch?v=Q2aEzeMDHMA}{Jpeg-Kompression und die diskrete Kosinus-Transformation}\footnotemark
+% }
+% \footnotetext{https://www.youtube.com/watch?v=Q2aEzeMDHMA}
+
+% \section{Anwendung in pd}
+% Wir werden keine DFT in pd programmieren. Es wäre möglich, aber didaktisch wenig sinnvoll und praktisch mühsam\footnote{Bestimmte Brotsorte.}. Aber wir müssen wissen, wie man die FFT in pd verwendet. Besonders wichtig sind 4 Objekte:
+% \begin{itemize}
+% 	\item \pd{fft\textasciitilde} schnelle (diskrete) Fourier-Transformation
+% 	\item \pd{ifft\textasciitilde} schnelle (diskrete) inverse Fourier-Transformation
+% 	\item \pd{rfft\textasciitilde} schnelle (diskrete) Fourier-Transformation, nur reale Signale
+% 	\item \pd{rifft\textasciitilde} schnelle (diskrete) inverse Fourier-Transformation, nur reale Signale
+% \end{itemize}
+% Die „real only“-Varianten setzen voraus, dass unser Zeitsignal keine komplexen Anteile hat — was fast immer zutrifft.
+
+
+
+Es gibt viele Methoden das Spektrum eines Audiosignals in Python zu berechnen. Eine der angenehmsten Arten dies zu tun ist die Methode nach Welch \footnote{nach Peter D. Welch, 1929-2023.}. Diese Methode ist im \texttt{scipy} paket enthalten dass einfach via \texttt{pip} (einmalig) installiert werden muss:
+
+\pythoninline{pip install scipy}
+
+Anschließend kann zum Beispiel auf folgende Art ein Spektrum berechnet werden:
+
+\begin{python}{Berechnung eines Magnitudenspektrums via "Welch" Methode.}
+In [1]: %pylab
+In [2]: import scipy.signal as sig # import des scipy-signal Pakets
+In [3]: sr = 44100 #Definition der Sampling rate
+In [4]: T = 3 #Definition der Dauer unseres Testsignals
+In [5]: t= arange(int(sr*T))/sr # Berechnung eines Arrays mit Zeitpunkten in Sekunnden.
+In [6]: x = sin(2*pi*t*100) #Berechnung eines 100 Hz sinus Signals
+In [7]: faxis, mag = sig.welch(x, fs = sr, nperseg=2**12) #Berechnung des Spektrums
+In [9]: plot(faxis, mag) # Plot.
+\end{python}
+
+
+\begin{figure}[H]
+    \centering
+    \input{python/plots/specPlain.pgf}
+    \caption{Magnitdenspektrum.}
+    \label{fig:specSimple}
+\end{figure}
+
+
+
+\begin{figure}[H]
+    \centering
+    \input{python/plots/specPlainLoglog.pgf}
+    \caption{Magnitdenspektrum, logarithhmische X-Achse, umgerechnet in dB und Achsen beschriftet.}
+    \label{fig:specSimple_loglog}
+\end{figure}
+
+\subsection*{Periodizität der Fourier Transformation}
+\todo[inline]{TODO}
+
+\subsection*{Fourier Transformation, Analytisch}
+\todo[inline]{TODO}
 
 \section{Aufgaben}
 \begin{enumerate}
