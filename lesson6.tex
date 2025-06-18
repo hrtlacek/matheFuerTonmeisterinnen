@@ -107,8 +107,8 @@ Die inverse Fourier Transformation ist definiert als:
 \end{equation}
 }
 
-\subsection*{Diskrete Fourier Transformation}
-
+\subsection*{Diskrete Fourier Transformation (DFT)}
+\index{DFT}
 Meistens haben wir es mit diskreten (digitalen) Signalen zu tun. Hier wird aus dem Integral eine Summe und aus Zeit- und Frequenz-variablen ($t$ und $f$) werden Indizes in Listen ($n$ und $m$). $N$ ist hier die Länge des Zeitsignals in Samples.
 
 
@@ -126,10 +126,11 @@ Die diskrete Fourier-Transformation (DFT) ist definiert als:
 \end{equation}
 
 \subsection{Implementierung}
-
-In Python könnte das folgendermaßen aussehen. Siehe Gleichung \ref{eq:dft}. Der untenstehende Code benutzt dieselben Variablennamen, um Verwirrung zu vermeiden.
+Als Experiment, als didaktische Übung können wir versuchen \ref{eq:dft} direkt in Python zu implementieren. Hier muss sofort gesagt werden: das ist äußerst ineffizient aber dennoch interessant um unser Verständnis der DFT auszubauen.
+Der untenstehende Code benutzt dieselben Variablennamen wie Gl. \ref{eq:dft}, um Verwirrung zu vermeiden.
 
 \begin{python}{Naive Implementierung einer DFT.}
+# ======== Setup Code, imports, signal erzeugung ===========
 %pylab inline
 π = pi # pi als griech. Buchstabe.
 e = exp # get e^ Funktion
@@ -143,7 +144,7 @@ x = sin(t*2*π*f) # Sinus Signal als Input
 
 xf = zeros_like(x,dtype=np.complex_) # Initialisierung eines komplexen arrays fuer den output.
 
-# Eigentliche Diskrete Fourier Transformation
+# ======= Eigentliche Diskrete Fourier Transformation =====
 for m in range(N): # loop ueber alle Frequenzen
     for n in range(N): # loop ueber das gesamte Eingangssignal
         xf[m] = xf[m]+x[n]*e(-1j*2*π*n*m/N)
@@ -170,7 +171,7 @@ Der Code erzeugt folgendes Diagramm:
 \end{figure}
 
 \index{FFT}
-Achtung: Der obige Code implementiert Gleichung \ref{eq:dft} direkt. Das ist \textit{sehr} langsam. In der Praxis nutzt man meist effizientere Algorithmen, wie die \emph{Fast Fourier Transform (FFT)}. In Python z.\,B. mit \texttt{numpy.fft.fft()}. 
+Wie gesagt, Achtung: Der obige Code implementiert Gleichung \ref{eq:dft} direkt. Das ist \textit{sehr} langsam. In der Praxis nutzt man meist effizientere Algorithmen, wie die \emph{Fast Fourier Transform (FFT)}. In Python z.\,B. mit \texttt{numpy.fft.fft()}. 
 
 % Die FFT basiert auf dem Prinzip \textit{divide and conquer}.\\
 % Wichtig: Wenn wir ein einzelnes Frequenzsignal in die DFT einspeisen, erwarten wir einen Peak — und bekommen zwei. Das liegt daran, dass die FFT ein gespiegeltes, zweiseitiges Spektrum erzeugt. \textbf{Man kann die Hälfte des Plots ignorieren.} Warum? Digitale Signale haben ein unendlich periodisches Spektrum. Das hängt auch mit dem Phänomen Aliasing zusammen.
@@ -232,6 +233,9 @@ In [9]: plot(faxis, mag) # Plot.
     \caption{Magnitdenspektrum, logarithhmische X-Achse, umgerechnet in dB und Achsen beschriftet.}
     \label{fig:specSimple_loglog}
 \end{figure}
+
+\subsection*{Periodizität der Fourier Transformation}
+\todo[inline]{TODO}
 
 \subsection*{Periodizität der Fourier Transformation}
 \todo[inline]{TODO}
